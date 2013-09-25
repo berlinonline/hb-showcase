@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations
+    xmlns="http://berlinonline.de/schemas/honeybee/config/access_control/1.0"
+    xmlns:env="http://berlinonline.de/schemas/honeybee/config/envelope/definition/1.0"
+    xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+    <ae:configuration>
+        <roles>
+            <!--
+                Example configuration for a custom project role.
+                All configured roles are automatically available to the user management.
+            -->
+            <role name="example-role" parent="no-perms">
+                <description>
+                    Role that shows the different types of acl definitions.
+                </description>
+                <acl>
+                    <!-- read only credential example (list only)-->
+                    <grant>{module-prefix}::read</grant>
+
+                    <!-- read only credential example (full-stack reads)-->
+                    <grant>{module-prefix}::read</grant>
+                    <grant>{module-prefix}.edit::read</grant>
+                    <grant>{module-prefix}.approval::read</grant>
+                    <grant>{module-prefix}.published::read</grant>
+                    <grant>{module-prefix}.archived::read</grant>
+
+                    <!-- create credential example -->
+                    <grant>{module-prefix}::create</grant>
+
+                    <!-- custom-batch credential example -->
+                    <grant>{module-prefix}::assign_categories</grant>
+
+                    <!-- constrained writes credential example -->
+                    <grant if="user_is_document_assignee">{module-prefix}.edit::write</grant>
+                    <grant if="user_is_document_assignee">{module-prefix}.edit::promote</grant>
+                    <grant if="user_is_document_assignee">{module-prefix}.edit::delete</grant>
+                    <grant if="user_is_document_assignee">{module-prefix}.delete::write</grant>
+                </acl>
+            </role>
+        </roles>
+    </ae:configuration>
+</ae:configurations>

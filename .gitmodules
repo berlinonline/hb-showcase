@@ -1,0 +1,6 @@
+[submodule "applications/cms/honeybee"]
+	path = applications/cms/honeybee
+	url = git@github.com:berlinonline/honeybee.git
+[submodule "development/puppets"]
+	path = development/puppets
+	url = git@github.com:berlinonline/puppets.git

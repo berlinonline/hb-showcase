@@ -1,0 +1,52 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  #########################
+  # setting for all boxes #
+  #########################
+  config.vm.box = "ubuntu-12.10-x64"
+  config.vm.box_url = "http://24-hetzner.berlinonline.de/boxes/ubuntu-12.10-x64.box"
+  config.vm.network :private_network, type: :dhcp
+  config.ssh.forward_agent = true
+  config.vbguest.auto_update = false
+  # shell provisioner running only once every 48 hours
+  config.vm.provision :shell, :inline =>'[ "$(find /home/vagrant/ -maxdepth 1 -name apt_updated -mtime -48)" == "" ] && apt-get update --fix-missing && touch /home/vagrant/apt_updated; echo ""'
+
+
+  ###############
+  # backend box #
+  ###############
+  config.vm.define :cms do |cms|
+    cms.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--name", "hb-showcase-cms"] # name for VirtualBox GUI
+      vb.customize ["modifyvm", :id, "--memory", 1024]
+    end
+    cms.vm.hostname = "hb-showcase-cms.local"
+    cms.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "./"
+      puppet.manifest_file = "manifest-cms.pp"
+      puppet.module_path = [ "../../modules", "../../../puppets/modules" ]
+      #puppet.options = "--verbose --debug"
+    end
+  end
+
+
+  ################
+  # frontend box # Comment in as soon as you need a frontend.
+  ################
+#  config.vm.define :fe do |fe|
+#    fe.vm.provider :virtualbox do |vb|
+#      vb.customize ["modifyvm", :id, "--name", "hb-showcase-fe"] # name for VirtualBox GUI
+#      vb.customize ["modifyvm", :id, "--memory", 512]
+#    end
+#    fe.vm.hostname = "hb-showcase-fe.local"
+#    fe.vm.provision :puppet do |puppet|
+#      puppet.manifests_path = "./"
+#      puppet.manifest_file = "manifest-fe.pp"
+#      puppet.module_path = [ "../../modules", "../../../puppets/modules" ]
+#      #puppet.options = "--verbose --debug"
+#    end
+#  end
+end
