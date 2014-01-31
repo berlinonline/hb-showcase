@@ -29,9 +29,4 @@ define hb-showcase::application (
       group   => 'vagrant',
       content => template('hb-showcase/project_environaut.xml.erb');
   }
-
-  package { 'sass':
-    ensure   => 'installed',
-    provider => 'gem'
-  }
 }
