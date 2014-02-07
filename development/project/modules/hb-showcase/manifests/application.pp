@@ -3,6 +3,8 @@ define hb-showcase::application (
   $app_docroot = '/home/vagrant/projects/hb-showcase/applications/cms/honeybee/pub'
 ) {
 
+  require kestrel
+
   nginx::site { "${app_name}":
     name => $app_name,
     docroot => "${app_docroot}"
