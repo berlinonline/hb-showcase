@@ -17,8 +17,8 @@
                 and add in the information below.
             -->
             <setting name="project_contact">
-                <ae:parameter name="name">User Localhost</ae:parameter>
-                <ae:parameter name="email">user@hb-showcase-cms.local</ae:parameter>
+                <ae:parameter name="name">Thorsten Schmitt-Rink</ae:parameter>
+                <ae:parameter name="email">thorsten.schmitt-rink@berlinonline.de</ae:parameter>
             </setting>
             <!--
                 If you want to influence the rendering behaviour of the navigation,

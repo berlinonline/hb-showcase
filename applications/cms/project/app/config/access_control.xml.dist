@@ -10,7 +10,7 @@
                 Example configuration for a custom project role.
                 All configured roles are automatically available to the user management.
             -->
-            <role name="example-role" parent="no-perms">
+            <role name="example-role" parent="non-privileged">
                 <description>
                     Role that shows the different types of acl definitions.
                 </description>
