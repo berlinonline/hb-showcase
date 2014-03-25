@@ -64,6 +64,11 @@
             <xi:fallback />
         </xi:include>
 
+        <check class="Environaut\Checks\ExecutableCheck" name="sass">
+            <parameter name="default">sass</parameter>
+            <parameter name="version_mask" space="preserve" literalize="false">/Sass 3\.3/</parameter>
+        </check>
+
         <check name="base_href" group="local-config">
             <parameter name="question">What's the base HREF of the application?</parameter>
             <parameter name="default">http://hb-showcase-cms.local/</parameter>
