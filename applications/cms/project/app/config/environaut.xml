@@ -39,18 +39,18 @@
 
     <export>
         <formatter location="etc/local/settings.xml" />
-        <formatter location="etc/local/local.config.sh">
+        <formatter location="etc/local/config.sh">
             <parameters>
                 <parameter name="capitalize_names">true</parameter>
                 <parameter name="groups">
-                    <parameter>local-config</parameter>
+                    <parameter>local_config</parameter>
                 </parameter>
             </parameters>
         </formatter>
-        <formatter location="etc/local/local.config.php">
+        <formatter location="etc/local/config.php">
             <parameter name="nested">false</parameter>
             <parameter name="groups">
-                <parameter>local-config</parameter>
+                <parameter>local_config</parameter>
             </parameter>
         </formatter>
     </export>
@@ -64,12 +64,18 @@
             <xi:fallback />
         </xi:include>
 
+        <check class="Environaut\Checks\ExecutableCheck" name="php" group="local_config">
+            <parameter name="default">php</parameter>
+            <parameter name="setting">php_command</parameter>
+            <parameter name="version_mask" space="preserve" literalize="false">/^PHP (5\.[3456]\.\d{1,2}).*/</parameter>
+        </check>
+
         <check class="Environaut\Checks\ExecutableCheck" name="sass">
             <parameter name="default">sass</parameter>
             <parameter name="version_mask" space="preserve" literalize="false">/Sass 3\.3/</parameter>
         </check>
 
-        <check name="base_href" group="local-config">
+        <check name="base_href" group="local_config">
             <parameter name="question">What's the base HREF of the application?</parameter>
             <parameter name="default">http://hb-showcase-cms.local/</parameter>
             <parameter name="choices">
@@ -79,12 +85,12 @@
             <parameter name="validator">Environaut\Checks\Validator::validUrl</parameter>
             <parameter name="max_attempts">5</parameter>
         </check>
-        <check name="testing_enabled" group="local-config">
+        <check name="testing_enabled" group="local_config">
             <parameter name="question">Enable testing?</parameter>
             <parameter name="default">false</parameter>
             <parameter name="confirm">true</parameter>
         </check>
-        <check name="environment" group="local-config">
+        <check name="environment" group="local_config">
             <parameter name="question">What environment do you want to use for this application?</parameter>
             <parameter name="default">development-vagrant</parameter>
             <parameter name="choices">
