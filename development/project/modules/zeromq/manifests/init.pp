@@ -34,17 +34,15 @@ class zeromq {
     ],
     unless => 'php -i | grep zmq'
   }
-
-  file { 'cli-zmq.ini':
+  -> file { 'cli-zmq.ini':
     path    => "/etc/php5/cli/conf.d/zmq.ini",
     ensure  => present,
     mode    => '0644',
     owner   => 'root',
     group   => 'root',
-    content => template("zeromq/zmq.ini.erb")
+    content => template("zeromq/zmq.ini.erb"),
   }
-
-  file { 'fpm-zmq.ini':
+  -> file { 'fpm-zmq.ini':
     path    => "/etc/php5/fpm/conf.d/zmq.ini",
     ensure  => present,
     mode    => '0644',
