@@ -17,7 +17,7 @@ define hb-showcase::application (
     group => 'root',
     mode => '0644'
   }
-  -> exec { 'wget http://www.apache.org/dyn/closer.cgi/tika/tika-app-1.5.jar':
+  -> exec { 'wget http://apache.openmirror.de/tika/tika-app-1.5.jar':
     cwd => '/etc/apache_tika',
     timeout => -1,
     unless => 'ls /etc/apache_tika/tika-app-1.5.jar'
