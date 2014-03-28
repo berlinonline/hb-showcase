@@ -38,7 +38,6 @@ define hb-showcase::application (
       content => template('hb-showcase/init_cms.sh.erb');
     "/home/vagrant/cms_project_environaut.xml":
       ensure  => present,
-      replace => false,
       mode    => '0744',
       owner   => 'vagrant',
       group   => 'vagrant',
