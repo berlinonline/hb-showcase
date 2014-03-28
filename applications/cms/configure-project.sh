@@ -3,7 +3,6 @@
 cd ../..
 git submodule update --init --recursive
 cd applications/cms/honeybee
-git checkout master .
 make install
 echo ''
 echo 'You may now create your master admin account via:'
