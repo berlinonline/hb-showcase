@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <environaut xmlns="http://mivesto.de/environaut/config/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <name>environment configuration check</name>
+    <name>honeybee showcase environment configuration</name>
 
     <description><![CDATA[
         This is an Environaut configuration file for Honeybee that
@@ -56,6 +56,7 @@
     </export>
 
     <checks>
+
         <!--
             Honeybee default environaut environment checks.
             Do not change if you do not REALLY know what you are doing.
@@ -85,20 +86,23 @@
             <parameter name="validator">Environaut\Checks\Validator::validUrl</parameter>
             <parameter name="max_attempts">5</parameter>
         </check>
+
         <check name="testing_enabled" group="local_config">
             <parameter name="question">Enable testing?</parameter>
             <parameter name="default">false</parameter>
             <parameter name="confirm">true</parameter>
         </check>
+
         <check name="environment" group="local_config">
             <parameter name="question">What environment do you want to use for this application?</parameter>
             <parameter name="default">development-vagrant</parameter>
             <parameter name="choices">
                 <parameter>integration</parameter>
-                <parameter>preview</parameter>
                 <parameter>stage</parameter>
+                <parameter>preview</parameter>
                 <parameter>production</parameter>
             </parameter>
         </check>
+
     </checks>
 </environaut>
