@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<environaut xmlns="http://mivesto.de/environaut/config/1.0" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xml="http://www.w3.org/XML/1998/namespace">
-    <xi:include href="../project/app/config/environaut.xml" xpointer="xmlns(ec=http://mivesto.de/environaut/config/1.0) xpointer(/ec:environaut/ec:*)">
-        <!-- @todo maybe use a honeybee default env-definition here. -->
-        <xi:fallback />
-    </xi:include>
-</environaut>

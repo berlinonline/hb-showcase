@@ -106,7 +106,7 @@ configure:
 
 	@if [ ! -d etc/local/ ]; then mkdir etc/local; fi
 
-	@vendor/bin/environaut check;
+	@vendor/bin/environaut check --config app/lib/environaut.xml;
 
 	@echo ""
 	@echo "-> environaut was successfully executed"
@@ -193,9 +193,9 @@ tail-logs:
 
 update:
 
-	@bin/composer.phar self-update
-
 	@if [ ! -f bin/composer.phar ]; then echo "pls run make install first"; fi
+
+	@bin/composer.phar self-update
 
 	@if [ -d vendor/agavi/agavi/ ]; then svn revert -R vendor/agavi/agavi/; fi
 

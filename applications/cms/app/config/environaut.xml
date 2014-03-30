@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <environaut xmlns="http://mivesto.de/environaut/config/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <name>honeybee showcase environment configuration</name>
+    <name>honeybee project environment configuration</name>
 
     <description><![CDATA[
         This is an Environaut configuration file for Honeybee that
@@ -61,7 +61,7 @@
             Honeybee default environaut environment checks.
             Do not change if you do not REALLY know what you are doing.
         -->
-        <xi:include href="../../../honeybee/app/config/environaut_checks.xml" xpointer="xmlns(ec=http://mivesto.de/environaut/config/1.0) xpointer(//ec:checks/ec:*)">
+        <xi:include href="../../vendor/berlinonline/honeybee/app/config/environaut_checks.xml" xpointer="xmlns(ec=http://mivesto.de/environaut/config/1.0) xpointer(//ec:checks/ec:*)">
             <xi:fallback />
         </xi:include>
 
