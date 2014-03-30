@@ -4,7 +4,7 @@ PROJECT_ROOT=`pwd`
 BUILD_DIR=${PROJECT_ROOT}/etc/integration/build/
 PHP_ERROR_LOG=`php -i | grep -P '^error_log' | cut -f '3' -d " "`
 ENVIRONAUT_CACHE_LOCATION=${PROJECT_ROOT}/.environaut.cache
-GIT_FILE=`cat .git | sed -r 's/.+: (.+.git)(.*)/\1/'`
+#GIT_FILE=`cat .git | sed -r 's/.+: (.+.git)(.*)/\1/'`
 LAST_FETCH_DATE=`git reflog show -n 1 --date=iso | cut -f '1-3' -d ':'`
 
 help:
@@ -16,7 +16,7 @@ help:
 	@echo "Environaut cache location : ${ENVIRONAUT_CACHE_LOCATION}"
 	@echo "Local env config location : ${PROJECT_ROOT}/etc/local/"
 	@echo "PHP error log file path   : ${PHP_ERROR_LOG}"
-	@echo "Project git-file location : ${PROJECT_ROOT}/${GIT_FILE}"
+#	@echo "Project git-file location : ${PROJECT_ROOT}/${GIT_FILE}"
 	@echo ""
 	@echo "Last working copy update  : ${LAST_FETCH_DATE}"
 	@echo ""
