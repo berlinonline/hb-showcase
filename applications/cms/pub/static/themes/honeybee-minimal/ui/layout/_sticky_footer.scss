@@ -1,0 +1,16 @@
+html,
+body {
+    height: 100%;
+}
+
+.sticky-wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
+}
+
+.sticky-footer,
+.sticky-push {
+    height: 4em;
+}

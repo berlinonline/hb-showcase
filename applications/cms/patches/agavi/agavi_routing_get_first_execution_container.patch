@@ -1,0 +1,33 @@
+--- agavi/src/routing/AgaviRouting.class.php	2013-06-10 11:25:42.177769051 +0200
++++ agavi/src/routing/AgaviRouting.class.php	2013-06-10 11:25:27.370469976 +0200
+@@ -1483,6 +1483,8 @@
+ 		// set the list of matched route names as a request attribute
+ 		$rq->setAttribute('matched_routes', $matchedRoutes, 'org.agavi.routing');
+ 
++		$this->container = $container;
++
+ 		// return a list of matched route names
+ 		return $container;
+ 	}
+@@ -1740,6 +1742,19 @@
+ 		return $value;
+ 	}
+ 	
++	/**
++	 * Returns the first execution container from routing.
++	 *
++	 * @return     AgaviExecutionContainer
++	 *
++	 * @author     Steffen Gransow <agavi@mivesto.de>
++	 * @since      1.0.8
++	 */
++	public function getContainer()
++	{
++		return $this->container;
++	}
++	
+ }
+ 
+-?>
+\ No newline at end of file
++?>

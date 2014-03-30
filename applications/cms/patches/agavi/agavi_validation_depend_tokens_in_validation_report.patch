@@ -1,0 +1,170 @@
+Index: agavi/src/validator/AgaviValidationManager.class.php
+===================================================================
+--- agavi/src/validator/AgaviValidationManager.class.php	(revision 1311)
++++ agavi/src/validator/AgaviValidationManager.class.php	(working copy)
+@@ -285,6 +285,7 @@
+ 			}
+ 		}
+ 		$this->report->setResult($result);
++		$this->report->addDependTokens($this->getDependencyManager());
+ 
+ 		$ma = $req->getParameter('module_accessor');
+ 		$aa = $req->getParameter('action_accessor');
+Index: agavi/src/validator/AgaviValidationReport.class.php
+===================================================================
+--- agavi/src/validator/AgaviValidationReport.class.php	(revision 1311)
++++ agavi/src/validator/AgaviValidationReport.class.php	(working copy)
+@@ -43,6 +43,11 @@
+ 	 * @var        array The incidents which were thrown by the validation run.
+ 	 */
+ 	protected $incidents = array();
++
++	/**
++	 * @var        array The depend tokens provided by the validation run.
++	 */
++	protected $providedDependTokens = array();
+ 	
+ 	/**
+ 	 * Retrieves the highest validation result code in this report.
+@@ -151,6 +156,19 @@
+ 			'validator' => $validator,
+ 		);
+ 	}
++
++	/**
++	 * Adds dependency tokens provided by executed validators to the result.
++	 *
++	 * @param      AgaviDependencyManager
++	 *
++	 * @author     Steffen Gransow <agavi@mivesto.de>
++	 * @since      1.0.8
++	 */
++	public function addDependTokens(AgaviDependencyManager $dependencyManager)
++	{
++		$this->providedDependTokens = $dependencyManager->getDependTokens();
++	}
+ 	
+ 	/**
+ 	 * Retrieve the internal array (indexed by argument hash) of
+@@ -456,6 +474,34 @@
+ 	{
+ 		return $this->createQuery()->has();
+ 	}
++
++	/**
++	 * Check whether the given depend token was provided by the validation run.
++	 *
++	 * @param      string Name of depend token suspected to have been provided.
++	 *
++	 * @return     bool true if depend token was provided.
++	 *
++	 * @author     Steffen Gransow <agavi@mivesto.de>
++	 * @since      1.0.8
++	 */
++	public function hasDependToken($token)
++	{
++		return $this->createQuery()->hasDependToken($token);
++	}
++
++	/**
++	 * Check whether the given depend token was provided by the validation run.
++	 *
++	 * @return     Array of provided depend tokens.
++	 *
++	 * @author     Steffen Gransow <agavi@mivesto.de>
++	 * @since      1.0.8
++	 */
++	public function getDependTokens()
++	{
++		return $this->providedDependTokens;
++	}
+ 	
+ 	/**
+ 	 * Get the number of incidents matching the currently defined filter rules.
+Index: agavi/src/validator/AgaviDependencyManager.class.php
+===================================================================
+--- agavi/src/validator/AgaviDependencyManager.class.php	(revision 1311)
++++ agavi/src/validator/AgaviDependencyManager.class.php	(working copy)
+@@ -91,5 +91,18 @@
+ 			$base->setValueByChildPath($token, $this->depData, true);
+ 		}
+ 	}
++
++	/**
++	 * Returns the list of provided tokens from the dependency cache.
++	 *
++	 * @return array of provided tokens from the dependency cache
++	 *
++	 * @author     Steffen Gransow <agavi@mivesto.de>
++	 * @since      1.0.8
++	 */
++	public function getDependTokens()
++	{
++		return $this->depData;
++	}
+ }
+ ?>
+\ No newline at end of file
+Index: agavi/src/validator/AgaviValidationReportQuery.class.php
+===================================================================
+--- agavi/src/validator/AgaviValidationReportQuery.class.php	(revision 1311)
++++ agavi/src/validator/AgaviValidationReportQuery.class.php	(working copy)
+@@ -59,7 +59,7 @@
+ 	 * @var        array|int
+ 	 */
+ 	protected $maxSeverityFilter;
+-	
++
+ 	/**
+ 	 * Constructor.
+ 	 * 
+@@ -182,6 +182,21 @@
+ 		$obj->maxSeverityFilter = $maxSeverity;
+ 		return $obj;
+ 	}
++
++	/**
++	 * Check whether the given depend token was provided by the validation run.
++	 *
++	 * @param      string Name of depend token suspected to have been provided.
++	 *
++	 * @return     bool true if depend token was provided.
++	 *
++	 * @author     Steffen Gransow <agavi@mivesto.de>
++	 * @since      1.0.8
++	 */
++	public function hasDependToken($name)
++	{
++        return array_key_exists($name, $this->report->getDependTokens());
++	}
+ 	
+ 	/**
+ 	 * Retrieves the incidents filtered with the current filter rules.
+@@ -196,7 +211,6 @@
+ 		$incidents = $this->report->getIncidents();
+ 		$resultIncidents = array();
+ 		foreach($incidents as $incident) {
+-			$matches = true;
+ 			if($this->validatorFilter && $incident->getValidator()) {
+ 				if(!in_array($incident->getValidator()->getName(), $this->validatorFilter)) {
+ 					continue;
+@@ -300,6 +314,19 @@
+ 		}
+ 		return $errorMessages;
+ 	}
++
++	/**
++	 * Retrieves all depend tokens provided by the validation run.
++	 *
++	 * @return     array An array of provided depend tokens.
++	 *
++	 * @author     Steffen Gransow <agavi@mivesto.de>
++	 * @since      1.0.8
++	 */
++	public function getDependTokens()
++	{
++		return $this->report->getDependTokens();
++	}
+ 	
+ 	/**
+ 	 * Retrieves all AgaviValidationArgument objects which match the currently

@@ -1,0 +1,22 @@
+--- agavi/src/view/AgaviTemplateLayer.class.php	2013-07-10 09:53:11.068819512 +0200
++++ agavi/src/view/AgaviTemplateLayer.class.php.new	2013-07-10 09:52:33.780743065 +0200
+@@ -54,10 +54,10 @@
+ 	 */
+ 	public function __construct(array $parameters = array())
+ 	{
+-		parent::__construct(array_merge($parameters, array(
++		parent::__construct(array_merge(array(
+ 			'module' => null,
+ 			'template' => null,
+-		)));
++		), $parameters));
+ 	}
+ 	
+ 	/**
+@@ -299,4 +299,4 @@
+ 	abstract public function getResourceStreamIdentifier();
+ }
+ 
+-?>
+\ No newline at end of file
++?>

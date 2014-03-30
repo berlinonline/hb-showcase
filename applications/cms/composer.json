@@ -1,0 +1,216 @@
+{
+    "name": "berlinonline/honeybee",
+    "type": "library",
+    "description": "Framework for building content management systems.",
+    "keywords": ["cms", "cmf" , "scafolding"],
+    "homepage": "https://github.com/berlinonline/honeybee",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thorsten Schmitt-Rink"
+        },
+        {
+            "name": "Leon Weidauer"
+        },
+        {
+            "name": "Steffen Gransow"
+        },
+        {
+            "name": "Tom Anheyer"
+        }
+    ],
+
+    "autoload": {
+        "psr-0": {
+            "Honeybee" : "app/lib",
+            "Testing" : "testing/tests"
+        }
+    },
+
+    "require": {
+        "agavi/agavi": "1.0.*",
+        "berlinonline/dat0r": "dev-collection-refactoring",
+        "cboden/Ratchet": "0.3.*",
+        "elasticsearch/elasticsearch": "~1.0",
+        "fzaninotto/faker": "v1.1.0",
+        "graste/environaut": "0.5.0",
+        "guzzle/guzzle": "~3.1",
+        "imagine/Imagine": "0.3.*",
+        "lib-libxml": "*",
+        "michelf/php-markdown": "~1.4",
+        "monolog/monolog": "1.5",
+        "mthaml/mthaml": "1.3.1",
+        "phing/phing": "2.4.12",
+        "php": ">=5.3.3",
+        "psr/log": "1.0.0",
+        "ql/uri-template": "1.0.1",
+        "react/zmq": "0.2.*",
+        "sami/sami": "1.3",
+        "swiftmailer/swiftmailer": "v4.3.1",
+        "symfony/expression-language": "~2.3",
+        "symfony/process": "~2.1",
+        "symfony/validator": "~2.3",
+        "twig/twig": "1.13.2",
+        "zendframework/zend-permissions-acl": "2.2.0",
+
+        "csswizardry/csswizardry-grids": "2.2.0",
+        "csswizardry/inuit.css": "5.0.1",
+
+        "jrburke/requirejs": "2.1.8",
+        "jquery/jquery": "2.0.3",
+        "DracoBlue/js-behaviour": "1.7.0",
+        "bestiejs/json3": "3.2.5",
+        "ckeditor/ckeditor": "4.2.1"
+    },
+
+    "require-dev": {
+        "pdepend/pdepend": "1.1.*",
+        "PhpDebugToolbar/php-debug-toolbar": "dev-master",
+        "phploc/phploc": "2.0.*",
+        "phpmd/phpmd": "1.5.*",
+        "phpunit/phpunit": "4.0.*",
+        "sebastian/phpcpd": "2.0.0",
+        "squizlabs/php_codesniffer": "1.*",
+        "zerkalica/php-code-browser": "dev-master"
+    },
+
+    "scripts": {
+    },
+
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "agavi/agavi",
+                "version": "1.0.7",
+                "source": {
+                    "url": "http://svn.agavi.org/",
+                    "type": "svn",
+                    "reference": "tags/1.0.7/"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "craur/craur",
+                "version": "1.6.0",
+                "source": {
+                    "url": "https://github.com/DracoBlue/Craur.git",
+                    "type": "git",
+                    "reference": "f4f0bd435ef512b02b6251b1367e9b5103d09926"
+                },
+                "autoload": {
+                    "classmap": ["php/Craur.class.php"]
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "PhpDebugToolbar/php-debug-toolbar",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/graste/PhpDebugToolbar.git",
+                    "type": "git",
+                    "reference": "63b1b518e559b7e2995cda91a8edb707048c79a6"
+                },
+                "autoload": {
+                    "classmap": ["lib/agavi/", "PhpDebugToolbar.class.php"]
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "kineticjs/kineticjs",
+                "version": "4.5.1",
+                "dist": {
+                    "url": "http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.5.1.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "csswizardry/csswizardry-grids",
+                "version": "2.2.0",
+                "source": {
+                    "url": "https://github.com/csswizardry/csswizardry-grids.git",
+                    "type": "git",
+                    "reference": "f7e85b79fd8188ae8373677da03e31374b3c0f4f"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "csswizardry/inuit.css",
+                "version": "5.0.1",
+                "source": {
+                    "url": "https://github.com/csswizardry/inuit.css.git",
+                    "type": "git",
+                    "reference": "aa49931763f8ef8b1bf7780108a84fc75a099a66"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "2.0.3",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-2.0.3.min.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "bestiejs/json3",
+                "version": "3.2.5",
+                "dist": {
+                    "url": "https://raw.github.com/bestiejs/json3/v3.2.5/lib/json3.min.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/ckeditor",
+                "version": "4.2.1",
+                "dist": {
+                    "url": "http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.2.1/ckeditor_4.2.1_standard.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "DracoBlue/js-behaviour",
+                "version": "1.7.0",
+                "source": {
+                    "url": "https://github.com/DracoBlue/js-behaviour.git",
+                    "type": "git",
+                    "reference": "610de9721484c231618ce513d7a8fc89c0f5f098"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jrburke/requirejs",
+                "version": "2.1.8",
+                "source": {
+                    "url": "https://github.com/jrburke/requirejs.git",
+                    "type": "git",
+                    "reference": "a77a30a12d3f98596b67dc9655c85fd5bb882c3d"
+                }
+            }
+        }
+    ]
+}

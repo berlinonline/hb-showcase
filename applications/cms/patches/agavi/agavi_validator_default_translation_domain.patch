@@ -1,0 +1,15 @@
+Index: agavi/src/validator/AgaviValidator.class.php
+===================================================================
+--- agavi/src/validator/AgaviValidator.class.php	(revision 1773)
++++ agavi/src/validator/AgaviValidator.class.php	(working copy)
+@@ -493,7 +493,9 @@
+ 
+ 		if($this->hasParameter('translation_domain')) {
+ 			$error = $this->getContext()->getTranslationManager()->_($error, $this->getParameter('translation_domain'));
+-		}
++		} else {
++			$error = $this->getContext()->getTranslationManager()->_($error);
++		}
+ 
+ 		if(!$this->incident) {
+ 			$this->incident = new AgaviValidationIncident($this, self::mapErrorCode($this->getParameter('severity', 'error')));

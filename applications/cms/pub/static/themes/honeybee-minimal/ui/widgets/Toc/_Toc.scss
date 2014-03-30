@@ -1,0 +1,23 @@
+/**
+ * Table of Content
+ *
+ * Contains Headline of the current document and
+ * a navigation for the main sections of it.
+ *
+ */
+
+@import "_layout";
+
+.tocTitle {
+
+    h1 {
+        font-size: 1rem;
+        line-height: 1.2rem;
+    }
+
+    .ag__toggle,
+    .ag__more {
+        background-color: #efefef;
+    }
+}
+

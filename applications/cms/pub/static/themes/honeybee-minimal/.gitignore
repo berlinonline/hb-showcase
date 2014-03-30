@@ -1,0 +1,9 @@
+# at the moment we compile theme.scss to theme.css
+#
+# later on that may change to a STDIN based approach like:
+# cat _vars _framework _styles | sass --stdin > theme.css
+# to inject e.g. _user* partials into the theme compilation
+#
+/theme.css
+/theme_*
+/_user_*

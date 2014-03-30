@@ -1,0 +1,24 @@
+--- agavi/src/view/AgaviStreamTemplateLayer.class.php	2013-07-10 09:44:20.102982617 +0200
++++ agavi/src/view/AgaviStreamTemplateLayer.class.php.new	2013-07-10 09:57:25.273216947 +0200
+@@ -67,13 +67,13 @@
+ 			return null;
+ 		}
+ 		
++		$args = array();
+ 		if(AgaviConfig::get('core.use_translation')) {
+ 			// i18n is enabled, build a list of sprintf args with the locale identifier
+ 			foreach(AgaviLocale::getLookupPath($this->context->getTranslationManager()->getCurrentLocaleIdentifier()) as $identifier) {
+ 				$args[] = array('locale' => $identifier);
+ 			}
+ 		}
+-		$args[] = array();
+ 		
+ 		$scheme = $this->getParameter('scheme');
+ 		// FIXME: a simple workaround for broken ubuntu and debian packages (fixed already), we can remove that for final 0.11
+@@ -105,4 +105,4 @@
+ 	}
+ }
+ 
+-?>
+\ No newline at end of file
++?>

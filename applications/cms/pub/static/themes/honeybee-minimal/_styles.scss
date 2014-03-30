@@ -1,0 +1,113 @@
+/* custom styles of this theme */
+
+@import "ui/scopedmediaquery";
+
+$use-silent-classes: true;
+$mobile-first: true;
+@import "csswizardry-grids/csswizardry-grids.scss";
+
+@import "ui/font-honeybee.scss";
+
+@import "ui/gridlayout";
+
+@import "ui/widgets/ActionGroup/mixins";
+
+@import "ui/layout/sticky_footer";
+@import "ui/login/login";
+
+@import "ui/widgets/GlobalSearch/GlobalSearch";
+@import "ui/widgets/UserWidget/UserWidget";
+@import "ui/widgets/Toc/Toc";
+@import "ui/widgets/MainNav/MainNav";
+@import "ui/widgets/Notifications/Notifications";
+@import "ui/widgets/MainBar/MainBar";
+@import "ui/TableList/TableList";
+
+//@import "ui/widgets/Debug/BreakpointBomb";
+
+.applicationLogo {
+    h1 {
+        font-size: 1rem;
+    }
+
+    @include media-query(portable) {
+        text-align: center;
+    }
+}
+
+
+.divider {
+    &.divider--above {
+        border-top: 1px solid $base-ui-color;
+    }
+
+    &.divider--below {
+        border-bottom: 1px solid $base-ui-color;
+    }
+
+    &.divider--left {
+        border-left: 1px solid $base-ui-color;
+    }
+
+    &.divider--right {
+        border-right: 1px solid $base-ui-color;
+    }
+}
+
+
+
+
+
+
+/*
+
+$header-gradient: (#000, #fff);
+@include background(
+    linear-gradient(
+        nth($header-gradient, 1),
+        nth($header-gradient, 2))
+);
+
+@if type-of($header-gradient) == "list" {
+    // Code here for a gradient background
+}
+@else {
+    // Code here for using a solid background color
+}
+
+*/
+
+
+
+
+
+/*
+.pageHeader,
+.pageInfo,
+.mainWrapper,
+.pageFooter,
+.nonexistantplaceholderselector {
+    display: none;
+}
+*/
+
+
+/*
+.pageFooter {
+    min-height: 400px;
+}
+
+[class$="-container"] > * {
+    outline: 1px solid red;
+}
+
+[class$="-box"] > * {
+    outline: 1px dashed green;
+}
+*/
+
+[class$="-box"] {
+    -webkit-transition: 0.2s width;
+    -moz-transition: 0.2s width;
+    transition: 0.2s width;
+}

@@ -1,0 +1,19 @@
+Index: agavi/src/validator/AgaviStringValidator.class.php
+===================================================================
+--- agavi/src/validator/AgaviStringValidator.class.php	(revision 329)
++++ agavi/src/validator/AgaviStringValidator.class.php	(working copy)
+@@ -85,10 +85,12 @@
+ 			return false;
+ 		}
+ 
++		/* To fix the: 'non SGML character number 11' issue. */
++		$originalValue = preg_replace('/[\x1-\x8\xB-\xC\xE-\x1F]/', '', $originalValue);
+ 		$this->export($originalValue);
+ 
+ 		return true;
+ 	}
+ }
+ 
+-?>
+\ No newline at end of file
++?>

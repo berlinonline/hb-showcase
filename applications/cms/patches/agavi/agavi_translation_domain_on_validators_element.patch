@@ -1,0 +1,84 @@
+Index: agavi/src/config/AgaviValidatorConfigHandler.class.php
+===================================================================
+--- agavi/src/config/AgaviValidatorConfigHandler.class.php	(revision 1276)
++++ agavi/src/config/AgaviValidatorConfigHandler.class.php	(working copy)
+@@ -108,15 +108,17 @@
+ 	 * @param      string                   The severity of the parent container.
+ 	 * @param      string                   The method of the parent container.
+ 	 * @param      bool                     Whether parent container is required.
++	 * @param      string                   The default translation domain of the parent container.
+ 	 *
+ 	 * @return     array PHP code blocks that register the validators
+ 	 *
+ 	 * @author     Uwe Mesecke <uwe@mesecke.net>
+ 	 * @author     Dominik del Bondio <ddb@bitxtender.com>
+ 	 * @author     David Zülke <david.zuelke@bitextender.com>
++	 * @author     Steffen Gransow <agavi@mivesto.de>
+ 	 * @since      0.11.0
+ 	 */
+-	protected function getValidatorArray($validator, $code, $parent, $stdSeverity, $stdMethod, $stdRequired = true)
++	protected function getValidatorArray($validator, $code, $parent, $stdSeverity, $stdMethod, $stdRequired = true, $stdTranslationDomain = null)
+ 	{
+ 		if(!isset($this->classMap[$validator->getAttribute('class')])) {
+ 			$class = $validator->getAttribute('class');
+@@ -134,6 +136,11 @@
+ 			'required' => $stdRequired,
+ 		);
+ 
++		$translationDomain = $validator->getAttribute('translation_domain', $stdTranslationDomain);
++		if ($translationDomain !== null) {
++			$parameters['translation_domain'] = $translationDomain;
++		}
++
+ 		$arguments = array();
+ 
+ 		$stdMethod = $validator->getAttribute('method', $stdMethod);
+@@ -226,15 +233,17 @@
+ 	 * @param      string                   The name of the parent container.
+ 	 * @param      string                   The method of the parent container.
+ 	 * @param      bool                     Whether parent container is required.
++	 * @param      string                   The default translation domain of the parent container.
+ 	 *
+ 	 * @return     array PHP code blocks that register the validators
+ 	 *
+ 	 * @author     Uwe Mesecke <uwe@mesecke.net>
+ 	 * @author     Dominik del Bondio <ddb@bitxtender.com>
+ 	 * @author     David Zülke <david.zuelke@bitextender.com>
++	 * @author     Steffen Gransow <agavi@mivesto.de>
+ 	 * @since      0.11.0
+ 	 */
+-	protected function processValidatorElements($node, $code, $name, $defaultSeverity = 'error', $defaultMethod = null, $defaultRequired = true)
++	protected function processValidatorElements($node, $code, $name, $defaultSeverity = 'error', $defaultMethod = null, $defaultRequired = true, $defaultTranslationDomain = null)
+ 	{
+ 		// the problem here is that the <validators> parent is not just optional, but can also occur more than once
+ 		foreach($node->get('validators') as $validator) {
+@@ -242,14 +251,16 @@
+ 			if($validator->parentNode->localName == 'validators') {
+ 				$severity = $validator->parentNode->getAttribute('severity', $defaultSeverity);
+ 				$method = $validator->parentNode->getAttribute('method', $defaultMethod);
++				$translationDomain = $validator->parentNode->getAttribute('translation_domain', $defaultTranslationDomain);
+ 			} else {
+ 				$severity = $defaultSeverity;
+ 				$method = $defaultMethod;
++				$translationDomain = $defaultTranslationDomain;
+ 			}
+ 			$required = $defaultRequired;
+ 			
+ 			// append the code to generate
+-			$code = $this->getValidatorArray($validator, $code, $name, $severity, $method, $required);
++			$code = $this->getValidatorArray($validator, $code, $name, $severity, $method, $required, $translationDomain);
+ 		}
+ 		
+ 		return $code;
+Index: agavi/src/config/xsd/parts/validators.xsd
+===================================================================
+--- agavi/src/config/xsd/parts/validators.xsd	(revision 1276)
++++ agavi/src/config/xsd/parts/validators.xsd	(working copy)
+@@ -106,6 +106,7 @@
+ 		</xs:sequence>
+ 		<xs:attribute name="method" type="types_1_0:php_label_list" />
+ 		<xs:attribute name="severity" type="severity" />
++		<xs:attribute name="translation_domain" type="xs:string" />
+ 	</xs:complexType>
+ 
+ 	<xs:group name="validators">

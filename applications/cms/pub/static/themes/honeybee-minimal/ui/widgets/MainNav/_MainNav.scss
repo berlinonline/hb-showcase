@@ -1,0 +1,22 @@
+/**
+ * Main Navigation
+ *
+ * Contains navigation for modules (list views) and
+ * a navigation for the current module's views.
+ *
+ */
+
+@import "_layout";
+
+.mainNav {
+
+    .action {
+        width: 7rem;
+    }
+
+    .ag__toggle,
+    .ag__more {
+        background-color: #efefef;
+    }
+}
+

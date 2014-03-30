@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations
+    xmlns="http://berlinonline.de/schemas/honeybee/config/access_control/1.0"
+    xmlns:env="http://berlinonline.de/schemas/honeybee/config/envelope/definition/1.0"
+    xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+    <ae:configuration>
+        <!--
+        <roles>
+            <role name="test-role-additiv" parent="non-privileged">
+                <description>Role to test different permission scenarios.</description>
+                <acl>
+                    <grant>~app.module.user.items_list</grant>
+                    <grant>app.module.user.items_list::*</grant>
+                </acl>
+            </role>
+            <role name="test-role-subtractiv" parent="administrator">
+                <description>Role to test different permission scenarios.</description>
+                <acl>
+                    <deny>app.module.user.items_list</deny>
+                </acl>
+            </role>
+        </roles>
+        -->
+    </ae:configuration>
+</ae:configurations>

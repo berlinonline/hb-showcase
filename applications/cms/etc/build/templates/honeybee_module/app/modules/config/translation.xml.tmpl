@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0" xmlns="http://agavi.org/agavi/config/parts/translation/1.0">
+    <ae:configuration>
+        <translators default_domain="%%MODULE_PREFIX%%.errors">
+            <translator domain="%%MODULE_PREFIX%%">
+                <message_translator class="AgaviSimpleTranslator">
+
+                    <!--
+                        Workflow state translations for the %%MODULE_NAME%% module.
+                    -->
+                    <ae:parameter name="workflow">
+                        <ae:parameter name="de">
+                            <ae:parameter name="edit">In Bearbeitung</ae:parameter>
+                            <ae:parameter name="publish">Publikation läuft</ae:parameter>
+                            <ae:parameter name="published">Publiziert</ae:parameter>
+                            <ae:parameter name="archived">Archiv</ae:parameter>
+                        </ae:parameter>
+                    </ae:parameter>
+
+                    <!--
+                        List translations for the %%MODULE_NAME%% module go here.
+                    -->
+                    <ae:parameter name="list">
+                        <ae:parameter name="de">
+                            <!-- list header and standard action names -->
+                            <ae:parameter name="created">Erstellt</ae:parameter>
+                            <ae:parameter name="owner">Besitzer</ae:parameter>
+                            <ae:parameter name="actions">Aktionen</ae:parameter>
+                            <ae:parameter name="promote">Publizieren</ae:parameter>
+                            <ae:parameter name="demote">Depublizieren</ae:parameter>
+                            <ae:parameter name="state">Workflow-Schritt</ae:parameter>
+                            <ae:parameter name="edit">Bearbeiten</ae:parameter>
+                            <ae:parameter name="delete">Löschen</ae:parameter>
+
+                            <!-- reference batch dialogs -->
+                            <ae:parameter name="batch_actions">Stapelverarbeitung</ae:parameter>
+                            <ae:parameter name="override_references">bestehendende Verknüpfungen überschreiben</ae:parameter>
+                            <ae:parameter name="append_reference">zu bestehenden Verknüpfungen hinzufügen</ae:parameter>
+                            <ae:parameter name="searching">Suche läuft ...</ae:parameter>
+                            <ae:parameter name="max_references_reached">maximal erlaubte Anzahl an Verknüpfungen erreicht</ae:parameter>
+                            <ae:parameter name="reference_suggest_to_short">Bitte mindestens ein Zeichen eingeben</ae:parameter>
+                            <ae:parameter name="no_references_found">Keine passenden Ergebnisse gefunden</ae:parameter>
+                            <ae:parameter name="assign_references">Verknüpfen</ae:parameter>
+
+                            <!-- workflow transitions (context sensitive action names for promote and demote) -->
+                            <ae:parameter name="edit.promote">Publizieren</ae:parameter>
+                            <ae:parameter name="edit.delete">Löschen</ae:parameter>
+                            <ae:parameter name="published.promote">Archivieren</ae:parameter>
+                            <ae:parameter name="published.demote">Depublizieren</ae:parameter>
+                            <ae:parameter name="published.delete">Löschen</ae:parameter>
+                            <ae:parameter name="archived.demote">Reimportieren</ae:parameter>
+                            <ae:parameter name="archived.delete">Löschen</ae:parameter>
+
+                            <!-- workflow transition prompts -->
+                            <ae:parameter name="edit.promote.prompt">Sind sie sicher, dass sie diesen Datensatz publizieren (abnehmen) möchten?</ae:parameter>
+                            <ae:parameter name="published.demote.prompt">Sind sie sicher, dass sie diesen Datensatz depublizieren möchten?</ae:parameter>
+                            <ae:parameter name="edit.delete.prompt">Sind sie sicher, dass sie diesen Datensatz löschen möchten?</ae:parameter>
+                            <ae:parameter name="published.delete.prompt">Sind sie sicher, dass sie diesen (publizierten)Datensatz löschen möchten?</ae:parameter>
+                        </ae:parameter>
+                    </ae:parameter>
+
+                    <!--
+                        Input translations for the %%MODULE_NAME%% module go here.
+                    -->
+                    <!-- Fieldnames -->
+                    <ae:parameter name="rendering.input.field">
+                        <ae:parameter name="de">
+                            <ae:parameter name="identifier">Identifikation</ae:parameter>
+                            <ae:parameter name="revision">Revision</ae:parameter>
+                            <ae:parameter name="uuid">Uuid</ae:parameter>
+                            <ae:parameter name="language">Sprache</ae:parameter>
+                            <ae:parameter name="version">Version</ae:parameter>
+                            <ae:parameter name="shortId">Kurze Id</ae:parameter>
+                        </ae:parameter>
+                    </ae:parameter>
+                    <!-- Group- and Tabnames -->
+                    <ae:parameter name="rendering.input.document">
+                        <ae:parameter name="de">
+                            <ae:parameter name="edit-form-title">%%MODULE_NAME%% erstellen/bearbeiten</ae:parameter>
+                            <ae:parameter name="meta">Metadaten</ae:parameter>
+                            <ae:parameter name="content">Inhalte</ae:parameter>
+                        </ae:parameter>
+                    </ae:parameter>
+
+                    <!--
+                        Error translations for the %%MODULE_NAME%% module go here.
+                    -->
+                    <ae:parameter name="errors">
+                        <ae:parameter name="de">
+                            <ae:parameter name="storage_error">Das speichern der (%%MODULE_NAME%%) Daten schlug fehl.</ae:parameter>
+                            <ae:parameter name="export_error">Während der Datenverarbeitung trat ein unerwarteter Fehler auf.</ae:parameter>
+                        </ae:parameter>
+                    </ae:parameter>
+                </message_translator>
+            </translator>
+        </translators>
+    </ae:configuration>
+</ae:configurations>

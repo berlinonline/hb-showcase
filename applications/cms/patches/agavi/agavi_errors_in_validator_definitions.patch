@@ -1,0 +1,124 @@
+Index: agavi/src/config/AgaviValidatorConfigHandler.class.php
+===================================================================
+--- agavi/src/config/AgaviValidatorConfigHandler.class.php	(revision 731)
++++ agavi/src/config/AgaviValidatorConfigHandler.class.php	(working copy)
+@@ -70,10 +70,11 @@
+ 				foreach($cfg->get('validator_definitions') as $def) {
+ 					$name = $def->getAttribute('name');
+ 					if(!isset($this->classMap[$name])) {
+-						$this->classMap[$name] = array('class' => $def->getAttribute('class'), 'parameters' => array());
++						$this->classMap[$name] = array('class' => $def->getAttribute('class'), 'parameters' => array(), 'errors' => array());
+ 					}
+ 					$this->classMap[$name]['class'] = $def->getAttribute('class',$this->classMap[$name]['class']);
+ 					$this->classMap[$name]['parameters'] = $def->getAgaviParameters($this->classMap[$name]['parameters']);
++					$this->classMap[$name]['errors'] = $def->getAgaviErrors($this->classMap[$name]['errors']);
+ 				}
+ 			}
+ 			
+@@ -122,7 +123,7 @@
+ 			if(!class_exists($class)) {
+ 				throw new AgaviValidatorException('unknown validator found: ' . $class);
+ 			}
+-			$this->classMap[$class] = array('class' => $class, 'parameters' => array());
++			$this->classMap[$class] = array('class' => $class, 'parameters' => array(), 'errors' => array());
+ 		} else {
+ 			$class = $this->classMap[$validator->getAttribute('class')]['class'];
+ 		}
+@@ -134,7 +135,6 @@
+ 		);
+ 
+ 		$arguments = array();
+-		$errors = array();
+ 
+ 		$stdMethod = $validator->getAttribute('method', $stdMethod);
+ 		$stdSeverity = $parameters['severity'];
+@@ -168,6 +168,7 @@
+ 			}
+ 		}
+ 		
++		$errors = $this->classMap[$validator->getAttribute('class')]['errors'];
+ 		foreach($validator->get('errors') as $error) {
+ 			if($error->hasAttribute('for')) {
+ 				$errors[$error->getAttribute('for')] = $error->getValue();
+Index: agavi/src/config/xsd/parts/validators.xsd
+===================================================================
+--- agavi/src/config/xsd/parts/validators.xsd	(revision 731)
++++ agavi/src/config/xsd/parts/validators.xsd	(working copy)
+@@ -118,8 +118,10 @@
+ 	</xs:group>
+ 
+ 	<xs:complexType name="validator_definition">
+-		<xs:sequence>
++		<xs:sequence maxOccurs="unbounded">
+ 			<xs:group ref="envelope_1_0:parameters" />
++			<xs:group ref="errors"
++			          minOccurs="0"/>
+ 		</xs:sequence>
+ 		<xs:attribute name="name" type="types_1_0:non_empty_string" use="required" />
+ 		<xs:attribute name="class" type="types_1_0:php_class" use="required" />
+Index: agavi/src/config/util/dom/AgaviXmlConfigDomElement.class.php
+===================================================================
+--- agavi/src/config/util/dom/AgaviXmlConfigDomElement.class.php	(revision 731)
++++ agavi/src/config/util/dom/AgaviXmlConfigDomElement.class.php	(working copy)
+@@ -492,6 +492,59 @@
+ 		
+ 		return $result;
+ 	}
++
++	/**
++	 * Check whether or not the element has Agavi errors as children.
++	 *
++	 * @return     bool True, if there are errors, false otherwise.
++	 *
++	 * @author     Jan Schütze <JanS@DracoBlue.de>
++	 * @author     Steffen Gransow <agavi@mivesto.de>
++	 *
++	 * @since      1.0.8
++	 */
++	public function hasAgaviErrors()
++	{
++		if($this->ownerDocument->isAgaviConfiguration()) {
++			return $this->has('errors', AgaviValidatorConfigHandler::XML_NAMESPACE);
++		}
++
++		return false;
++	}
++
++	/**
++	 * Retrieve all of the Agavi error elements associated with this
++	 * element.
++	 *
++	 * @param      array An array of existing errors.
++	 *
++	 * @return     array The complete array of errors.
++	 *
++	 * @author     Jan Schütze <JanS@DracoBlue.de>
++	 * @author     Steffen Gransow <agavi@mivesto.de>
++	 *
++	 * @since      1.0.8
++	 */
++	public function getAgaviErrors(array $existing = array())
++	{
++		$result = $existing;
++		$offset = 0;
++
++		if($this->ownerDocument->isAgaviConfiguration()) {
++			$elements = $this->get('errors', AgaviValidatorConfigHandler::XML_NAMESPACE);
++
++			foreach($elements as $element) {
++				$key = '';
++				if($element->hasAttribute('for')) {
++					$key = $element->getAttribute('for');
++				}
++
++				$result[$key] = $element->getValue();
++			}
++		}
++
++		return $result;
++	}
+ }
+ 
+-?>
+\ No newline at end of file
++?>

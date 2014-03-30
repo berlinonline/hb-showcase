@@ -1,0 +1,168 @@
+/*
+
+    This is only a test of a "responsive" table list view.
+
+*/
+
+$grey-lighter: #efefef;
+$grey-light: #dedede;
+$grey-neutral: #ccc;
+$row-hover: #fdf6d8;
+
+@mixin table-portable {
+    $cell-height: 2rem;
+    $cell-desc-width: 30%;
+    $cell-padding: 8px;
+
+    table {
+        position: relative;
+    }
+
+    th, td {
+         display: block;
+
+        &.list__toggleEntryWrapper,
+        &.list__toggleAllWrapper {
+            display: none;
+        }
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody {
+
+        td {
+            position: relative;
+            width: 100%;
+            min-height: $cell-height;
+            float: right;
+            text-align: right;
+            padding-left: $cell-desc-width;
+
+            &:last-child {
+                min-height: $cell-height;
+                padding-left: $cell-padding;
+            }
+
+            &:before {
+                content: attr(data-title);
+                display: block;
+                position: absolute;
+                top: $cell-padding;
+                left: 0;
+                width: $cell-desc-width;
+                padding: $cell-padding;
+                text-align: left;
+            }
+        }
+
+        tr:first-child {
+            td {
+                clear: both;
+            }
+        }
+    }
+
+    @content;
+}
+
+@mixin table-lap {
+    tbody td {
+        &:after {
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            overflow: hidden;
+            content:
+            "...........................................................................................................................................................................................................................................";
+            color: transparent;
+            letter-spacing: 1rem;
+        }
+    }
+
+    @content;
+}
+
+@mixin table-desk {
+    th, td {
+        position: relative;
+    }
+
+    tfoot td {
+        position: static;
+    }
+
+    @content;
+}
+
+.list {
+    .list__toggleEntryWrapper,
+    .list__toggleAllWrapper {
+        display: none;
+    }
+
+    &.list--table {
+
+        .entry_actions {
+            @include ag;
+
+            @include media-query(palm) {
+                @include ag--default-inline;
+                @include ag--toggle-inline;
+                @include ag--more-actions-fill;
+                @include ag--actions-center;
+            }
+        }
+
+        @include media-query(portable) {
+            @include table-portable();
+        }
+
+        @include media-query(lap) {
+            @include table-lap() {
+                .entry_actions {
+                    text-align: center;
+                    @include ag--default-inline;
+                    @include ag--toggle-inline;
+                    @include ag--actions-inline;
+                    @include ag--actions-center;
+                }
+            }
+        }
+
+        @include media-query(desk) {
+            @include table-desk() {
+                .entry_actions {
+                    text-align: center;
+                    @include ag--inline;
+                    @include ag--more-actions-fill;
+                    @include ag--actions-center;
+                }
+            }
+        }
+    }
+}
+
+
+.selectmode {
+
+    .list.list--table {
+    tbody {
+        tr:hover {
+            cursor: pointer;
+        }
+    }
+
+    th, td {
+        &.list__toggleEntryWrapper,
+        &.list__toggleAllWrapper {
+            display: table-cell;
+        }
+    }
+}
+}
+

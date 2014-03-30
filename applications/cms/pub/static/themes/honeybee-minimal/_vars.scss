@@ -1,0 +1,99 @@
+$debug-mode: false;
+
+/**
+ * Base stuff
+ */
+$base-font-size: 24px;
+$base-line-height: 32px;
+$base-font-family: sans-serif;
+
+/**
+ * Default colour for objects’ borders etc.
+ */
+$base-ui-color: #ccc;
+/*$base-ui-color: #2c77ba;*/
+
+/**
+ * Brand stuff
+ */
+$brand-color: #4a8ec2;
+$brand-face: "Helvetica Neue", sans-serif;
+
+/**
+ * How big would you like round corners to be by default?
+ */
+$brand-round: 4px;
+
+/**
+ * Tell inuit.css to be responsive (even on large and HiDPI screens)
+ */
+$responsive: true;
+$responsive-extra: true;
+
+/**
+ * Tell inuit.css when breakpoints start.
+ */
+/*$lap-start: 481px;
+$desk-start: 1024px;
+$desk-wide-start: 1200px;
+*/
+
+/**
+ * We don't want english quotes by default.
+ */
+$english-quotes: false;
+$open-quote: \201C; /* Left quote (Double high-6) */
+$close-quote: \201D; /* Right quote (Double high-9) */
+
+/*------------------------------------*\
+    $OBJECTS-AND-ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * All of inuit.css’ objects and abstractions are initially turned off by
+ * default. This means that you start any project with as little as possible,
+ * and introducing objects and abstractions is as simple as switching the
+ * following variables to `true`.
+ */
+$use-grids:         false;
+$use-flexbox:       false;
+$use-columns:       false;
+$use-nav:           true;
+$use-options:       true;
+$use-pagination:    true;
+$use-breadcrumb:    true;
+$use-media:         false;
+$use-marginalia:    false;
+$use-island:        false;
+$use-block-list:    true;
+$use-matrix:        true;
+$use-split:         false;
+$use-this-or-this:  true;
+$use-link-complex:  true;
+$use-flyout:        false;
+$use-arrows:        true;
+$use-sprite:        false;
+$use-icon-text:     false;
+$use-beautons:      true;
+$use-lozenges:      false;
+$use-rules:         false;
+$use-stats:         true;
+$use-greybox:       false;
+
+
+
+
+/**
+ * HONEYBEE specific variables
+ */
+
+/**
+ * all z-index layers are defined here as variables to be able to calc +1 etc.
+ */
+$z-layer-1: 10; /* table of content */
+$z-layer-2: 20; /* user widget */
+
+
+
+
+
+
