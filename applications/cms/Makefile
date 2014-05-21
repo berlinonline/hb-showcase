@@ -178,6 +178,8 @@ link-project:
 
 reconfigure:
 
+	@echo "Environaut cache file: ${ENVIRONAUT_CACHE_LOCATION}"
+
 	@if [ -f "${ENVIRONAUT_CACHE_LOCATION}" ]; then rm ${ENVIRONAUT_CACHE_LOCATION} && echo "Deleted environaut cache."; fi
 
 	@echo ""
