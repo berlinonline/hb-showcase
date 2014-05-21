@@ -1,36 +1,21 @@
 class zeromq {
 
-  $libpgm = [
-    'libpgm-dev',
-    'libpgm-dbg',
-    'libpgm-5.1-0',
-  ]
-
   $libzmq = [
     'libzmq3-dev',
     'libzmq3-dbg',
     'libzmq3',
   ]
 
-  apt::ppa { 'ppa:chris-lea/libpgm':
-  }
-  -> package { $libpgm:
-    ensure => installed
-  }
-
-  apt::ppa { 'ppa:chris-lea/zeromq':
-  }
-  -> package { $libzmq:
+  package { $libzmq:
     ensure => installed
   }
 
   package { 'pkg-config':
     ensure => installed
   }
-  -> exec { 'printf "\n" | pecl install zmq-beta':
+  -> exec { 'printf "\n" | sudo pecl install zmq-beta':
     require => [
-      Apt::Ppa['ppa:chris-lea/zeromq'],
-      Apt::Ppa['ppa:chris-lea/libpgm']
+      Package['libzmq3']
     ],
     unless => 'php -i | grep zmq'
   }
