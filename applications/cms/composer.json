@@ -57,6 +57,18 @@
         {
             "type": "package",
             "package": {
+                "name": "agavi/agavi",
+                "version": "1.0.7",
+                "source": {
+                    "url": "http://svn.agavi.org/",
+                    "type": "svn",
+                    "reference": "tags/1.0.7/"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
                 "name": "csswizardry/csswizardry-grids",
                 "version": "2.2.0",
                 "source": {
