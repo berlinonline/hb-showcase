@@ -31,17 +31,6 @@
         "ext-imagick": "*",
         "berlinonline/honeybee": "v001-dev-dev"
     },
-    "scripts": {
-        "post-install-cmd": [
-            "bin/environaut.phar check"
-        ],
-        "post-update-cmd": [
-            "bin/environaut.phar check"
-        ]
-    },
-    "config": {
-        "bin-dir": "bin"
-    },
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {

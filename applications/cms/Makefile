@@ -106,7 +106,7 @@ configure:
 
 	@if [ ! -d etc/local/ ]; then mkdir etc/local; fi
 
-	@vendor/bin/environaut check --config app/lib/environaut.xml;
+	@vendor/bin/environaut check
 
 	@echo ""
 	@echo "-> environaut was successfully executed"
