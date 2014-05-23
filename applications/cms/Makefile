@@ -40,7 +40,7 @@ help:
 	@echo "DEVELOPMENT TARGETS"
 	@echo "-------------------"
 	@echo ""
-	@echo "Scafolding:"
+	@echo "Scaffolding:"
 	@echo ""
 	@echo "  action                    - Creates a new action within an existing module."
 	@echo "  module                    - Creates and links a new honeybee-module."
@@ -125,11 +125,10 @@ install:
 		bin/composer.phar self-update; \
 	fi
 
-	@if [ -d vendor/agavi/agavi/ ]; then svn revert -R vendor/agavi/agavi/; fi
+	-@bin/revert-patches
 
 	@php -d allow_url_fopen=1 bin/composer.phar install --optimize-autoloader
 
-	@if [ -d vendor/agavi/agavi/ ]; then svn revert -R vendor/agavi/agavi/; fi
 	-@bin/apply-patches
 
 	@npm install
@@ -150,11 +149,10 @@ install-production:
 		bin/composer.phar self-update; \
 	fi
 
-	@if [ -d vendor/agavi/agavi/ ]; then svn revert -R vendor/agavi/agavi/; fi
+	-@bin/revert-patches
 
 	@php -d allow_url_fopen=1 bin/composer.phar install --no-dev --optimize-autoloader
 
-	@if [ -d vendor/agavi/agavi/ ]; then svn revert -R vendor/agavi/agavi/; fi
 	-@bin/apply-patches
 
 	@npm install
@@ -199,11 +197,9 @@ update:
 
 	@bin/composer.phar self-update
 
-	@if [ -d vendor/agavi/agavi/ ]; then svn revert -R vendor/agavi/agavi/; fi
+	-@bin/revert-patches
 
 	@php -d allow_url_fopen=1 bin/composer.phar update --optimize-autoloader
-
-	@if [ -d vendor/agavi/agavi/ ]; then svn revert -R vendor/agavi/agavi/; fi
 
 	-@bin/apply-patches
 

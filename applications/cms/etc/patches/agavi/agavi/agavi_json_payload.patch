@@ -1,7 +1,7 @@
-Index: agavi/src/request/AgaviWebRequest.class.php
+Index: src/request/AgaviWebRequest.class.php
 ===================================================================
---- agavi/src/request/AgaviWebRequest.class.php	(revision 1240)
-+++ agavi/src/request/AgaviWebRequest.class.php	(working copy)
+--- src/request/AgaviWebRequest.class.php	(revision 1240)
++++ src/request/AgaviWebRequest.class.php	(working copy)
 @@ -344,6 +344,7 @@
  			'GET' => 'read',
  			'POST' => 'write',

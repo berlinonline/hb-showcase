@@ -1,7 +1,7 @@
-Index: agavi/src/validator/AgaviStringValidator.class.php
+Index: src/validator/AgaviStringValidator.class.php
 ===================================================================
---- agavi/src/validator/AgaviStringValidator.class.php	(revision 329)
-+++ agavi/src/validator/AgaviStringValidator.class.php	(working copy)
+--- src/validator/AgaviStringValidator.class.php	(revision 329)
++++ src/validator/AgaviStringValidator.class.php	(working copy)
 @@ -85,10 +85,12 @@
  			return false;
  		}

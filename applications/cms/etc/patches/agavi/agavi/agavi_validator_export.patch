@@ -1,7 +1,7 @@
-Index: agavi/src/validator/AgaviValidator.class.php
+Index: src/validator/AgaviValidator.class.php
 ===================================================================
---- agavi/src/validator/AgaviValidator.class.php	(revision 4918)
-+++ agavi/src/validator/AgaviValidator.class.php	(working copy)
+--- src/validator/AgaviValidator.class.php	(revision 4918)
++++ src/validator/AgaviValidator.class.php	(working copy)
 @@ -527,7 +527,7 @@
  	 * @author     Dominik del Bondio <ddb@bitxtender.com>
  	 * @since      0.11.0

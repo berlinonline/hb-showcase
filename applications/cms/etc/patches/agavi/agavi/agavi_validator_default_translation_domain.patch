@@ -1,7 +1,7 @@
-Index: agavi/src/validator/AgaviValidator.class.php
+Index: src/validator/AgaviValidator.class.php
 ===================================================================
---- agavi/src/validator/AgaviValidator.class.php	(revision 1773)
-+++ agavi/src/validator/AgaviValidator.class.php	(working copy)
+--- src/validator/AgaviValidator.class.php	(revision 1773)
++++ src/validator/AgaviValidator.class.php	(working copy)
 @@ -493,7 +493,9 @@
  
  		if($this->hasParameter('translation_domain')) {

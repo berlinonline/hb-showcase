@@ -1,7 +1,7 @@
-Index: agavi/src/config/AgaviValidatorConfigHandler.class.php
+Index: src/config/AgaviValidatorConfigHandler.class.php
 ===================================================================
---- agavi/src/config/AgaviValidatorConfigHandler.class.php	(revision 731)
-+++ agavi/src/config/AgaviValidatorConfigHandler.class.php	(working copy)
+--- src/config/AgaviValidatorConfigHandler.class.php	(revision 731)
++++ src/config/AgaviValidatorConfigHandler.class.php	(working copy)
 @@ -70,10 +70,11 @@
  				foreach($cfg->get('validator_definitions') as $def) {
  					$name = $def->getAttribute('name');
@@ -40,10 +40,10 @@ Index: agavi/src/config/AgaviValidatorConfigHandler.class.php
  		foreach($validator->get('errors') as $error) {
  			if($error->hasAttribute('for')) {
  				$errors[$error->getAttribute('for')] = $error->getValue();
-Index: agavi/src/config/xsd/parts/validators.xsd
+Index: src/config/xsd/parts/validators.xsd
 ===================================================================
---- agavi/src/config/xsd/parts/validators.xsd	(revision 731)
-+++ agavi/src/config/xsd/parts/validators.xsd	(working copy)
+--- src/config/xsd/parts/validators.xsd	(revision 731)
++++ src/config/xsd/parts/validators.xsd	(working copy)
 @@ -118,8 +118,10 @@
  	</xs:group>
  
@@ -56,10 +56,10 @@ Index: agavi/src/config/xsd/parts/validators.xsd
  		</xs:sequence>
  		<xs:attribute name="name" type="types_1_0:non_empty_string" use="required" />
  		<xs:attribute name="class" type="types_1_0:php_class" use="required" />
-Index: agavi/src/config/util/dom/AgaviXmlConfigDomElement.class.php
+Index: src/config/util/dom/AgaviXmlConfigDomElement.class.php
 ===================================================================
---- agavi/src/config/util/dom/AgaviXmlConfigDomElement.class.php	(revision 731)
-+++ agavi/src/config/util/dom/AgaviXmlConfigDomElement.class.php	(working copy)
+--- src/config/util/dom/AgaviXmlConfigDomElement.class.php	(revision 731)
++++ src/config/util/dom/AgaviXmlConfigDomElement.class.php	(working copy)
 @@ -492,6 +492,59 @@
  		
  		return $result;

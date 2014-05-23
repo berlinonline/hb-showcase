@@ -1,7 +1,7 @@
-Index: agavi/src/routing/AgaviWebRouting.class.php
+Index: src/routing/AgaviWebRouting.class.php
 ===================================================================
---- agavi/src/routing/AgaviWebRouting.class.php	(revision 969)
-+++ agavi/src/routing/AgaviWebRouting.class.php	(working copy)
+--- src/routing/AgaviWebRouting.class.php	(revision 969)
++++ src/routing/AgaviWebRouting.class.php	(working copy)
 @@ -427,7 +427,7 @@
  		}
  

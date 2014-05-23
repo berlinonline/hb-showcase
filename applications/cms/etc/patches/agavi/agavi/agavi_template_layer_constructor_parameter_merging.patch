@@ -1,5 +1,5 @@
---- agavi/src/view/AgaviTemplateLayer.class.php	2013-07-10 09:53:11.068819512 +0200
-+++ agavi/src/view/AgaviTemplateLayer.class.php.new	2013-07-10 09:52:33.780743065 +0200
+--- src/view/AgaviTemplateLayer.class.php	2013-07-10 09:53:11.068819512 +0200
++++ src/view/AgaviTemplateLayer.class.php.new	2013-07-10 09:52:33.780743065 +0200
 @@ -54,10 +54,10 @@
  	 */
  	public function __construct(array $parameters = array())

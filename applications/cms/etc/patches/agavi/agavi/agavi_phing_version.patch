@@ -1,7 +1,7 @@
-Index: agavi/src/build/agavi/script/agavi.php
+Index: src/build/agavi/script/agavi.php
 ===================================================================
---- agavi/src/build/agavi/script/agavi.php	(revision 4918)
-+++ agavi/src/build/agavi/script/agavi.php	(working copy)
+--- src/build/agavi/script/agavi.php	(revision 4918)
++++ src/build/agavi/script/agavi.php	(working copy)
 @@ -51,7 +51,7 @@
  	Phing::setProperty('phing.home', getenv('PHING_HOME'));
  	

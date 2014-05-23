@@ -1,7 +1,7 @@
-Index: agavi/src/filter/AgaviFormPopulationFilter.class.php
+Index: src/filter/AgaviFormPopulationFilter.class.php
 ===================================================================
---- agavi/src/filter/AgaviFormPopulationFilter.class.php	(revision 351)
-+++ agavi/src/filter/AgaviFormPopulationFilter.class.php	(revision 355)
+--- src/filter/AgaviFormPopulationFilter.class.php	(revision 351)
++++ src/filter/AgaviFormPopulationFilter.class.php	(revision 355)
 @@ -580,7 +580,22 @@
  
  			// now output the remaining incidents

@@ -1,7 +1,7 @@
-Index: agavi/src/validator/AgaviValidator.class.php
+Index: src/validator/AgaviValidator.class.php
 ===================================================================
---- agavi/src/validator/AgaviValidator.class.php	(revision 1293)
-+++ agavi/src/validator/AgaviValidator.class.php	(working copy)
+--- src/validator/AgaviValidator.class.php	(revision 1293)
++++ src/validator/AgaviValidator.class.php	(working copy)
 @@ -489,12 +489,20 @@
  			$this->affectedArguments = $affectedArguments;
  		}

@@ -1,7 +1,7 @@
-Index: agavi/src/validator/AgaviValidationManager.class.php
+Index: src/validator/AgaviValidationManager.class.php
 ===================================================================
---- agavi/src/validator/AgaviValidationManager.class.php	(revision 1311)
-+++ agavi/src/validator/AgaviValidationManager.class.php	(working copy)
+--- src/validator/AgaviValidationManager.class.php	(revision 1311)
++++ src/validator/AgaviValidationManager.class.php	(working copy)
 @@ -285,6 +285,7 @@
  			}
  		}
@@ -10,10 +10,10 @@ Index: agavi/src/validator/AgaviValidationManager.class.php
  
  		$ma = $req->getParameter('module_accessor');
  		$aa = $req->getParameter('action_accessor');
-Index: agavi/src/validator/AgaviValidationReport.class.php
+Index: src/validator/AgaviValidationReport.class.php
 ===================================================================
---- agavi/src/validator/AgaviValidationReport.class.php	(revision 1311)
-+++ agavi/src/validator/AgaviValidationReport.class.php	(working copy)
+--- src/validator/AgaviValidationReport.class.php	(revision 1311)
++++ src/validator/AgaviValidationReport.class.php	(working copy)
 @@ -43,6 +43,11 @@
  	 * @var        array The incidents which were thrown by the validation run.
  	 */
@@ -81,10 +81,10 @@ Index: agavi/src/validator/AgaviValidationReport.class.php
  	
  	/**
  	 * Get the number of incidents matching the currently defined filter rules.
-Index: agavi/src/validator/AgaviDependencyManager.class.php
+Index: src/validator/AgaviDependencyManager.class.php
 ===================================================================
---- agavi/src/validator/AgaviDependencyManager.class.php	(revision 1311)
-+++ agavi/src/validator/AgaviDependencyManager.class.php	(working copy)
+--- src/validator/AgaviDependencyManager.class.php	(revision 1311)
++++ src/validator/AgaviDependencyManager.class.php	(working copy)
 @@ -91,5 +91,18 @@
  			$base->setValueByChildPath($token, $this->depData, true);
  		}
@@ -105,10 +105,10 @@ Index: agavi/src/validator/AgaviDependencyManager.class.php
  }
  ?>
 \ No newline at end of file
-Index: agavi/src/validator/AgaviValidationReportQuery.class.php
+Index: src/validator/AgaviValidationReportQuery.class.php
 ===================================================================
---- agavi/src/validator/AgaviValidationReportQuery.class.php	(revision 1311)
-+++ agavi/src/validator/AgaviValidationReportQuery.class.php	(working copy)
+--- src/validator/AgaviValidationReportQuery.class.php	(revision 1311)
++++ src/validator/AgaviValidationReportQuery.class.php	(working copy)
 @@ -59,7 +59,7 @@
  	 * @var        array|int
  	 */

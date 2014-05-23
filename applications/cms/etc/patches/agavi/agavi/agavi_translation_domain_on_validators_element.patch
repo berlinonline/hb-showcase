@@ -1,7 +1,7 @@
-Index: agavi/src/config/AgaviValidatorConfigHandler.class.php
+Index: src/config/AgaviValidatorConfigHandler.class.php
 ===================================================================
---- agavi/src/config/AgaviValidatorConfigHandler.class.php	(revision 1276)
-+++ agavi/src/config/AgaviValidatorConfigHandler.class.php	(working copy)
+--- src/config/AgaviValidatorConfigHandler.class.php	(revision 1276)
++++ src/config/AgaviValidatorConfigHandler.class.php	(working copy)
 @@ -108,15 +108,17 @@
  	 * @param      string                   The severity of the parent container.
  	 * @param      string                   The method of the parent container.
@@ -70,10 +70,10 @@ Index: agavi/src/config/AgaviValidatorConfigHandler.class.php
  		}
  		
  		return $code;
-Index: agavi/src/config/xsd/parts/validators.xsd
+Index: src/config/xsd/parts/validators.xsd
 ===================================================================
---- agavi/src/config/xsd/parts/validators.xsd	(revision 1276)
-+++ agavi/src/config/xsd/parts/validators.xsd	(working copy)
+--- src/config/xsd/parts/validators.xsd	(revision 1276)
++++ src/config/xsd/parts/validators.xsd	(working copy)
 @@ -106,6 +106,7 @@
  		</xs:sequence>
  		<xs:attribute name="method" type="types_1_0:php_label_list" />

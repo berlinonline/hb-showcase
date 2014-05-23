@@ -1,7 +1,7 @@
-Index: agavi/src/util/AgaviToolkit.class.php
+Index: src/util/AgaviToolkit.class.php
 ===================================================================
---- agavi/src/util/AgaviToolkit.class.php	(revision 100)
-+++ agavi/src/util/AgaviToolkit.class.php	(working copy)
+--- src/util/AgaviToolkit.class.php	(revision 100)
++++ src/util/AgaviToolkit.class.php	(working copy)
 @@ -475,6 +475,15 @@
  	 */
  	public static function evaluateModuleDirective($moduleName, $directiveNameFragment, $variables = array())

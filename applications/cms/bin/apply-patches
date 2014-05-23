@@ -2,37 +2,43 @@
 
 cd `dirname $0`
 
-# Store the vendor directory
+# store the vendor directory
 cd ..
-
 if [ ! -d vendor ] ; then
-	echo "No vendor directory found, skipping patches.";
-	exit 1
+    echo "No vendor directory found. Skipping patches...";
+    exit 1
 fi
-
 cd vendor
 vendor_directory=`pwd`
 
-# Store the patches directory
+# store the patches directory
 cd ..
-cd patches
+if [ ! -d etc/patches ] ; then
+    echo "No etc/patches directory found. Skipping patches...";
+    exit 1
+fi
+cd etc/patches
 patches_directory=`pwd`
+echo "Patches directory: $patches_directory"
 
-# For each patches directory (e.g. patches/agavi)
-ls | while read line
+# for each vendor directory (e.g. etc/patches/agavi)
+ls | while read vendor
 do
-    # Enter the vendor directory (e.g. vendor/agavi)
-    echo " > Reading patches for $line ..."
-    cd $vendor_directory/$line
+    echo " > Found vendor: $vendor"
 
-    # Execute each patch for this vendor (e.g. patches/agavi/agavi_short_action_name.patch)
-    ls $patches_directory/$line | while read patch
-do
-    echo " > Patch found: $patch"
-    echo $line
-    patch -p0 -i $patches_directory/$line/$patch
-done
-cd ..
+    # foreach library directory
+    ls | while read lib
+    do
+        echo " > Reading patches for vendor lib: $vendor/$lib"
+
+        # execute each patch for this vendor (e.g. etc/patches/agavi/agavi/agavi_short_action_name.patch)
+        ls $patches_directory/$vendor/$lib | while read patch
+        do
+            echo " > Patch found: $vendor/$lib/$patch"
+            cd $vendor_directory/$vendor/$lib
+            patch -p0 -i $patches_directory/$vendor/$lib/$patch
+        done
+    done
 done
 
 exit 0

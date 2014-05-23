@@ -1,7 +1,7 @@
-Index: agavi/src/testing/AgaviPhpUnitTestCase.class.php
+Index: src/testing/AgaviPhpUnitTestCase.class.php
 ===================================================================
---- agavi/src/testing/AgaviPhpUnitTestCase.class.php	(revision 4918)
-+++ agavi/src/testing/AgaviPhpUnitTestCase.class.php	(working copy)
+--- src/testing/AgaviPhpUnitTestCase.class.php	(revision 4918)
++++ src/testing/AgaviPhpUnitTestCase.class.php	(working copy)
 @@ -219,7 +219,8 @@
  	protected function getTemplateFile()
  	{
