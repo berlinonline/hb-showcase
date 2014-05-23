@@ -131,7 +131,10 @@ install:
 
 	-@bin/apply-patches
 
-	@npm install
+	@mkdir -p ./vendor/node_modules
+	@npm install --prefix ./vendor
+
+	@cd vendor && node_modules/.bin/bower install
 
 	@make configure
 
@@ -155,7 +158,10 @@ install-production:
 
 	-@bin/apply-patches
 
-	@npm install
+	@mkdir -p ./vendor/node_modules
+	@npm install --prefix ./vendor
+
+	@cd vendor && node_modules/.bin/bower install
 
 	@make configure
 
@@ -203,7 +209,10 @@ update:
 
 	-@bin/apply-patches
 
-	@npm install
+	@mkdir -p ./vendor/node_modules
+	@npm install --prefix ./vendor
+
+	@cd vendor && node_modules/.bin/bower install
 
 	@make build-resources
 

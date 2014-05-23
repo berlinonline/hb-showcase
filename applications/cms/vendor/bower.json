@@ -1,0 +1,15 @@
+{
+    "name": "honeybee-project-template",
+    "version": "0.1",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "lodash-amd": "~2.4.1",
+        "requirejs": "~2.1.11",
+        "inuit-box-sizing": "~0.1.0",
+        "inuit-defaults": "~0.1.0",
+        "inuit-functions": "~0.1.0",
+        "inuit-mixins": "~0.1.0",
+        "inuit-normalize": "~0.1.0"
+    }
+}
