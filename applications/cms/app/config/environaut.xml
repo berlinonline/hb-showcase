@@ -93,7 +93,7 @@
             <parameter name="confirm">true</parameter>
         </check>
 
-        <check name="environment" group="local_config">
+        <check name="agavi_environment" group="local_config">
             <parameter name="question">What environment do you want to use for this application?</parameter>
             <parameter name="default">development-vagrant</parameter>
             <parameter name="choices">
