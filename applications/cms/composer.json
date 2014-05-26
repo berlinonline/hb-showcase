@@ -29,7 +29,7 @@
         "lib-openssl": "*",
         "lib-pcre": "*",
         "ext-imagick": "*",
-        "berlinonline/honeybee": "v001-dev-dev"
+        "berlinonline/honeybee": "v001-dev@dev"
     },
     "minimum-stability": "dev",
     "autoload": {
