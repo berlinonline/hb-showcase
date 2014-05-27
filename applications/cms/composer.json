@@ -29,15 +29,17 @@
         "lib-openssl": "*",
         "lib-pcre": "*",
         "ext-imagick": "*",
-        "berlinonline/honeybee": "v001-dev@dev"
+        "berlinonline/honeybee": "v001-dev-dev@dev",
+        "berlinonline/dat0r": "dev-collection-refactoring@dev"
     },
-    "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "Honeybee" : "app/lib",
             "Testing" : "testing/tests"
         }
     },
+    "prefer-stable": true,
+    "minimum-stability": "stable",
     "repositories": [
         {
             "type": "vcs",
