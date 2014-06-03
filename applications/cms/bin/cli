@@ -1,27 +1,20 @@
 #!/bin/sh
 
-LOCAL_CONFIG_SH=`dirname $0`/../etc/local/config.sh
+readonly CURRENT_DIR=$(readlink -m $(dirname $0))
+readonly HONEYBEE_DIR=$(readlink -m "${CURRENT_DIR}/../vendor/berlinonline/honeybee")
+readonly HONEYBEE_BIN_CLI=$(readlink -m "${HONEYBEE_DIR}/bin/cli")
 
-if [ -f $LOCAL_CONFIG_SH ] ; then
-    echo "[INFO] Sourcing local config file: $LOCAL_CONFIG_SH"
-    . $LOCAL_CONFIG_SH
+if [ -f $HONEYBEE_BIN_CLI ] ; then
+    echo "[INFO] Found honeybee bin/cli shell script: $HONEYBEE_BIN_CLI"
 else
-    echo "[ERROR] Couldn't source local config: $LOCAL_CONFIG_SH"
-    echo "[ERROR] Make sure to run 'make configure' or 'make reconfigure'."
+    echo "[ERROR] Honeybee bin/cli script not found: $HONEYBEE_BIN_CLI"
+    echo "[ERROR] Make sure you have run 'make install' to get vendor libs."
     exit 1
 fi
 
-if [ -z "$PHP_COMMAND" ] ; then
-    echo "[ERROR] Unable to find a valid php executable."
-    echo "[ERROR] Make sure to run 'make configure' or 'make reconfigure'."
-    exit 1
-fi
+echo "[INFO] Running honeybee bin/cli..."
 
-if [ -z "$AGAVI_ENVIRONMENT" ] ; then
-    echo "[ERROR] AGAVI_ENVIRONMENT is not set."
-    echo "[ERROR] Make sure to run 'make configure' or 'make reconfigure'."
-    exit 1
-fi
+#readonly LOCAL_CONFIG_SH=$(readlink -m "${CURRENT_DIR}/../etc/local/config.sh")
 
-echo "[INFO] Executing: `which rlwrap` $AGAVI_ENVIRONMENT $PHP_COMMAND -d html_errors=off -f `dirname $0`/cli.php $@"
-PHP_COMMAND=$PHP_COMMAND AGAVI_ENVIRONMENT=$AGAVI_ENVIRONMENT $PHP_COMMAND -d html_errors=off -f "`dirname $0`/cli.php" -- "$@"
+. ${HONEYBEE_BIN_CLI}
+
