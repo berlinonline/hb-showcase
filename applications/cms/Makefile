@@ -134,7 +134,7 @@ install:
 	@mkdir -p ./vendor/node_modules
 	@npm install --prefix ./vendor
 
-	@cd vendor && node_modules/.bin/bower install
+	@cd vendor && node_modules/honeybee/node_modules/.bin/bower install
 
 	@make configure
 
@@ -161,7 +161,7 @@ install-production:
 	@mkdir -p ./vendor/node_modules
 	@npm install --prefix ./vendor
 
-	@cd vendor && node_modules/.bin/bower install
+	@cd vendor && node_modules/honeybee/node_modules/.bin/bower install
 
 	@make configure
 
@@ -212,7 +212,7 @@ update:
 	@mkdir -p ./vendor/node_modules
 	@npm install --prefix ./vendor
 
-	@cd vendor && node_modules/.bin/bower install
+	@cd vendor && node_modules/honeybee/node_modules/.bin/bower install
 
 	@make build-resources
 

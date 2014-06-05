@@ -29,7 +29,7 @@
         "lib-openssl": "*",
         "lib-pcre": "*",
         "ext-imagick": "*",
-        "berlinonline/honeybee": "v001-dev-dev@dev",
+        "berlinonline/honeybee": "dev-hb-as-vendor@dev",
         "berlinonline/dat0r": "dev-collection-refactoring@dev"
     },
     "autoload": {
@@ -54,87 +54,6 @@
                     "url": "http://svn.agavi.org/",
                     "type": "svn",
                     "reference": "tags/1.0.7/"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "csswizardry/csswizardry-grids",
-                "version": "2.2.0",
-                "source": {
-                    "url": "https://github.com/csswizardry/csswizardry-grids.git",
-                    "type": "git",
-                    "reference": "f7e85b79fd8188ae8373677da03e31374b3c0f4f"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "csswizardry/inuit.css",
-                "version": "5.0.1",
-                "source": {
-                    "url": "https://github.com/csswizardry/inuit.css.git",
-                    "type": "git",
-                    "reference": "aa49931763f8ef8b1bf7780108a84fc75a099a66"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "jquery/jquery",
-                "version": "2.0.3",
-                "dist": {
-                    "url": "http://code.jquery.com/jquery-2.0.3.min.js",
-                    "type": "file"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "bestiejs/json3",
-                "version": "3.2.5",
-                "dist": {
-                    "url": "https://raw.github.com/bestiejs/json3/v3.2.5/lib/json3.min.js",
-                    "type": "file"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/ckeditor",
-                "version": "4.2.1",
-                "dist": {
-                    "url": "http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.2.1/ckeditor_4.2.1_standard.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "DracoBlue/js-behaviour",
-                "version": "1.7.0",
-                "source": {
-                    "url": "https://github.com/DracoBlue/js-behaviour.git",
-                    "type": "git",
-                    "reference": "610de9721484c231618ce513d7a8fc89c0f5f098"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "jrburke/requirejs",
-                "version": "2.1.8",
-                "source": {
-                    "url": "https://github.com/jrburke/requirejs.git",
-                    "type": "git",
-                    "reference": "a77a30a12d3f98596b67dc9655c85fd5bb882c3d"
                 }
             }
         }
