@@ -1,34 +1,25 @@
 <?php
 
-$cms_root_dir = dirname(dirname(__FILE__));
+/*
+ * you may register special autoloaders here
+ */
 
-// setup agavi configuration settings
-require($cms_root_dir . str_replace('/', DIRECTORY_SEPARATOR, '/app/config.php'));
-
-// register autoloader for dat0r domain packages
-$dat0r_autoloading = $cms_root_dir . str_replace('/', DIRECTORY_SEPARATOR, '/app/config/includes/autoload.php');
-if (is_readable($dat0r_autoloading)) {
-    require($dat0r_autoloading);
+// get application directory
+$application_dir = getenv('APPLICATION_DIR');
+if ($application_dir === false) {
+    throw new \Exception('APPLICATION_DIR not set. Bootstrap aborted.');
 }
 
-// make generated files group writable (for easy switch between web/console)
-umask(02);
+die($application_dir . str_replace('/', DIRECTORY_SEPARATOR, '/vendor/berlinonline/honeybee/app/bootstrap'));
 
-// make local config available (application configuration in this working directory)
-//$local_config_php_file = $cms_root_dir . str_replace('/', DIRECTORY_SEPARATOR, '/etc/local/config.php');
-//$local_config = require($local_config_php_file);
+// bootstrap honeybee
+require($application_dir . str_replace('/', DIRECTORY_SEPARATOR, '/vendor/berlinonline/honeybee/app/bootstrap'));
 
-// load environment
-Honeybee\Core\Environment::load(false, $environment_modifier);
-AgaviConfig::set('core.clean_environment', Honeybee\Core\Environment::getCleanEnvironment());
+/*
+ * you may set additional settings here:
+ * AgaviConfig::set('omg', 'yeah');
+ */
 
-// +---------------------------------------------------------------------------+
-// | Initialize the framework. You may pass an environment name to this method.|
-// | By default the 'development' environment sets Agavi into a debug mode.    |
-// | In debug mode among other things the cache is cleaned on every request.   |
-// +---------------------------------------------------------------------------+
+// set your application's default timezone
+date_default_timezone_set('Europe/Berlin');
 
-// @todo Atm this is needed to support routes that rely on the $_SERVER var for their source attribute.
-$_SERVER['AGAVI_ENVIRONMENT'] = Honeybee\Core\Environment::toEnvString();
-Agavi::bootstrap($_SERVER['AGAVI_ENVIRONMENT']);
-AgaviConfig::set('core.default_context', $default_context);

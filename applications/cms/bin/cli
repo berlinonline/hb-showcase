@@ -1,11 +1,13 @@
 #!/usr/bin/env sh
 
-if [ -z "$CURRENT_APPLICATION_DIR" ] ; then
-    CURRENT_APPLICATION_DIR=$(readlink -m $(dirname $0))
+readonly CURRENT_DIR=$(readlink -m $(dirname $0))
+
+if [ -z "$APPLICATION_DIR" ] ; then
+    APPLICATION_DIR=$(readlink -m "${CURRENT_DIR}/../")
 fi
 
 if [ -z "$HONEYBEE_DIR" ] ; then
-    HONEYBEE_DIR=$(readlink -m "${CURRENT_APPLICATION_DIR}/../vendor/berlinonline/honeybee")
+    HONEYBEE_DIR=$(readlink -m "${APPLICATION_DIR}/vendor/berlinonline/honeybee")
 fi
 
 if [ -z "$HONEYBEE_BIN_CLI" ] ; then
@@ -30,8 +32,12 @@ fi
 # CLI_PHP_INI_SETTINGS
 # BOOTSTRAP_PHP_FILE
 #
+if [ -z "$CLI_PHP_FILE" ] ; then
+    CLI_PHP_FILE=$(readlink -m "${HONEYBEE_DIR}/bin/cli.php")
+fi
 
 echo "[INFO] Sourcing: ${HONEYBEE_BIN_CLI}"
 
 # including original honeybee bin/cli script to execute cli.php
 . ${HONEYBEE_BIN_CLI}
+

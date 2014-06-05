@@ -1,22 +1,42 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-PROJECT=`readlink -f $( dirname $0 )/..`
-LOCAL_CONFIG_SH=$PROJECT/etc/local/config.sh
+readonly CURRENT_DIR=$(readlink -m $(dirname $0))
 
-if [ -f $LOCAL_CONFIG_SH ] ; then
-  echo "[INFO] Found and sourcing the config.sh"
-  . $LOCAL_CONFIG_SH
+if [ -z "$APPLICATION_DIR" ] ; then
+    APPLICATION_DIR=$(readlink -m "${CURRENT_DIR}/../")
+fi
+
+if [ -z "$HONEYBEE_DIR" ] ; then
+    HONEYBEE_DIR=$(readlink -m "${APPLICATION_DIR}/vendor/berlinonline/honeybee")
+fi
+
+if [ -z "$HONEYBEE_BIN_TEST" ] ; then
+    HONEYBEE_BIN_TEST=$(readlink -m "${HONEYBEE_DIR}/bin/test")
+fi
+
+if [ -f $HONEYBEE_BIN_TEST ] ; then
+    echo "[INFO] Found honeybee bin/test."
 else
-  echo "[ERROR] Could not source $LOCAL_CONFIG_SH!"
-  echo "Make sure to run bin/configure-env before doing anything else after a fresh checkout"
+    echo "[ERROR] Honeybee bin/test script not found: ${HONEYBEE_BIN_TEST}"
+    echo "[ERROR] Make sure you have run 'make install' to get vendor libs and"
+    echo "[ERROR] no environment variables are changing the bin/test behaviour."
+    exit 1
 fi
 
-if (test -z "$PHP_COMMAND") ; then
-  echo "[ERROR] Unable to find a valid php command!"
-  echo "Have you run bin/configure-env.php allready?"
-  exit 0
+# You can set other (environment) variables to change defaults paths etc.:
+#
+# LOCAL_CONFIG_SH
+# PHP_COMMAND
+# TESTS_PHP_FILE
+# TESTS_PHP_INI_SETTINGS
+# TESTS_BOOTSTRAP_PHP_FILE
+#
+if [ -z "$TESTS_PHP_FILE" ] ; then
+    TESTS_PHP_FILE=$(readlink -m "${HONEYBEE_DIR}/testing/run-tests.php")
 fi
 
-cmd="$PHP_COMMAND -d html_errors=off -f $PROJECT/testing/run-tests.php -- $@"
-echo [Executing] $cmd
-PHP_COMMAND=$PHP_COMMAND $(which rlwrap) $cmd
+echo "[INFO] Sourcing: ${HONEYBEE_BIN_TEST}"
+
+# including original honeybee bin/test script
+. ${HONEYBEE_BIN_TEST}
+
