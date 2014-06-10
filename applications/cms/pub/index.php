@@ -4,6 +4,7 @@
 $app_dir = getenv('APPLICATION_DIR');
 if ($app_dir === false) {
     if (!putenv('APPLICATION_DIR=' . realpath(__DIR__ . '/../'))) {
+        error_log('Application directory could not be set via putenv.');
         throw new \Exception('Application directory could not be set.');
     }
 }

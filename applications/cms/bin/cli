@@ -23,7 +23,7 @@ else
     exit 1
 fi
 
-# You can set other (environment) variables to change defaults paths etc.:
+# You can set other (environment) variables to change defaults, paths etc.:
 #
 # LOCAL_CONFIG_SH
 # PHP_COMMAND

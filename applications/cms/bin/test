@@ -6,37 +6,44 @@ if [ -z "$APPLICATION_DIR" ] ; then
     APPLICATION_DIR=$(readlink -m "${CURRENT_DIR}/../")
 fi
 
-if [ -z "$HONEYBEE_DIR" ] ; then
-    HONEYBEE_DIR=$(readlink -m "${APPLICATION_DIR}/vendor/berlinonline/honeybee")
+# set default value if local config is not set when this script is sourced
+if [ -z "$LOCAL_CONFIG_SH" ] ; then
+    LOCAL_CONFIG_SH=$(readlink -m "${APPLICATION_DIR}/etc/local/config.sh")
 fi
 
-if [ -z "$HONEYBEE_BIN_TEST" ] ; then
-    HONEYBEE_BIN_TEST=$(readlink -m "${HONEYBEE_DIR}/bin/test")
-fi
-
-if [ -f $HONEYBEE_BIN_TEST ] ; then
-    echo "[INFO] Found honeybee bin/test."
+# source the local config
+if [ -f $LOCAL_CONFIG_SH ] ; then
+    echo "[INFO] Sourcing local config file: $LOCAL_CONFIG_SH"
+    . $LOCAL_CONFIG_SH
 else
-    echo "[ERROR] Honeybee bin/test script not found: ${HONEYBEE_BIN_TEST}"
-    echo "[ERROR] Make sure you have run 'make install' to get vendor libs and"
-    echo "[ERROR] no environment variables are changing the bin/test behaviour."
+    echo "[ERROR] Couldn't source local config: $LOCAL_CONFIG_SH"
+    echo "[ERROR] Make sure to run 'make configure' or 'make reconfigure'."
     exit 1
 fi
 
-# You can set other (environment) variables to change defaults paths etc.:
-#
-# LOCAL_CONFIG_SH
-# PHP_COMMAND
-# TESTS_PHP_FILE
-# TESTS_PHP_INI_SETTINGS
-# TESTS_BOOTSTRAP_PHP_FILE
-#
-if [ -z "$TESTS_PHP_FILE" ] ; then
-    TESTS_PHP_FILE=$(readlink -m "${HONEYBEE_DIR}/testing/run-tests.php")
+# php executable to use
+if [ -z "$PHP_COMMAND" ] ; then
+    echo "[ERROR] Unable to find a valid php executable."
+    echo "[ERROR] Make sure to run 'make configure' or 'make reconfigure'."
+    exit 1
 fi
 
-echo "[INFO] Sourcing: ${HONEYBEE_BIN_TEST}"
+# php ini settings to use for testing
+if [ -z "$TESTS_PHP_INI_SETTINGS" ] ; then
+    TESTS_PHP_INI_SETTINGS="-d html_errors=off"
+fi
 
-# including original honeybee bin/test script
-. ${HONEYBEE_BIN_TEST}
+# set php script to dispatch testing
+if [ -z "$TESTS_PHP_FILE" ] ; then
+    TESTS_PHP_FILE=$(readlink -m "${APPLICATION_DIR}/testing/run-tests.php")
+fi
+
+echo "[INFO] Executing: PHP_COMMAND=${PHP_COMMAND} APPLICATION_DIR=$APPLICATION_DIR ${PHP_COMMAND} ${TESTS_PHP_INI_SETTINGS} -f ${TESTS_PHP_FILE} -- $@"
+
+# dispatch application
+PHP_COMMAND=${PHP_COMMAND} \
+    APPLICATION_DIR=${APPLICATION_DIR} \
+    ${PHP_COMMAND} \
+    ${TESTS_PHP_INI_SETTINGS} \
+    -f ${TESTS_PHP_FILE} -- $@
 
