@@ -10,5 +10,5 @@ $project_basedir = "${hosting_root}/hb-showcase-cms"
 # define our concrete box configuration
 class { 'boxes::devbox-php-couchdb': }
 -> hb-showcase::application { 'hb-showcase-cms.local':
-    app_docroot => "${project_basedir}/applications/cms/honeybee/pub"
+    app_docroot => "${project_basedir}/applications/cms/pub"
 }
