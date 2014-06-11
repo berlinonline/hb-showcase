@@ -5,7 +5,7 @@ BUILD_DIR=${PROJECT_ROOT}/etc/integration/build/
 PHP_ERROR_LOG=`php -i | grep -P '^error_log' | cut -f '3' -d " "`
 ENVIRONAUT_CACHE_LOCATION=${PROJECT_ROOT}/.environaut.cache
 #GIT_FILE=`cat .git | sed -r 's/.+: (.+.git)(.*)/\1/'`
-LAST_FETCH_DATE=`git reflog show -n 1 --date=iso | cut -f '1-3' -d ':'`
+#LAST_FETCH_DATE=`git reflog show -n 1 --date=iso | cut -f '1-3' -d ':'`
 
 help:
 
@@ -17,8 +17,8 @@ help:
 	@echo "Local env config location : ${PROJECT_ROOT}/etc/local/"
 	@echo "PHP error log file path   : ${PHP_ERROR_LOG}"
 #	@echo "Project git-file location : ${PROJECT_ROOT}/${GIT_FILE}"
-	@echo ""
-	@echo "Last working copy update  : ${LAST_FETCH_DATE}"
+#	@echo ""
+#	@echo "Last working copy update  : ${LAST_FETCH_DATE}"
 	@echo ""
 	@echo "--------------"
 	@echo "COMMON TARGETS"
@@ -28,11 +28,11 @@ help:
 	@echo "  build-resources           - Builds css and javascript production packages for the project."
 	@echo "  cc                        - Purges/clears the application caches."
 	@echo "  config                    - Generates the configuration includes for all (agavi) modules."
-	@echo "  configure                 - Run environaut and configure environment."
+	@echo "  environment               - Run environaut and configure environment."
 	@echo "  install                   - Installs vendor (development) libraries and runs environaut."
 	@echo "  install-production        - Installs vendor (production) libraries and runs environaut."
 	@echo "  link-project              - Symlinks the project code into the honeybee submodule."
-	@echo "  reconfigure               - Runs environaut and overrides any exisitng environment configs."
+	@echo "  reconfigure-environment   - Runs environaut and overrides any exisitng environment configs."
 	@echo "  tail-logs                 - Starts to tail all application logs and the php error-log."
 	@echo "  update                    - Updates all vendor libraries (dev+prod) and the composer.lock file."
 	@echo ""
@@ -102,7 +102,7 @@ config:
 	@make cc
 
 
-configure:
+environment:
 
 	@if [ ! -d etc/local/ ]; then mkdir etc/local; fi
 
@@ -110,12 +110,11 @@ configure:
 
 	@echo ""
 	@echo "-> environaut was successfully executed"
+	@echo ""
 
 
 install:
 
-	@if [ ! -d app/cache ]; then mkdir -p app/cache; fi
-	@if [ ! -d app/log ]; then mkdir -p app/log; fi
 	@if [ ! -d data/assets ]; then mkdir -p data/assets; fi
 
 	@if [ ! -f bin/composer.phar ]; \
@@ -136,7 +135,7 @@ install:
 
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower install
 
-	@make configure
+	@make environment
 
 	@make link-project
 
@@ -163,7 +162,7 @@ install-production:
 
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower install
 
-	@make configure
+	@make environment
 
 	@make link-project
 
@@ -180,7 +179,7 @@ link-project:
 	@echo "-> successfully linked the project into honeybee."
 
 
-reconfigure:
+reconfigure-environment:
 
 	@echo "Environaut cache file: ${ENVIRONAUT_CACHE_LOCATION}"
 
@@ -189,7 +188,7 @@ reconfigure:
 	@echo ""
 	@echo "-> removed environaut cache, starting reconfiguration"
 
-	@make configure
+	@make environment
 
 
 tail-logs:
@@ -199,7 +198,7 @@ tail-logs:
 
 update:
 
-	@if [ ! -f bin/composer.phar ]; then echo "pls run make install first"; fi
+	@if [ ! -f bin/composer.phar ]; then echo "Please run make install first and do not run make update on non-dev machines."; fi
 
 	@bin/composer.phar self-update
 
@@ -213,6 +212,8 @@ update:
 	@npm install --prefix ./vendor
 
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower install
+
+	@make environment
 
 	@make build-resources
 
