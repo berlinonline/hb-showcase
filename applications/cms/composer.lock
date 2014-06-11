@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1b46a9405ebcc3eaf1a4776cdc6c0a98",
+    "hash": "c1a7a830a10c2a961b785790dfa4f4ad",
     "packages": [
         {
             "name": "agavi/agavi",
@@ -77,12 +77,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "1f0c4abeac35fae101068e95ff89446c347ff3f5"
+                "reference": "1dd986b2ef5a0ae0f15799d75aa7754b8864fa88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/1f0c4abeac35fae101068e95ff89446c347ff3f5",
-                "reference": "1f0c4abeac35fae101068e95ff89446c347ff3f5",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/1dd986b2ef5a0ae0f15799d75aa7754b8864fa88",
+                "reference": "1dd986b2ef5a0ae0f15799d75aa7754b8864fa88",
                 "shasum": ""
             },
             "require": {
@@ -156,7 +156,7 @@
                 "source": "https://github.com/berlinonline/honeybee/tree/hb-as-vendor",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2014-06-10 16:28:01"
+            "time": "2014-06-11 14:03:22"
         },
         {
             "name": "cboden/ratchet",
