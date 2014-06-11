@@ -4,8 +4,25 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c1a7a830a10c2a961b785790dfa4f4ad",
+    "hash": "a4f0f3a6f9472ea9135349d17634d4cd",
     "packages": [
+        {
+            "name": "PhpDebugToolbar/php-debug-toolbar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/graste/PhpDebugToolbar.git",
+                "reference": "63b1b518e559b7e2995cda91a8edb707048c79a6"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/agavi/",
+                    "PhpDebugToolbar.class.php"
+                ]
+            },
+            "time": "2013-06-04 09:15:45"
+        },
         {
             "name": "agavi/agavi",
             "version": "1.0.7",
@@ -77,12 +94,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "1dd986b2ef5a0ae0f15799d75aa7754b8864fa88"
+                "reference": "91cb19879610bb35ef5a447279f426f7826fe99b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/1dd986b2ef5a0ae0f15799d75aa7754b8864fa88",
-                "reference": "1dd986b2ef5a0ae0f15799d75aa7754b8864fa88",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/91cb19879610bb35ef5a447279f426f7826fe99b",
+                "reference": "91cb19879610bb35ef5a447279f426f7826fe99b",
                 "shasum": ""
             },
             "require": {
@@ -100,6 +117,7 @@
                 "mthaml/mthaml": "1.3.1",
                 "phing/phing": "2.4.12",
                 "php": ">=5.3.3",
+                "phpdebugtoolbar/php-debug-toolbar": "dev-master",
                 "psr/log": "1.0.0",
                 "ql/uri-template": "1.0.1",
                 "react/zmq": "0.2.*",
@@ -113,7 +131,6 @@
             },
             "require-dev": {
                 "pdepend/pdepend": "1.1.*",
-                "phpdebugtoolbar/php-debug-toolbar": "dev-master",
                 "phploc/phploc": "2.0.*",
                 "phpmd/phpmd": "1.5.*",
                 "phpunit/phpunit": "4.0.*",
@@ -156,7 +173,7 @@
                 "source": "https://github.com/berlinonline/honeybee/tree/hb-as-vendor",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2014-06-11 14:03:22"
+            "time": "2014-06-11 17:28:47"
         },
         {
             "name": "cboden/ratchet",
@@ -1987,7 +2004,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "berlinonline/honeybee": 20,
-        "berlinonline/dat0r": 20
+        "berlinonline/dat0r": 20,
+        "phpdebugtoolbar/php-debug-toolbar": 20
     },
     "platform": {
         "php": ">=5.3.3",

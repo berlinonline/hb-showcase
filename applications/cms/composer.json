@@ -30,7 +30,8 @@
         "lib-pcre": "*",
         "ext-imagick": "*",
         "berlinonline/honeybee": "dev-hb-as-vendor@dev",
-        "berlinonline/dat0r": "dev-collection-refactoring@dev"
+        "berlinonline/dat0r": "dev-collection-refactoring@dev",
+        "PhpDebugToolbar/php-debug-toolbar": "dev-master@dev"
     },
     "autoload": {
         "psr-0": {
