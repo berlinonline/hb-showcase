@@ -56,6 +56,21 @@
                     "reference": "tags/1.0.7/"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "PhpDebugToolbar/php-debug-toolbar",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/graste/PhpDebugToolbar.git",
+                    "type": "git",
+                    "reference": "63b1b518e559b7e2995cda91a8edb707048c79a6"
+                },
+                "autoload": {
+                    "classmap": ["lib/agavi/", "PhpDebugToolbar.class.php"]
+                }
+            }
         }
     ]
 }
