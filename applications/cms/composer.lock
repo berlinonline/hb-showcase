@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a4f0f3a6f9472ea9135349d17634d4cd",
+    "hash": "1d8ae4ff84cff7dd802a53d938f4cb1d",
     "packages": [
         {
             "name": "PhpDebugToolbar/php-debug-toolbar",
@@ -94,12 +94,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "84c4cb109707eb031275e092171860313ab09b32"
+                "reference": "45a6182b5ebed23570abfa11a529dd55443eb271"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/84c4cb109707eb031275e092171860313ab09b32",
-                "reference": "84c4cb109707eb031275e092171860313ab09b32",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/45a6182b5ebed23570abfa11a529dd55443eb271",
+                "reference": "45a6182b5ebed23570abfa11a529dd55443eb271",
                 "shasum": ""
             },
             "require": {
@@ -173,7 +173,7 @@
                 "source": "https://github.com/berlinonline/honeybee/tree/hb-as-vendor",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2014-06-12 16:53:55"
+            "time": "2014-06-12 19:43:56"
         },
         {
             "name": "cboden/ratchet",
