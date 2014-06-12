@@ -94,12 +94,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "91cb19879610bb35ef5a447279f426f7826fe99b"
+                "reference": "8aeb2addb1e43e964735d01a5fc8b2edef9bbffe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/91cb19879610bb35ef5a447279f426f7826fe99b",
-                "reference": "91cb19879610bb35ef5a447279f426f7826fe99b",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/8aeb2addb1e43e964735d01a5fc8b2edef9bbffe",
+                "reference": "8aeb2addb1e43e964735d01a5fc8b2edef9bbffe",
                 "shasum": ""
             },
             "require": {
@@ -173,7 +173,7 @@
                 "source": "https://github.com/berlinonline/honeybee/tree/hb-as-vendor",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2014-06-11 17:28:47"
+            "time": "2014-06-12 11:47:02"
         },
         {
             "name": "cboden/ratchet",

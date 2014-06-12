@@ -4,19 +4,9 @@
     xmlns="http://agavi.org/agavi/config/parts/routing/1.0"
     xmlns:xi="http://www.w3.org/2001/XInclude"
 >
-<!--
-    <ae:configuration context="web">
-        <routes>
-            <xi:include href="%core.app_dir%/config/includes/routing.xml" xpointer="xmlns(ae=http://agavi.org/agavi/config/global/envelope/1.0) xmlns(r=http://agavi.org/agavi/config/parts/routing/1.0) xpointer(//ae:configuration[@context='web']/r:routes/*)">
-            </xi:include>
-        </routes>
-    </ae:configuration>
 
-    <xi:include href="%core.app_dir%/config/includes/routing.xml" xpointer="xmlns(ae=http://agavi.org/agavi/config/global/envelope/1.0) xmlns(r=http://agavi.org/agavi/config/parts/routing/1.0) xpointer(//ae:configuration[not(@context='web')])">
-        <xi:fallback />
-    </xi:include>
--->
-    <xi:include href="%core.config_dir%/includes/routing.xml" xpointer="xmlns(ae=http://agavi.org/agavi/config/global/envelope/1.0) xmlns(r=http://agavi.org/agavi/config/parts/routing/1.0) xpointer(//ae:configuration)">
+    <xi:include href="%core.honeybee_config_dir%/routing.xml"
+        xpointer="xmlns(ae=http://agavi.org/agavi/config/global/envelope/1.0) xpointer(/ae:configurations/*)">
     </xi:include>
 
     <!--
