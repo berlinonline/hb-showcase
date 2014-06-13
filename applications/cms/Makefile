@@ -207,7 +207,7 @@ update:
 	@mkdir -p ./vendor/node_modules
 	@npm install --prefix ./vendor
 
-	@cd vendor && node_modules/honeybee/node_modules/.bin/bower install
+	@cd vendor && node_modules/honeybee/node_modules/.bin/bower update
 
 	@make environment
 
