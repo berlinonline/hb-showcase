@@ -35,6 +35,7 @@ help:
 	@echo "  reconfigure-environment   - Runs environaut and overrides any exisitng environment configs."
 	@echo "  tail-logs                 - Starts to tail all application logs and the php error-log."
 	@echo "  update                    - Updates all vendor libraries (dev+prod) and the composer.lock file."
+	@echo "  update-composer-lockfile  - Updates the composer.lock file with latest vendor library versions."
 	@echo ""
 	@echo "-------------------"
 	@echo "DEVELOPMENT TARGETS"
@@ -196,17 +197,13 @@ tail-logs:
 	@tail -f "${PHP_ERROR_LOG}" app/log/*.log
 
 
+#######################
+# DEVELOPMENT TARGETS #
+#######################
+
 update:
 
-	@if [ ! -f bin/composer.phar ]; then echo "Please run make install first and do not run make update on non-dev machines."; fi
-
-	@bin/composer.phar self-update
-
-	-@bin/revert-patches
-
-	@php -d allow_url_fopen=1 bin/composer.phar update --optimize-autoloader
-
-	-@bin/apply-patches
+	@make update-composer-lock-file
 
 	@mkdir -p ./vendor/node_modules
 	@npm install --prefix ./vendor
@@ -217,10 +214,17 @@ update:
 
 	@make build-resources
 
+update-composer-lock-file:
 
-#######################
-# DEVELOPMENT TARGETS #
-#######################
+	@if [ ! -f bin/composer.phar ]; then echo "Please run make install first and do not run make update on non-dev machines."; fi
+
+	@bin/composer.phar self-update
+
+	-@bin/revert-patches
+
+	@php -d allow_url_fopen=1 bin/composer.phar update --optimize-autoloader
+
+	-@bin/apply-patches
 
 action:
 
@@ -312,4 +316,4 @@ remove-module:
 #
 # PHONY targets @see http://www.linuxdevcenter.com/pub/a/linux/2002/01/31/make_intro.html?page=2
 #
-.PHONY: help build-resources link-project module-code module reconfigure cc config install update install-production
+.PHONY: help build-resources link-project module-code module reconfigure cc config install update update-composer-lock-file install-production

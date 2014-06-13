@@ -3,7 +3,7 @@
     xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0"
     xmlns="http://agavi.org/agavi/config/parts/validators/1.0"
     xmlns:xi="http://www.w3.org/2001/XInclude"
-    parent="%core.agavi_dir%/config/defaults/validators.xml"
+    parent="%core.system_config_dir%/validators.xml"
 >
 
     <xi:include href="%core.honeybee_config_dir%/validators.xml"
