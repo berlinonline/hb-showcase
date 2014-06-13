@@ -46,7 +46,6 @@ help:
 	@echo "  action                    - Creates a new action within an existing module."
 	@echo "  module                    - Creates and links a new honeybee-module."
 	@echo "  module-code               - Generates code for an existing honeybee-module."
-	@echo "  remove-module             - Removes an existing honeybee-module."
 	@echo ""
 	@echo "Integration and reporting:"
 	@echo ""
@@ -240,9 +239,13 @@ module:
 
 module-code:
 
-	@bin/agavi module-list
+# this should be "bin/agavi list-modules" again in the future to only show dat0r modules
+	@echo "Available modules:"
+	@echo ""
+	@ls -1 app/modules/ | grep -v Core
+	@echo ""
 
-	@read -p "Enter Module Name:" module; \
+	@read -p "Enter Module Name: " module; \
     	dator_dir=app/modules/$$module/config/dat0r; \
 		vendor/bin/dat0r.console generate_code gen+dep -c $$dator_dir/codegen.ini -s $$dator_dir/module.xml
 
@@ -301,16 +304,6 @@ php-metrics:
 php-tests:
 
 	@nice bin/test --configuration testing/config/phpunit.xml
-
-
-remove-module:
-
-	@bin/agavi module-list
-
-	@read -p "Enter module to remove:" module; unlink app/modules/$$module; rm -rf ../project/modules/$$module; unlink pub/static/modules/$$module
-
-	@make link-project-modules
-	@make config
 
 
 #

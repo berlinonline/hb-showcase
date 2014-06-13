@@ -11,4 +11,9 @@
         <xi:fallback />
     </xi:include>
 
+    <xi:include href="./includes/event_bus.xml"
+        xpointer="xmlns(ae=http://agavi.org/agavi/config/global/envelope/1.0) xpointer(/ae:configurations/*)">
+        <xi:fallback />
+    </xi:include>
+
 </ae:configurations>

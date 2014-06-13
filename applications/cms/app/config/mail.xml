@@ -16,7 +16,7 @@
 See docs/mailing.md for a more detailed documentation.
 
 Each module has its own mail.xml file, that usually has this file as it's parent config. If
-you want to customize mailer settings you can create a %project.config_dir%/mail.xml file
+you want to customize mailer settings you can change this %core.config_dir%/mail.xml file
 or change the mail.xml files of each module.
 
 To use mailer settings when sending emails specify the mailer name as second parameter on
