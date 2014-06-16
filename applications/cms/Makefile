@@ -31,7 +31,7 @@ help:
 	@echo "  environment               - Run environaut and configure environment."
 	@echo "  install                   - Installs vendor (development) libraries and runs environaut."
 	@echo "  install-production        - Installs vendor (production) libraries and runs environaut."
-	@echo "  link-project              - Symlinks the project code into the honeybee submodule."
+	@echo "  link-project              - Creates module symlinks and copies core honeybee modules into this app."
 	@echo "  reconfigure-environment   - Runs environaut and overrides any exisitng environment configs."
 	@echo "  tail-logs                 - Starts to tail all application logs and the php error-log."
 	@echo "  update                    - Updates all vendor libraries (dev+prod) and the composer.lock file."
@@ -92,6 +92,8 @@ cc:
 
 
 config:
+
+	@make copy-honeybee-core-modules
 
 	-@rm app/config/includes/*
 
@@ -195,6 +197,11 @@ tail-logs:
 
 	@tail -f "${PHP_ERROR_LOG}" app/log/*.log
 
+copy-honeybee-core-modules:
+
+	@echo "[INFO] Copying honeybee default modules into this application"
+	@cp -R ./vendor/berlinonline/honeybee/app/modules/Core app/modules/
+	@cp -R ./vendor/berlinonline/honeybee/app/modules/User app/modules/
 
 #######################
 # DEVELOPMENT TARGETS #
@@ -210,6 +217,8 @@ update:
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower update
 
 	@make environment
+
+	@make link-project
 
 	@make build-resources
 
@@ -309,4 +318,4 @@ php-tests:
 #
 # PHONY targets @see http://www.linuxdevcenter.com/pub/a/linux/2002/01/31/make_intro.html?page=2
 #
-.PHONY: help build-resources link-project module-code module reconfigure cc config install update update-composer-lock-file install-production
+.PHONY: help build-resources link-project module-code module reconfigure cc config install update update-composer-lock-file install-production copy-honeybee-core-modules
