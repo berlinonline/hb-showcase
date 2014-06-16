@@ -66,19 +66,27 @@ help:
 
 autoloads:
 
+	@echo "[INFO] Regenerating (optimized) autoload files:"
 	@php bin/composer.phar dump-autoload --optimize
 
 	@echo ""
-	@echo "-> regenerated and optimized autoload files"
+	@echo "[INFO] Regenerated and optimized autoload files."
 
 
 build-resources:
 
+	@make link-project
+
+	@echo ""
+	@echo "[INFO] Trying to compile SCSS files from all themes and modules:"
 	@bin/cli core.util.compile_scss
+
+	@echo ""
+	@echo "[INFO] Trying to compile JS files from all modules:"
 	@bin/cli core.util.compile_js
 
 	@echo ""
-	@echo "-> binary, css and javascript resource packages where successfully built"
+	@echo "[INFO] Built CSS/JS from all themes and modules."
 
 
 cc:
@@ -97,7 +105,7 @@ config:
 
 	@bin/cli core.util.build_config --recovery
 
-	@echo "-> built and included configuration files"
+	@echo "[INFO] Built and included configuration files for all modules."
 
 	@make cc
 
@@ -109,7 +117,7 @@ environment:
 	@vendor/bin/environaut check
 
 	@echo ""
-	@echo "-> environaut was successfully executed"
+	@echo "[INFO] Environaut was successfully executed."
 	@echo ""
 
 
@@ -137,8 +145,6 @@ install:
 
 	@make environment
 
-	@make link-project
-
 	@make build-resources
 
 
@@ -164,16 +170,15 @@ install-production:
 
 	@make environment
 
-	@make link-project
-
 	@make build-resources
 
 
 link-project:
 
 	@make copy-honeybee-core-modules
+	@make copy-honeybee-core-themes
 
-	@bin/cli core.util.link_project --recovery
+#	@bin/cli core.util.link_project --recovery
 
 	@make config
 
@@ -183,12 +188,12 @@ link-project:
 
 reconfigure-environment:
 
-	@echo "Environaut cache file: ${ENVIRONAUT_CACHE_LOCATION}"
+	@echo "[INFO] Environaut cache file: ${ENVIRONAUT_CACHE_LOCATION}"
 
-	@if [ -f "${ENVIRONAUT_CACHE_LOCATION}" ]; then rm ${ENVIRONAUT_CACHE_LOCATION} && echo "Deleted environaut cache."; fi
+	@if [ -f "${ENVIRONAUT_CACHE_LOCATION}" ]; then rm ${ENVIRONAUT_CACHE_LOCATION} && echo "[INFO] Deleted environaut cache."; fi
 
 	@echo ""
-	@echo "-> removed environaut cache, starting reconfiguration"
+	@echo "[INFO] Removed environaut cache, starting reconfiguration."
 
 	@make environment
 
@@ -199,9 +204,16 @@ tail-logs:
 
 copy-honeybee-core-modules:
 
-	@echo "[INFO] Copying honeybee default modules into this application"
+	@echo "[INFO] Copying honeybee default modules into this application."
 	@cp -R ./vendor/berlinonline/honeybee/app/modules/Core app/modules/
 	@cp -R ./vendor/berlinonline/honeybee/app/modules/User app/modules/
+
+
+copy-honeybee-core-themes:
+
+	@echo "[INFO] Copying honeybee default themes into this application."
+	@cp -R ./vendor/berlinonline/honeybee/pub/static/themes/* pub/static/themes/
+
 
 #######################
 # DEVELOPMENT TARGETS #
@@ -217,8 +229,6 @@ update:
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower update
 
 	@make environment
-
-	@make link-project
 
 	@make build-resources
 

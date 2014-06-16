@@ -53,6 +53,11 @@
             </setting>
         </settings>
         -->
+
+        <settings prefix="requirejs.">
+            <setting name="cmd_rjs">vendor/node_modules/honeybee/node_modules/.bin/r.js</setting>
+        </settings>
+
     </ae:configuration>
     <!--
         Example for changing settings based on an evironment modifier.
