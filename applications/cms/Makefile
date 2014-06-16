@@ -93,8 +93,6 @@ cc:
 
 config:
 
-	@make copy-honeybee-core-modules
-
 	-@rm app/config/includes/*
 
 	@bin/cli core.util.build_config --recovery
@@ -172,6 +170,8 @@ install-production:
 
 
 link-project:
+
+	@make copy-honeybee-core-modules
 
 	@bin/cli core.util.link_project --recovery
 
