@@ -91,16 +91,18 @@ build-resources:
 
 cc:
 
+	@echo "[INFO] Clearing cache directories."
 	-@rm -rf app/cache/*
 
 	@make autoloads
 
 	@echo ""
-	@echo "-> cleared caches"
+	@echo "[INFO] Cleared caches."
 
 
 config:
 
+	@echo "[INFO] Creating (proxy) config files in app/config/includes folder."
 	-@rm app/config/includes/*
 
 	@bin/cli core.util.build_config --recovery
@@ -112,7 +114,8 @@ config:
 
 environment:
 
-	@if [ ! -d etc/local/ ]; then mkdir etc/local; fi
+	@echo "[INFO] Configuring environment of this application."
+	@if [ ! -d etc/local/ ]; then mkdir -p etc/local; fi
 
 	@vendor/bin/environaut check
 
@@ -177,13 +180,14 @@ link-project:
 
 	@make copy-honeybee-core-modules
 	@make copy-honeybee-core-themes
+	@make copy-honeybee-core-schemas
 
 #	@bin/cli core.util.link_project --recovery
 
 	@make config
 
 	@echo ""
-	@echo "-> successfully linked the project into honeybee."
+	@echo "[INFO] Successfully copied/linked honeybee files into the project."
 
 
 reconfigure-environment:
@@ -202,6 +206,7 @@ tail-logs:
 
 	@tail -f "${PHP_ERROR_LOG}" app/log/*.log
 
+
 copy-honeybee-core-modules:
 
 	@echo "[INFO] Copying honeybee default modules into this application."
@@ -215,17 +220,28 @@ copy-honeybee-core-themes:
 	@cp -R ./vendor/berlinonline/honeybee/pub/static/themes/* pub/static/themes/
 
 
+copy-honeybee-core-schemas:
+
+	@echo "[INFO] Copying honeybee config schema files (XSDs) into this application."
+	@cp -R ./vendor/berlinonline/honeybee/app/config/xsd/* app/config/xsd/
+
+
 #######################
 # DEVELOPMENT TARGETS #
 #######################
 
 update:
 
+	@echo "[INFO] TRYING TO UPDATE ALL VENDOR DEPENDENCIES TO LATEST VERSIONS."
+
+	@echo "[INFO] Updating composer.lock file with latest versions."
 	@make update-composer-lock-file
 
+	@echo "[INFO] Updating npm (node modules) with latest versions."
 	@mkdir -p ./vendor/node_modules
 	@npm install --prefix ./vendor
 
+	@echo "[INFO] Updating bower (clientside libs) with latest versions."
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower update
 
 	@make environment
@@ -328,4 +344,4 @@ php-tests:
 #
 # PHONY targets @see http://www.linuxdevcenter.com/pub/a/linux/2002/01/31/make_intro.html?page=2
 #
-.PHONY: help build-resources link-project module-code module reconfigure cc config install update update-composer-lock-file install-production copy-honeybee-core-modules
+.PHONY: help build-resources link-project module-code module reconfigure cc config install update update-composer-lock-file install-production copy-honeybee-core-modules copy-honeybee-core-themes copy-honeybee-core-schemas
