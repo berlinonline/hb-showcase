@@ -14,7 +14,6 @@ Vagrant.configure("2") do |config|
   # shell provisioner running only once every 48 hours
   config.vm.provision :shell, :inline =>'[ "$(find /home/vagrant/ -maxdepth 1 -name apt_updated -mtime -48)" == "" ] && apt-get update --fix-missing && touch /home/vagrant/apt_updated; echo ""'
 
-
   ###############
   # backend box #
   ###############
@@ -32,21 +31,4 @@ Vagrant.configure("2") do |config|
     end
   end
 
-
-  ################
-  # frontend box # Comment in as soon as you need a frontend.
-  ################
-#  config.vm.define :fe do |fe|
-#    fe.vm.provider :virtualbox do |vb|
-#      vb.customize ["modifyvm", :id, "--name", "hb-showcase-cms-trusty-x64"] # name for VirtualBox GUI
-#      vb.customize ["modifyvm", :id, "--memory", 512]
-#    end
-#    fe.vm.hostname = "hb-showcase-fe.local"
-#    fe.vm.provision :puppet do |puppet|
-#      puppet.manifests_path = "./"
-#      puppet.manifest_file = "manifest-fe.pp"
-#      puppet.module_path = [ "../../modules", "../../../puppets/modules" ]
-#      #puppet.options = "--verbose --debug"
-#    end
-#  end
 end
