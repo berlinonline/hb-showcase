@@ -11,36 +11,12 @@ define hb-showcase::application (
     docroot => "${app_docroot}"
   }
 
-  file { '/etc/apache_tika':
-    ensure => directory,
-    owner => 'root',
-    group => 'root',
-    mode => '0644'
-  }
-  -> exec { 'wget http://apache.openmirror.de/tika/tika-app-1.5.jar':
-    cwd => '/etc/apache_tika',
-    timeout => -1,
-    unless => 'ls /etc/apache_tika/tika-app-1.5.jar'
-  }
-
   file {
-    "/home/vagrant/init_fe.sh":
-      ensure  => present,
-      mode    => '0744',
-      owner   => 'vagrant',
-      group   => 'vagrant',
-      content => template('hb-showcase/init_fe.sh.erb');
     "/home/vagrant/init_cms.sh":
       ensure  => present,
       mode    => '0744',
       owner   => 'vagrant',
       group   => 'vagrant',
       content => template('hb-showcase/init_cms.sh.erb');
-    "/home/vagrant/cms_project_environaut.xml":
-      ensure  => present,
-      mode    => '0744',
-      owner   => 'vagrant',
-      group   => 'vagrant',
-      content => template('hb-showcase/project_environaut.xml.erb');
   }
 }

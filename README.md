@@ -21,19 +21,21 @@ Create a virtual machine for development:
 
 ## Installation inside the Virtual Machine
 
-1. ```cd development/project/boxes/hb-showcase```
 1. ```vagrant ssh```
-1. ```cd projects```
-1. ```git clone git@github.com:berlinonline/hb-showcase.git hb-showcase-cms```
-1. ```cd hb-showcase-cms/applications/cms```
-1. ```make install```
+1. ```./init_cms.sh``` (clones ```hb-showcase``` and runs ```make install```)
 1. ...wait...
 1. accept all the default settings
 1. visit http://hb-showcase-cms.local/
 
 ## First User Account
 
+1. ```vagrant ssh``` (on the host system in the ```development/project/boxes/hb-showcase``` folder)
+1. ```cd ~/projects/hb-showcase-cms/applications/cms``` (in the box)
 1. ```bin/cli core.common.queue_spinner``` (run it in the background in the box)
 1. ```bin/cli user.create -username yourname -email youremail@example.com```
 1. visit the given URL and set a password for that account
 
+## Development
+
+Either use `vim` in the box (like a pro) or mount the project's cms folder from
+the box to your host system via `nfs` (like a pro).
