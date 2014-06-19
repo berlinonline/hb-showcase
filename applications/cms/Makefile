@@ -119,7 +119,7 @@ environment:
 
 install:
 
-	@if [ ! -d data/assets ]; then mkdir -p data/assets; fi
+	@make folders
 
 	@echo "[INFO] Installing or updating composer locally."
 	@if [ ! -f bin/composer.phar ]; \
@@ -154,6 +154,8 @@ install:
 
 
 install-production:
+
+	@make folders
 
 	@echo "[INFO] Installing or updating composer locally."
 	@if [ ! -f bin/composer.phar ]; \
@@ -235,6 +237,17 @@ copy-honeybee-core-schemas:
 	@cp -R ./vendor/berlinonline/honeybee/app/config/xsd/* app/config/xsd/
 
 
+folders:
+
+	@echo "[INFO] Creating cache, log and asset folders (if missing)."
+	@if [ ! -d app/cache ]; then mkdir -p app/cache; fi
+	@if [ ! -d app/log ]; then mkdir -p app/log; fi
+	@if [ ! -d data/assets ]; then mkdir -p data/assets; fi
+	@chmod 755 app/cache
+	@chmod 755 app/log
+	@chmod 755 data/assets
+
+
 #######################
 # DEVELOPMENT TARGETS #
 #######################
@@ -242,6 +255,8 @@ copy-honeybee-core-schemas:
 update:
 
 	@echo "[INFO] TRYING TO UPDATE ALL VENDOR DEPENDENCIES TO LATEST VERSIONS."
+
+	@make folders
 
 	@echo "[INFO] Updating composer.lock file with latest versions."
 	@make update-composer-lock-file
