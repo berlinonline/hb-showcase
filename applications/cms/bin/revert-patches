@@ -32,7 +32,7 @@ do
         cd $vendor_directory/$vendor/$lib
 
         echo " > Reversing local changes for vendor lib: $vendor/$lib"
-        if [ -d .svn ] ; then
+        if [ -f .svn ] ; then
             svn revert -R .
         elif [ -d .git ] ; then
             git checkout .

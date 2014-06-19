@@ -31,7 +31,8 @@
         "ext-imagick": "*",
         "berlinonline/honeybee": "dev-hb-as-vendor@dev",
         "berlinonline/dat0r": "dev-collection-refactoring@dev",
-        "PhpDebugToolbar/php-debug-toolbar": "dev-master@dev"
+        "agavi/agavi": "dev-master#5cd8f3c5d4116e94fe20d0bea50396b4e255a17b as 1.0.7",
+        "phpdebugtoolbar/php-debug-toolbar": "dev-master#63b1b518e559b7e2995cda91a8edb707048c79a6 as 1.0.0"
     },
     "autoload": {
         "psr-0": {
@@ -48,33 +49,6 @@
         {
             "type": "vcs",
             "url": "git://github.com/berlinonline/honeybee.git"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "agavi/agavi",
-                "version": "1.0.7",
-                "source": {
-                    "url": "http://svn.agavi.org/",
-                    "type": "svn",
-                    "reference": "tags/1.0.7/"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "PhpDebugToolbar/php-debug-toolbar",
-                "version": "dev-master",
-                "source": {
-                    "url": "https://github.com/graste/PhpDebugToolbar.git",
-                    "type": "git",
-                    "reference": "63b1b518e559b7e2995cda91a8edb707048c79a6"
-                },
-                "autoload": {
-                    "classmap": ["lib/agavi/", "PhpDebugToolbar.class.php"]
-                }
-            }
         }
     ]
 }

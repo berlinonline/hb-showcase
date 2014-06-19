@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1d8ae4ff84cff7dd802a53d938f4cb1d",
+    "hash": "35b7a780d4d02837e2e061987b683739",
     "packages": [
         {
             "name": "PhpDebugToolbar/php-debug-toolbar",
@@ -25,13 +25,66 @@
         },
         {
             "name": "agavi/agavi",
-            "version": "1.0.7",
+            "version": "dev-master",
             "source": {
-                "type": "svn",
-                "url": "http://svn.agavi.org/",
-                "reference": "tags/1.0.7/"
+                "type": "git",
+                "url": "https://github.com/agavi/agavi.git",
+                "reference": "5cd8f3c5d4116e94fe20d0bea50396b4e255a17b"
             },
-            "type": "library"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agavi/agavi/zipball/b0bb977f5b3bfffd5e0fe97dfdaf268dec956c38",
+                "reference": "5cd8f3c5d4116e94fe20d0bea50396b4e255a17b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-pcre": "*",
+                "ext-reflection": "*",
+                "ext-spl": "*",
+                "lib-libxml": "*",
+                "phing/phing": "~2.4",
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.5"
+            },
+            "suggest": {
+                "ext-iconv": "Enable iconv if you need to convert between other charset than iso-8859-1 and utf-8",
+                "ext-pdo": "PDO is required for database connectors that use PDO as base",
+                "ext-session": "If the session extension is disabled you'll have to build your own session storage system and hook it into agavi",
+                "ext-soap": "Enable the xmlrpc extension if you want to use Agavi's SOAP features",
+                "ext-tokenizer": "Enable the tokenizer extension allows Agavi to generate more efficient config-caches",
+                "ext-xmlrpc": "Enable the xmlrpc extension if you want to use XML-RPC features",
+                "ext-xsl": "Required only for transformation of pre 1.0 style configuration files",
+                "phpunit/phpunit": "Install phpunit if you want to run your tests"
+            },
+            "bin": [
+                "etc/composer/bin/agavi"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/agavi.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1+"
+            ],
+            "authors": [
+                {
+                    "name": "Agavi Contributors",
+                    "homepage": "https://github.com/agavi/agavi/graphs/contributors"
+                }
+            ],
+            "description": "Agavi is a full-featured MVC-style framework for PHP5 with a strong focus on structure, code reusability and flexibility.",
+            "homepage": "http://agavi.org",
+            "keywords": [
+                "framework",
+                "mvc"
+            ],
+            "time": "2011-12-22 12:24:30"
         },
         {
             "name": "berlinonline/dat0r",
@@ -94,16 +147,16 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "98f37fba176715e22416340e322eedfd8ee22429"
+                "reference": "48bb547a0aa41cf76c18b5cd9976798a962fed61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/98f37fba176715e22416340e322eedfd8ee22429",
-                "reference": "98f37fba176715e22416340e322eedfd8ee22429",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/48bb547a0aa41cf76c18b5cd9976798a962fed61",
+                "reference": "48bb547a0aa41cf76c18b5cd9976798a962fed61",
                 "shasum": ""
             },
             "require": {
-                "agavi/agavi": "1.0.7",
+                "agavi/agavi": "dev-master#5cd8f3c5d4116e94fe20d0bea50396b4e255a17b as 1.0.7",
                 "berlinonline/dat0r": "dev-collection-refactoring@dev",
                 "cboden/ratchet": "0.3.*",
                 "elasticsearch/elasticsearch": "~1.0",
@@ -117,7 +170,7 @@
                 "mthaml/mthaml": "1.3.1",
                 "phing/phing": "2.4.12",
                 "php": ">=5.3.3",
-                "phpdebugtoolbar/php-debug-toolbar": "dev-master",
+                "phpdebugtoolbar/php-debug-toolbar": "dev-master#63b1b518e559b7e2995cda91a8edb707048c79a6 as 1.0.0",
                 "psr/log": "1.0.0",
                 "ql/uri-template": "1.0.1",
                 "react/zmq": "0.2.*",
@@ -173,7 +226,7 @@
                 "source": "https://github.com/berlinonline/honeybee/tree/hb-as-vendor",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2014-06-19 11:16:43"
+            "time": "2014-06-19 13:50:53"
         },
         {
             "name": "cboden/ratchet",
@@ -1999,12 +2052,24 @@
 
     ],
     "aliases": [
-
+        {
+            "alias": "1.0.7",
+            "alias_normalized": "1.0.7.0",
+            "version": "9999999-dev",
+            "package": "agavi/agavi"
+        },
+        {
+            "alias": "1.0.0",
+            "alias_normalized": "1.0.0.0",
+            "version": "9999999-dev",
+            "package": "phpdebugtoolbar/php-debug-toolbar"
+        }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
         "berlinonline/honeybee": 20,
         "berlinonline/dat0r": 20,
+        "agavi/agavi": 20,
         "phpdebugtoolbar/php-debug-toolbar": 20
     },
     "platform": {
