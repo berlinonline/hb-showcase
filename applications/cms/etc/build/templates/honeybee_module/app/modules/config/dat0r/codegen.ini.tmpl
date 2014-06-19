@@ -1,0 +1,8 @@
+; Common settings for dat0r's code generator
+cache_dir=./codecache
+deploy_dir=../../lib/dat0r/
+bootstrap_file=../../../../../bin/bootstrap.php
+
+; Integrate the plugin that is responseable for generating the module's elasticsearch mapping
+[plugin:\Honeybee\CodeGen\Plugin\ElasticSearch\MappingGeneratorPlugin]
+deploy_path=../elasticsearch/%%MODULE_PREFIX%%.mapping.json

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations
+    xmlns="http://berlinonline.de/schemas/honeybee/config/imports/1.0"
+    xmlns:env="http://berlinonline.de/schemas/honeybee/config/envelope/definition/1.0"
+    xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0">
+    <ae:configuration>
+        <consumers>
+
+            <!--
+                Use this consumer via: ./bin/cli %%MODULE_PREFIX%%.import -consumer fakedata
+                to generate documents containing fake data for the %%MODULE_NAME%% module.
+                This will generate fake documents recursively for referenced modules as well
+                (only one level of recursion depth).
+            -->
+            <consumer name="fakedata" class="Honeybee\Core\Import\Consumer\ModuleConsumer">
+                <provider name="fake-provider" class="Honeybee\Core\Import\Provider\FakeProvider">
+                    <settings>
+                        <setting name="module">Honeybee\Domain\%%MODULE_NAME%%\%%MODULE_NAME%%Module</setting> <!-- Dat0r module to generate documents for -->
+                        <setting name="limit">50</setting> <!-- number of documents to create -->
+                        <setting name="locale">de_DE</setting> <!-- locale used for fakedata generation -->
+                        <setting name="excluded_fields"> <!-- names of fields to ignore when generating fake data -->
+                            <settings>
+                                <setting>asset</setting>
+                                <setting>image</setting>
+                                <setting>images</setting>
+                            </settings>
+                        </setting>
+                    </settings>
+                </provider>
+                <settings>
+                    <setting name="module">Honeybee\Domain\%%MODULE_NAME%%\%%MODULE_NAME%%Module</setting>
+                </settings>
+                <filters>
+                    <filter name="default" class="Honeybee\Core\Import\Filter\BaseFilter" /> <!-- No filtering necessary for fakedata -->
+                </filters>
+            </consumer>
+
+            <!-- Example import consumer config for a given CSV file:
+            <consumer name="%%MODULE_PREFIX%%-csv" class="Honeybee\Core\Import\Consumer\ModuleConsumer">
+                <provider name="csv-provider" class="Honeybee\Core\Import\Provider\CsvProvider">
+                    <settings>
+                        <setting name="filepath">%core.app_dir%/project/%%MODULE_PREFIX%%.csv</setting>
+                    </settings>
+                </provider>
+                <settings>
+                    <setting name="module">Honeybee\Domain\%%MODULE_NAME%%\%%MODULE_NAME%%Module</setting>
+                </settings>
+                <filters>
+                    <filter name="default" class="Honeybee\Core\Import\Filter\RemapFilter">
+                        <settings>
+                            <setting name="include_unmapped">off</setting>
+                            <setting name="map">
+                                <setting name="ss">ssFlag</setting>
+                                <setting name="autor_vorname">authorFirstname</setting>
+                                <setting name="autor_nachname">authorLastname</setting>
+                                <setting name="titel">title</setting>
+                                <setting name="verlag">publisherOne</setting>
+                                <setting name="ort">placeOne</setting>
+                                <setting name="jahr">yearOne</setting>
+                                <setting name="verlag_2">publisherTwo</setting>
+                                <setting name="jahr_2">yearTwo</setting>
+                                <setting name="weitere">additionalInfos</setting>
+                                <setting name="seite">pageNumber</setting>
+                                <setting name="volltext">ocrResult</setting>
+                            </setting>
+                        </settings>
+                    </filter>
+                </filters>
+            </consumer>
+            -->
+
+        </consumers>
+    </ae:configuration>
+</ae:configurations>

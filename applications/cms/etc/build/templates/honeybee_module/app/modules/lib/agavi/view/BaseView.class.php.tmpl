@@ -1,0 +1,15 @@
+<?php
+
+use Honeybee\Domain\%%MODULE_NAME%%\%%MODULE_NAME%%Module;
+use Honeybee\Agavi\Api\Ui\Base\View as BaseView;
+
+/**
+ * Base view for views of the %%MODULE_NAME%% module.
+ */
+class %%MODULE_NAME%%BaseView extends BaseView
+{
+    protected function getModule()
+    {
+        return %%MODULE_NAME%%Module::getInstance();
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations xmlns="http://agavi.org/agavi/config/parts/validators/1.0" xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0" parent="%core.config_dir%/validators.xml">
+	<ae:configuration>
+		<validator_definitions>
+            <validator_definition class="%%MODULE_NAME%%DocumentValidator" name="%%MODULE_PREFIX%%">
+                <error for="invalid_values">The value '%value$s' given for field '%fieldname$s' does not comply.</error>
+                <error for="missing_mandatory_values">Missing required value for field '%fieldname$s'</error>
+                <ae:parameter name="required">true</ae:parameter>
+            </validator_definition>
+        </validator_definitions>
+	</ae:configuration>
+</ae:configurations>
