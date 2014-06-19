@@ -7,14 +7,18 @@ dependencies.
 ## Composer
 
 The main package manager for Honeybee is [Composer](https://getcomposer.org).
-All PHP libraries should be added there.
+All PHP libraries should be added to the ```composer.json``` file in the root
+cms directory. It is advisable to commit the ```composer.lock``` file so other
+developers get the exact same versions of libraries. The version constraints can
+be updated by running ```make update``` or by updating single libraries via
+running ```bin/composer.phar update library/name```.
 
 ## NPM
 
-Honeybee uses some `nodejs` libraries and handles those dependencies in the
-```vendor/package.json``` file for use with [npm](https://www.npmjs.org/).
-Honeybee uses ```r.js``` to compile and minify javascript and css files and
-installs ```bower``` via NPM.
+Honeybee uses [npm](https://www.npmjs.org/) to handle `nodejs` libraries and
+their dependencies in the ```vendor/package.json``` file. Honeybee uses
+```r.js``` to compile and minify javascript and css files and installs
+```bower``` via npm.
 
 ## Bower
 
