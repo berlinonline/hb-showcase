@@ -195,8 +195,6 @@ link-project:
 	@make copy-honeybee-core-themes
 	@make copy-honeybee-core-schemas
 
-#	@bin/cli core.util.link_project --recovery
-
 	@make config
 
 	@echo "[INFO] Successfully copied/linked honeybee files into the project."
