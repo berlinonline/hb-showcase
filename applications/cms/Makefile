@@ -69,7 +69,6 @@ autoloads:
 	@echo "[INFO] Regenerating (optimized) autoload files:"
 	@php bin/composer.phar dump-autoload --optimize
 
-	@echo ""
 	@echo "[INFO] Regenerated and optimized autoload files."
 
 
@@ -77,15 +76,12 @@ build-resources:
 
 	@make link-project
 
-	@echo ""
 	@echo "[INFO] Trying to compile SCSS files from all themes and modules:"
 	@bin/cli core.util.compile_scss
 
-	@echo ""
 	@echo "[INFO] Trying to compile JS files from all modules:"
 	@bin/cli core.util.compile_js
 
-	@echo ""
 	@echo "[INFO] Built CSS/JS from all themes and modules."
 
 
@@ -96,7 +92,6 @@ cc:
 
 	@make autoloads
 
-	@echo ""
 	@echo "[INFO] Cleared caches."
 
 
@@ -119,15 +114,14 @@ environment:
 
 	@vendor/bin/environaut check
 
-	@echo ""
 	@echo "[INFO] Environaut was successfully executed."
-	@echo ""
 
 
 install:
 
 	@if [ ! -d data/assets ]; then mkdir -p data/assets; fi
 
+	@echo "[INFO] Installing or updating composer locally."
 	@if [ ! -f bin/composer.phar ]; \
 	then \
 		curl -s http://getcomposer.org/installer | php -d allow_url_fopen=1 -d date.timezone="Europe/Berlin" -- --install-dir=./bin; \
@@ -135,16 +129,24 @@ install:
 		bin/composer.phar self-update; \
 	fi
 
+	@echo "[INFO] Reverting known local patches to vendor libraries."
 	-@bin/revert-patches
 
+	@echo "[INFO] Installing vendor libraries with optimized autoloader via composer."
 	@php -d allow_url_fopen=1 bin/composer.phar install --optimize-autoloader
 
+	@echo "[INFO] Applying known local patches to vendor libraries."
 	-@bin/apply-patches
 
+	@echo "[INFO] Installing npm (node modules) into vendor/node_modules."
 	@mkdir -p ./vendor/node_modules
 	@npm install --prefix ./vendor
 
+	@echo "[INFO] Installing (updating) bower (clientside libraries) into vendor/bower_components."
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower update
+
+	@echo "[INFO] Downloading additional dependencies from package.txt file."
+	@bin/wget_packages.sh
 
 	@make environment
 
@@ -153,6 +155,7 @@ install:
 
 install-production:
 
+	@echo "[INFO] Installing or updating composer locally."
 	@if [ ! -f bin/composer.phar ]; \
 	then \
 		curl -s http://getcomposer.org/installer | php -d allow_url_fopen=1 -d date.timezone="Europe/Berlin" -- --install-dir=./bin; \
@@ -160,16 +163,24 @@ install-production:
 		bin/composer.phar self-update; \
 	fi
 
+	@echo "[INFO] Reverting known local patches to vendor libraries."
 	-@bin/revert-patches
 
+	@echo "[INFO] Installing vendor libraries with optimized autoloader via composer."
 	@php -d allow_url_fopen=1 bin/composer.phar install --no-dev --optimize-autoloader
 
+	@echo "[INFO] Applying known local patches to vendor libraries."
 	-@bin/apply-patches
 
+	@echo "[INFO] Installing npm (node modules) into vendor/node_modules."
 	@mkdir -p ./vendor/node_modules
 	@npm install --prefix ./vendor
 
-	@cd vendor && node_modules/honeybee/node_modules/.bin/bower update
+	@echo "[INFO] Installing bower (clientside libraries) into vendor/bower_components."
+	@cd vendor && node_modules/honeybee/node_modules/.bin/bower install
+
+	@echo "[INFO] Downloading additional dependencies from package.txt file."
+	@bin/wget_packages.sh
 
 	@make environment
 
@@ -186,7 +197,6 @@ link-project:
 
 	@make config
 
-	@echo ""
 	@echo "[INFO] Successfully copied/linked honeybee files into the project."
 
 
@@ -196,7 +206,6 @@ reconfigure-environment:
 
 	@if [ -f "${ENVIRONAUT_CACHE_LOCATION}" ]; then rm ${ENVIRONAUT_CACHE_LOCATION} && echo "[INFO] Deleted environaut cache."; fi
 
-	@echo ""
 	@echo "[INFO] Removed environaut cache, starting reconfiguration."
 
 	@make environment
@@ -239,26 +248,34 @@ update:
 
 	@echo "[INFO] Updating npm (node modules) with latest versions."
 	@mkdir -p ./vendor/node_modules
-	@npm install --prefix ./vendor
+	@npm update --prefix ./vendor
 
-	@echo "[INFO] Updating bower (clientside libs) with latest versions."
+	@echo "[INFO] Updating bower (clientside libraries) with latest versions."
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower update
+
+	@echo "[INFO] Downloading additional dependencies from package.txt file."
+	@bin/wget_packages.sh
 
 	@make environment
 
 	@make build-resources
 
+
 update-composer-lock-file:
 
-	@if [ ! -f bin/composer.phar ]; then echo "Please run make install first and do not run make update on non-dev machines."; fi
+	@if [ ! -f bin/composer.phar ]; then echo "Please run MAKE INSTALL first and do not run make update on non-dev machines."; fi
 
 	@bin/composer.phar self-update
 
+	@echo "[INFO] Reverting known local patches to vendor libraries."
 	-@bin/revert-patches
 
+	@echo "[INFO] Updating vendor library versions in composer.lock and generating optimized autoloads."
 	@php -d allow_url_fopen=1 bin/composer.phar update --optimize-autoloader
 
+	@echo "[INFO] Applying known local patches to vendor libraries."
 	-@bin/apply-patches
+
 
 action:
 

@@ -94,12 +94,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "d0cb757cc8043527603650e15e3c99468b867395"
+                "reference": "98f37fba176715e22416340e322eedfd8ee22429"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/d0cb757cc8043527603650e15e3c99468b867395",
-                "reference": "d0cb757cc8043527603650e15e3c99468b867395",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/98f37fba176715e22416340e322eedfd8ee22429",
+                "reference": "98f37fba176715e22416340e322eedfd8ee22429",
                 "shasum": ""
             },
             "require": {
@@ -173,7 +173,7 @@
                 "source": "https://github.com/berlinonline/honeybee/tree/hb-as-vendor",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2014-06-17 09:36:30"
+            "time": "2014-06-19 11:16:43"
         },
         {
             "name": "cboden/ratchet",
@@ -1194,16 +1194,16 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v1.3.1",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "98b3a1e32eea9fb5368a1fcccf5884f34e27fc0d"
+                "reference": "941b1b969805b7d64732409a5443d410ba6ad37b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/98b3a1e32eea9fb5368a1fcccf5884f34e27fc0d",
-                "reference": "98b3a1e32eea9fb5368a1fcccf5884f34e27fc0d",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/941b1b969805b7d64732409a5443d410ba6ad37b",
+                "reference": "941b1b969805b7d64732409a5443d410ba6ad37b",
                 "shasum": ""
             },
             "require": {
@@ -1235,7 +1235,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2014-06-17 07:22:46"
+            "time": "2014-06-19 06:41:04"
         },
         {
             "name": "swiftmailer/swiftmailer",
