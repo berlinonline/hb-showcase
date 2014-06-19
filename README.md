@@ -37,5 +37,5 @@ Create a virtual machine for development:
 
 ## Development
 
-Either use `vim` in the box (like a pro) or mount the project's cms folder from
-the box to your host system via `nfs` (like a pro).
+Either use `vim` in the box or mount the project's `cms` folder from the box to
+your host system via `nfs` (nfs server is installed in the box).
