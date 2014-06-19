@@ -2,7 +2,7 @@
 
 Branch `v001-dev` on `berlinonline/honeybee`:
 
-- cd berlinonline/honeybee
+- cd vendor/berlinonline/honeybee
 - git fetch origin v001-dev:v001-dev --verbose
 - git branch --set-upstream-to=origin/v001-dev v001-dev
 - cd -

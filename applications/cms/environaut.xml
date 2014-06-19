@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <environaut xmlns="http://mivesto.de/environaut/config/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <name>honeybee project environment configuration</name>
+
+    <name>Honeybee project environment configuration</name>
 
     <description><![CDATA[
-        This is an Environaut configuration file for Honeybee that
+        This is an Environaut configuration file for a Honeybee project that
         defines settings and checks to be performed for project configuration
         and health checking.
     ]]></description>

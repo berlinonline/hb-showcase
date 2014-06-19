@@ -145,8 +145,8 @@ install:
 	@echo "[INFO] Installing (updating) bower (clientside libraries) into vendor/bower_components."
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower update
 
-	@echo "[INFO] Downloading additional dependencies from package.txt file."
-	@bin/wget_packages.sh
+	@echo "[INFO] Downloading additional dependencies from package.txt files."
+	@bin/wget_packages
 
 	@make environment
 
@@ -181,8 +181,8 @@ install-production:
 	@echo "[INFO] Installing bower (clientside libraries) into vendor/bower_components."
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower install
 
-	@echo "[INFO] Downloading additional dependencies from package.txt file."
-	@bin/wget_packages.sh
+	@echo "[INFO] Downloading additional dependencies from package.txt files."
+	@bin/wget_packages
 
 	@make environment
 
@@ -266,8 +266,8 @@ update:
 	@echo "[INFO] Updating bower (clientside libraries) with latest versions."
 	@cd vendor && node_modules/honeybee/node_modules/.bin/bower update
 
-	@echo "[INFO] Downloading additional dependencies from package.txt file."
-	@bin/wget_packages.sh
+	@echo "[INFO] Downloading additional dependencies from package.txt files."
+	@bin/wget_packages
 
 	@make environment
 
@@ -373,5 +373,6 @@ php-tests:
 
 #
 # PHONY targets @see http://www.linuxdevcenter.com/pub/a/linux/2002/01/31/make_intro.html?page=2
+# vim: ts=4:sw=4:noexpandtab!:
 #
-.PHONY: help build-resources link-project module-code module reconfigure cc config install update update-composer-lock-file install-production copy-honeybee-core-modules copy-honeybee-core-themes copy-honeybee-core-schemas
+.PHONY: help build-resources link-project module-code module reconfigure cc config install update update-composer-lock-file install-production copy-honeybee-core-modules copy-honeybee-core-themes copy-honeybee-core-schemas folders

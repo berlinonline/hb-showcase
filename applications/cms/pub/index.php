@@ -35,5 +35,6 @@ if ($index_php_file === false) {
     $index_php_file = $app_dir . '/vendor/berlinonline/honeybee/pub/index.php';
 }
 
+// include honeybee index.php file
 require($index_php_file);
 

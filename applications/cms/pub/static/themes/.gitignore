@@ -1,3 +1,2 @@
-# we ignore the default honeybee themes here
-# as those folders are symlinked here
+# we ignore the default honeybee themes here as those are copied here
 /honeybee-minimal
