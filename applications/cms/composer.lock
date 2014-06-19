@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "35b7a780d4d02837e2e061987b683739",
+    "hash": "85c0ebe203f691f5687bfe973f873bb9",
     "packages": [
         {
             "name": "PhpDebugToolbar/php-debug-toolbar",
@@ -143,16 +143,16 @@
         },
         {
             "name": "berlinonline/honeybee",
-            "version": "dev-hb-as-vendor",
+            "version": "dev-v001-dev",
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "09dc17ab2297164475dd8a95229a2e9357570a24"
+                "reference": "8f52337945b0827b19eaaa1a293ae9f07b13c938"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/09dc17ab2297164475dd8a95229a2e9357570a24",
-                "reference": "09dc17ab2297164475dd8a95229a2e9357570a24",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/8f52337945b0827b19eaaa1a293ae9f07b13c938",
+                "reference": "8f52337945b0827b19eaaa1a293ae9f07b13c938",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +178,7 @@
                 "swiftmailer/swiftmailer": "v4.3.1",
                 "symfony/expression-language": "~2.3",
                 "symfony/process": "~2.1",
-                "symfony/validator": "~2.3",
+                "symfony/validator": "2.3.*",
                 "twig/twig": "1.13.2",
                 "zendframework/zend-permissions-acl": "2.2.0"
             },
@@ -223,10 +223,10 @@
                 "scaffolding"
             ],
             "support": {
-                "source": "https://github.com/berlinonline/honeybee/tree/hb-as-vendor",
+                "source": "https://github.com/berlinonline/honeybee/tree/v001-dev",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2014-06-19 14:20:29"
+            "time": "2014-06-19 14:41:26"
         },
         {
             "name": "cboden/ratchet",
@@ -1835,17 +1835,17 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v2.5.0",
+            "version": "v2.3.16",
             "target-dir": "Symfony/Component/Validator",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Validator.git",
-                "reference": "62f6f7735fbd3897b9347ae60fda4a40d0122640"
+                "reference": "2a7f22ec3bda8f49c2c4351b77349d4e49263fa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Validator/zipball/62f6f7735fbd3897b9347ae60fda4a40d0122640",
-                "reference": "62f6f7735fbd3897b9347ae60fda4a40d0122640",
+                "url": "https://api.github.com/repos/symfony/Validator/zipball/2a7f22ec3bda8f49c2c4351b77349d4e49263fa0",
+                "reference": "2a7f22ec3bda8f49c2c4351b77349d4e49263fa0",
                 "shasum": ""
             },
             "require": {
@@ -1853,31 +1853,22 @@
                 "symfony/translation": "~2.0"
             },
             "require-dev": {
-                "doctrine/annotations": "~1.0",
-                "doctrine/cache": "~1.0",
-                "egulias/email-validator": "~1.0",
                 "symfony/config": "~2.2",
-                "symfony/expression-language": "~2.4",
                 "symfony/http-foundation": "~2.1",
                 "symfony/intl": "~2.3",
-                "symfony/property-access": "~2.2",
                 "symfony/yaml": "~2.0"
             },
             "suggest": {
-                "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
-                "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
-                "egulias/email-validator": "Strict (RFC compliant) email validation",
+                "doctrine/common": "",
                 "symfony/config": "",
-                "symfony/expression-language": "For using the 2.4 Expression validator",
                 "symfony/http-foundation": "",
                 "symfony/intl": "",
-                "symfony/property-access": "For using the 2.4 Validator API",
                 "symfony/yaml": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -1903,7 +1894,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "http://symfony.com",
-            "time": "2014-05-31 02:02:56"
+            "time": "2014-05-29 07:58:28"
         },
         {
             "name": "symfony/yaml",

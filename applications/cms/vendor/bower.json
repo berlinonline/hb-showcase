@@ -4,6 +4,6 @@
     "license": "MIT",
     "private": true,
     "dependencies": {
-        "honeybee": "git@github.com:berlinonline/honeybee.git#hb-as-vendor"
+        "honeybee": "git@github.com:berlinonline/honeybee.git#v001-dev"
     }
 }

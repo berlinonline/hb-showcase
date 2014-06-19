@@ -4,6 +4,6 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "honeybee": "git+ssh://git@github.com:berlinonline/honeybee.git#hb-as-vendor"
+        "honeybee": "git+ssh://git@github.com:berlinonline/honeybee.git#v001-dev"
     }
 }
