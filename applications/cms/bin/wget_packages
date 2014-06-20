@@ -2,7 +2,7 @@
 
 CURRENT_DIR=$(readlink -m $(dirname $0))
 
-HONEYBEE_WGET_PACKAGES=$(readlink -m "${CURRENT_DIR}/../vendor/berlinonline/honeybee/bin/wget_packages.sh")
+HONEYBEE_WGET_PACKAGES=$(readlink -m "${CURRENT_DIR}/../vendor/berlinonline/honeybee/bin/wget_packages")
 
 # always download packages that honeybee needs (except for specified other file)
 if [ -z "$WGET_PACKAGES_FILE" ] ; then
