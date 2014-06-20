@@ -378,7 +378,7 @@ php-tests:
 
 php-mess-detection: folders
 
-	-@vendor/bin/phpmd app/ xml codesize,design,naming,unusedcode
+	-@vendor/bin/phpmd app/ text cleancode,codesize,design,naming,unusedcode
 
 
 php-loc: folders
