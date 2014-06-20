@@ -35,7 +35,7 @@ fi
 
 # set php script to dispatch testing
 if [ -z "$TESTS_PHP_FILE" ] ; then
-    TESTS_PHP_FILE=$(readlink -m "${APPLICATION_DIR}/testing/run-tests.php")
+    TESTS_PHP_FILE=$(readlink -m "${APPLICATION_DIR}/tests/run-tests.php")
 fi
 
 echo "[INFO] Executing: PHP_COMMAND=${PHP_COMMAND} APPLICATION_DIR=$APPLICATION_DIR ${PHP_COMMAND} ${TESTS_PHP_INI_SETTINGS} -f ${TESTS_PHP_FILE} -- $@"

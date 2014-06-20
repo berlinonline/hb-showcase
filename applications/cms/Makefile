@@ -1,9 +1,19 @@
 # vim: ts=4:sw=4:noexpandtab!:
 
-PROJECT_ROOT=`pwd`
-BUILD_DIR=${PROJECT_ROOT}/etc/integration/build/
-PHP_ERROR_LOG=`php -i | grep -P '^error_log' | cut -f '3' -d " "`
-ENVIRONAUT_CACHE_LOCATION=${PROJECT_ROOT}/.environaut.cache
+PROJECT_DIR=`pwd`
+LOCAL_CONFIG_SH = $(wildcard etc/local/config.sh)
+
+ifneq "${LOCAL_CONFIG_SH}" ""
+	include ${LOCAL_CONFIG_SH}
+endif
+
+ifeq "${PHP_COMMAND}" ""
+	PHP_COMMAND=php
+endif
+
+PHP_ERROR_LOG=`${PHP_COMMAND} -i | grep -P '^error_log' | cut -f '3' -d " "`
+ENVIRONAUT_CACHE_LOCATION=${PROJECT_DIR}/.environaut.cache
+
 #GIT_FILE=`cat .git | sed -r 's/.+: (.+.git)(.*)/\1/'`
 #LAST_FETCH_DATE=`git reflog show -n 1 --date=iso | cut -f '1-3' -d ':'`
 
@@ -12,11 +22,12 @@ help:
 	@echo ""
 	@echo "Honeybee makefile"
 	@echo ""
-	@echo "Current working directory : ${PROJECT_ROOT}"
+	@echo "Current working directory : ${PROJECT_DIR}"
 	@echo "Environaut cache location : ${ENVIRONAUT_CACHE_LOCATION}"
-	@echo "Local env config location : ${PROJECT_ROOT}/etc/local/"
+	@echo "Local env config location : ${PROJECT_DIR}/etc/local/"
+	@echo "PHP executable            : ${PHP_COMMAND}"
 	@echo "PHP error log file path   : ${PHP_ERROR_LOG}"
-#	@echo "Project git-file location : ${PROJECT_ROOT}/${GIT_FILE}"
+#	@echo "Project git-file location : ${PROJECT_DIR}/${GIT_FILE}"
 #	@echo ""
 #	@echo "Last working copy update  : ${LAST_FETCH_DATE}"
 	@echo ""
@@ -34,25 +45,24 @@ help:
 	@echo "  link-project              - Creates module symlinks and copies core honeybee modules into this app."
 	@echo "  reconfigure-environment   - Runs environaut and overrides any exisitng environment configs."
 	@echo "  tail-logs                 - Starts to tail all application logs and the php error-log."
-	@echo "  update                    - Updates all vendor libraries (dev+prod) and the composer.lock file."
-	@echo "  update-composer-lockfile  - Updates the composer.lock file with latest vendor library versions."
 	@echo ""
 	@echo "-------------------"
 	@echo "DEVELOPMENT TARGETS"
 	@echo "-------------------"
 	@echo ""
-	@echo "Scaffolding:"
+	@echo "  update                    - Updates all vendor libraries (dev+prod) and the composer.lock file."
+	@echo "  update-composer-lockfile  - Updates the composer.lock file with latest vendor library versions."
 	@echo ""
-	@echo "  action                    - Creates a new action within an existing module."
-	@echo "  module                    - Creates and links a new honeybee-module."
-	@echo "  module-code               - Generates code for an existing honeybee-module."
+#	@echo "Scaffolding:"
+#	@echo ""
+#	@echo "  action                    - Creates a new action within an existing module."
+#	@echo "  module                    - Creates and links a new honeybee-module."
+#	@echo "  module-code               - Generates code for an existing honeybee-module."
 	@echo ""
 	@echo "Integration and reporting:"
 	@echo ""
 	@echo "  php-code-sniffer          - Runs the php code-sniffer."
-	@echo "  php-copy-paste-detection  - Runs the php copy&paste detector."
-	@echo "  php-dependencies          - Detmermines class dependecies/relation-topologie."
-	@echo "  php-docs                  - Generates the php api doc for the project."
+	@echo "  php-api-docs              - Generates the php api doc for the project."
 	@echo "  php-mess-detection        - Runs the php mess detector."
 	@echo "  php-metrics               - Determines some source code metrics."
 	@echo "  php-tests                 - Runs php test suites."
@@ -67,8 +77,7 @@ help:
 autoloads:
 
 	@echo "[INFO] Regenerating (optimized) autoload files:"
-	@php bin/composer.phar dump-autoload --optimize
-
+	@${PHP_COMMAND} bin/composer.phar dump-autoload --optimize
 	@echo "[INFO] Regenerated and optimized autoload files."
 
 
@@ -124,7 +133,7 @@ install:
 	@echo "[INFO] Installing or updating composer locally."
 	@if [ ! -f bin/composer.phar ]; \
 	then \
-		curl -s http://getcomposer.org/installer | php -d allow_url_fopen=1 -d date.timezone="Europe/Berlin" -- --install-dir=./bin; \
+		curl -s http://getcomposer.org/installer | ${PHP_COMMAND} -d allow_url_fopen=1 -d date.timezone="Europe/Berlin" -- --install-dir=./bin; \
 	else \
 		bin/composer.phar self-update; \
 	fi
@@ -133,7 +142,7 @@ install:
 	-@bin/revert-patches
 
 	@echo "[INFO] Installing vendor libraries with optimized autoloader via composer."
-	@php -d allow_url_fopen=1 bin/composer.phar install --optimize-autoloader
+	@${PHP_COMMAND} -d allow_url_fopen=1 bin/composer.phar install --optimize-autoloader
 
 	@echo "[INFO] Applying known local patches to vendor libraries."
 	-@bin/apply-patches
@@ -160,7 +169,7 @@ install-production:
 	@echo "[INFO] Installing or updating composer locally."
 	@if [ ! -f bin/composer.phar ]; \
 	then \
-		curl -s http://getcomposer.org/installer | php -d allow_url_fopen=1 -d date.timezone="Europe/Berlin" -- --install-dir=./bin; \
+		curl -s http://getcomposer.org/installer | ${PHP_COMMAND} -d allow_url_fopen=1 -d date.timezone="Europe/Berlin" -- --install-dir=./bin; \
 	else \
 		bin/composer.phar self-update; \
 	fi
@@ -169,7 +178,7 @@ install-production:
 	-@bin/revert-patches
 
 	@echo "[INFO] Installing vendor libraries with optimized autoloader via composer."
-	@php -d allow_url_fopen=1 bin/composer.phar install --no-dev --optimize-autoloader
+	@${PHP_COMMAND} -d allow_url_fopen=1 bin/composer.phar install --no-dev --optimize-autoloader
 
 	@echo "[INFO] Applying known local patches to vendor libraries."
 	-@bin/apply-patches
@@ -245,10 +254,19 @@ folders:
 	@chmod 755 app/log
 	@chmod 755 data/assets
 
+	@if [ ! -d build/codebrowser ]; then mkdir -p build/codebrowser; fi
+	@if [ ! -d build/logs ]; then mkdir -p build/logs; fi
+	@if [ ! -d build/docs ]; then mkdir -p build/docs; fi
+	@chmod 755 build/codebrowser
+	@chmod 755 build/docs
+	@chmod 755 build/logs
 
-#######################
-# DEVELOPMENT TARGETS #
-#######################
+
+#
+#
+# DEVELOPMENT TARGETS
+#
+#
 
 update:
 
@@ -284,95 +302,92 @@ update-composer-lock-file:
 	-@bin/revert-patches
 
 	@echo "[INFO] Updating vendor library versions in composer.lock and generating optimized autoloads."
-	@php -d allow_url_fopen=1 bin/composer.phar update --optimize-autoloader
+	@${PHP_COMMAND} -d allow_url_fopen=1 bin/composer.phar update --optimize-autoloader
 
 	@echo "[INFO] Applying known local patches to vendor libraries."
 	-@bin/apply-patches
 
 
-action:
+#action:
+#
+#	@bin/agavi honeybee-action-wizard
+#
+#
+#module:
+#
+#	@bin/agavi honeybee-module-wizard
+#
+#	@make config
+#
+#
+#module-code:
+#
+## this should be "bin/agavi list-modules" again in the future to only show dat0r modules
+#	@echo "Available modules:"
+#	@echo ""
+#	@ls -1 app/modules/ | grep -v Core
+#	@echo ""
+#
+#	@read -p "Enter Module Name: " module; \
+#    	dator_dir=app/modules/$$module/config/dat0r; \
+#		vendor/bin/dat0r.console generate_code gen+dep -c $$dator_dir/codegen.ini -s $$dator_dir/module.xml
+#
+#	@make config
+#
+#	@echo "-> successfully generated module classes."
 
-	@bin/agavi honeybee-action-wizard
+
+#
+#
+# TESTING AND CODE QUALITY METRICS
+#
+#
+
+php-metrics: folders
+
+	@if [ -d build/codebrowser ]; then rm -rf build/codebrowser; fi
+
+	@nice bin/test
+	@vendor/bin/phpcs --extensions=php --report=checkstyle --report-file=build/logs/checkstyle.xml --standard=psr2 \
+		--ignore='app/cache*,*Success.php,*Input.php,*Error.php,app/templates/*,resources/*,*.scss,*.css,*.js' \
+		app tests
+	-@vendor/bin/phpcpd --log-pmd ./build/logs/pmd-cpd.xml app/
+	-@vendor/bin/phpmd app/ xml codesize,design,naming,unusedcode --reportfile build/logs/pmd.xml
+	-@vendor/bin/phpcb --log build/logs/ --source app/ --output build/codebrowser/
+	-@vendor/bin/phploc --log-csv build/logs/phploc.csv app/
 
 
-module:
+php-api-docs: folders
 
-	@bin/agavi honeybee-module-wizard
+	@if [ -d build/docs ]; then rm -rf build/docs; fi
 
-	@make config
-
-
-module-code:
-
-# this should be "bin/agavi list-modules" again in the future to only show dat0r modules
-	@echo "Available modules:"
-	@echo ""
-	@ls -1 app/modules/ | grep -v Core
-	@echo ""
-
-	@read -p "Enter Module Name: " module; \
-    	dator_dir=app/modules/$$module/config/dat0r; \
-		vendor/bin/dat0r.console generate_code gen+dep -c $$dator_dir/codegen.ini -s $$dator_dir/module.xml
-
-	@make config
-
-	@echo "-> successfully generated module classes."
+	@${PHP_COMMAND} vendor/bin/sami.php update app/config/sami.php
 
 
 php-code-sniffer:
 
-	@/bin/mkdir -p ${BUILD_DIR}/logs
-
-	-@vendor/bin/phpcs --report=checkstyle --report-file=${BUILD_DIR}/logs/checkstyle.xml \
-		--standard=${PROJECT_ROOT}/etc/coding-standards/BerlinOnline/ruleset.xml \
-		--ignore='app/cache*,*Success.php,*Input.php,*Error.php,app/templates/*,*.css,*.js' \
-		${PROJECT_ROOT}/app
-
-
-php-copy-paste-detection:
-
-	@/bin/mkdir -p ${BUILD_DIR}/logs
-
-	-@vendor/bin/phpcpd --log-pmd ${BUILD_DIR}/logs/pmd-cpd.xml app/
-
-
-php-dependencies:
-
-	@/bin/mkdir -p ${BUILD_DIR}/logs
-
-	-@vendor/bin/pdepend --jdepend-xml=${BUILD_DIR}/logs/jdepend.xml \
-		--jdepend-chart=${BUILD_DIR}/pdepend/dependencies.svg \
-		--overview-pyramid=${BUILD_DIR}/logs/overview-pyramid.svg app/
-
-
-php-docs:
-
-	@if [ -d ${BUILD_DIR}/docs/api/serverside/ ]; then rm -rf ${BUILD_DIR}/docs/api/serverside/; fi
-
-	@php vendor/bin/sami.php update app/config/sami.php
-
-
-php-mess-detection:
-
-	@/bin/mkdir -p ${BUILD_DIR}/logs
-
-	-@vendor/bin/phpmd app/ xml codesize,design,naming,unusedcode --reportfile ${BUILD_DIR}/logs/pmd.xml
-
-
-php-metrics:
-
-	@/bin/mkdir -p ${BUILD_DIR}/logs
-
-	-@vendor/bin/phploc --log-csv ${BUILD_DIR}/logs/phploc.csv app/
+	-@vendor/bin/phpcs --extensions=php --standard=psr2 \
+		--ignore='app/cache*,*Success.php,*Input.php,*Error.php,app/templates/*,resources/*,*.scss,*.css,*.js' \
+		app tests
 
 
 php-tests:
 
-	@nice bin/test --configuration testing/config/phpunit.xml
+	@bin/test --no-configuration tests/
+
+
+php-mess-detection: folders
+
+	-@vendor/bin/phpmd app/ xml codesize,design,naming,unusedcode
+
+
+php-loc: folders
+
+	-@vendor/bin/phploc app/
 
 
 #
 # PHONY targets @see http://www.linuxdevcenter.com/pub/a/linux/2002/01/31/make_intro.html?page=2
 # vim: ts=4:sw=4:noexpandtab!:
 #
-.PHONY: help build-resources link-project module-code module reconfigure cc config install update update-composer-lock-file install-production copy-honeybee-core-modules copy-honeybee-core-themes copy-honeybee-core-schemas folders
+.PHONY: help build-resources link-project module-code module reconfigure cc config install update update-composer-lock-file install-production copy-honeybee-core-modules copy-honeybee-core-themes copy-honeybee-core-schemas folders php-tests php-api-docs php-code-sniffer php-mess-detection php-loc
