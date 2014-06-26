@@ -11,6 +11,13 @@ define hb-showcase::application (
     docroot => "${app_docroot}"
   }
 
+  nginx::site { "honeybee":
+    name => "honeybee",
+    server_name => "${app_name}",
+    docroot => "/home/vagrant/projects/honeybee/pub",
+    listen_port => "8080"
+  }
+
   file {
     "/home/vagrant/init_cms.sh":
       ensure  => present,
@@ -18,5 +25,14 @@ define hb-showcase::application (
       owner   => 'vagrant',
       group   => 'vagrant',
       content => template('hb-showcase/init_cms.sh.erb');
+  }
+
+  file {
+    "/home/vagrant/init_honeybee.sh":
+      ensure  => present,
+      mode    => '0744',
+      owner   => 'vagrant',
+      group   => 'vagrant',
+      content => template('hb-showcase/init_honeybee.sh.erb');
   }
 }
