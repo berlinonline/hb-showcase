@@ -28,10 +28,11 @@
     At the end a security check of a given composer.lock file is performed.
 
     A report with messages will be printed to the CLI and the accumulated
-    settings will be written to a 'etc/local.settings.xml file.
+    settings will be written to 'etc/local/* files.
 
     Subsequent runs will read the already configured settings from the cache
-    and thus will not ask again for settings. Use '<comment>--no-cache</comment>' to reconfigure.
+    and thus will not ask again for settings. Use '<comment>--no-cache</comment>' to reconfigure
+    or run '<comment>make reconfigure-environment</comment>'.
     ]]></introduction>
 
     <!-- Default is:
@@ -39,71 +40,19 @@
     -->
 
     <export>
-        <formatter location="etc/local/settings.xml" />
-        <formatter location="etc/local/config.sh">
-            <parameters>
-                <parameter name="capitalize_names">true</parameter>
-                <parameter name="groups">
-                    <parameter>local_config</parameter>
-                </parameter>
-            </parameters>
-        </formatter>
-        <formatter location="etc/local/config.php">
-            <parameter name="nested">false</parameter>
-            <parameter name="groups">
-                <parameter>local_config</parameter>
-            </parameter>
-        </formatter>
+        <xi:include href="vendor/berlinonline/honeybee/environaut.xml" xpointer="xmlns(ec=http://mivesto.de/environaut/config/1.0) xpointer(//ec:export/ec:*)">
+            <xi:fallback />
+        </xi:include>
     </export>
 
     <checks>
 
         <!--
-            Honeybee default environaut environment checks.
-            Do not change if you do not REALLY know what you are doing.
+            Honeybee default environaut environment checks and settings.
         -->
-        <xi:include href="vendor/berlinonline/honeybee/app/config/environaut_checks.xml" xpointer="xmlns(ec=http://mivesto.de/environaut/config/1.0) xpointer(//ec:checks/ec:*)">
+        <xi:include href="vendor/berlinonline/honeybee/environaut.xml" xpointer="xmlns(ec=http://mivesto.de/environaut/config/1.0) xpointer(//ec:checks/ec:*)">
             <xi:fallback />
         </xi:include>
-
-        <check class="Environaut\Checks\ExecutableCheck" name="php" group="local_config">
-            <parameter name="default">php</parameter>
-            <parameter name="setting">php_command</parameter>
-            <parameter name="version_mask" space="preserve" literalize="false">/^PHP (5\.[3456]\.\d{1,2}).*/</parameter>
-        </check>
-
-        <check class="Environaut\Checks\ExecutableCheck" name="sass">
-            <parameter name="default">sass</parameter>
-            <parameter name="version_mask" space="preserve" literalize="false">/Sass 3\.3/</parameter>
-        </check>
-
-        <check name="base_href" group="local_config">
-            <parameter name="question">What's the base HREF of the application?</parameter>
-            <parameter name="default">http://hb-showcase-cms.local/</parameter>
-            <parameter name="choices">
-                <parameter>http://hb-showcase-cms.local/</parameter>
-                <parameter>http://hb-showcase-fe.local/</parameter>
-            </parameter>
-            <parameter name="validator">Environaut\Checks\Validator::validUrl</parameter>
-            <parameter name="max_attempts">5</parameter>
-        </check>
-
-        <check name="testing_enabled" group="local_config">
-            <parameter name="question">Enable testing?</parameter>
-            <parameter name="default">false</parameter>
-            <parameter name="confirm">true</parameter>
-        </check>
-
-        <check name="agavi_environment" group="local_config">
-            <parameter name="question">What environment do you want to use for this application?</parameter>
-            <parameter name="default">development-vagrant</parameter>
-            <parameter name="choices">
-                <parameter>integration</parameter>
-                <parameter>stage</parameter>
-                <parameter>preview</parameter>
-                <parameter>production</parameter>
-            </parameter>
-        </check>
 
     </checks>
 </environaut>
