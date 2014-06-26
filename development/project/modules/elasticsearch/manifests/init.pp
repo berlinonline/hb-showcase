@@ -10,16 +10,16 @@ class elasticsearch {
     group => 'root',
     mode => '0644'
   }
-  exec { 'wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.0.1.tar.gz':
+  exec { 'wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.tar.gz':
     cwd => '/etc/elasticsearch',
     timeout => -1,
     unless => 'ls /etc/elasticsearch/bin/elasticsearch'
   }
-  -> exec { 'tar -xzvf elasticsearch-1.0.1.tar.gz':
+  -> exec { 'tar -xzvf elasticsearch-1.2.1.tar.gz':
     cwd => '/etc/elasticsearch',
     unless => 'ls /etc/elasticsearch/bin/elasticsearch'
   }
-  -> exec { 'mv elasticsearch-1.0.1/* . && rm -rf elasticsearch-1.0.1.tar.gz':
+  -> exec { 'mv elasticsearch-1.2.1/* . && rm -rf elasticsearch-1.2.1.tar.gz':
     cwd => '/etc/elasticsearch',
     timeout => -1,
     unless => 'ls /etc/elasticsearch/bin/elasticsearch'
