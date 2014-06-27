@@ -46,7 +46,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Honeybee" : "app/lib",
+            "Project" : "app/lib",
             "Testing" : "tests"
         }
     },
