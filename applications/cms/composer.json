@@ -30,7 +30,7 @@
         "lib-pcre": "*",
         "ext-imagick": "*",
         "berlinonline/honeybee": "dev-v001-dev@dev",
-        "berlinonline/dat0r": "dev-collection-refactoring@dev",
+        "berlinonline/dat0r": "dev-field_path@dev",
         "agavi/agavi": "dev-master#5cd8f3c5d4116e94fe20d0bea50396b4e255a17b as 1.0.7",
         "graste/PhpDebugToolbar": "dev-master#63b1b518e559b7e2995cda91a8edb707048c79a6 as 1.6.1"
     },

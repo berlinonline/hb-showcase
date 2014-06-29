@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d52fb4211b0f8bcf9d4c063770cadf61",
+    "hash": "5cbdf5b49968ae7b4dd028a9d7043fe7",
     "packages": [
         {
             "name": "agavi/agavi",
@@ -71,31 +71,36 @@
         },
         {
             "name": "berlinonline/dat0r",
-            "version": "dev-collection-refactoring",
+            "version": "dev-field_path",
             "source": {
                 "type": "git",
                 "url": "https://github.com/berlinonline/Dat0r.git",
-                "reference": "190dcf6add77a7ddae64508ee176b11408c40166"
+                "reference": "5b73eee36245310bb65d0c190f19ca0481c35b28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/Dat0r/zipball/190dcf6add77a7ddae64508ee176b11408c40166",
-                "reference": "190dcf6add77a7ddae64508ee176b11408c40166",
+                "url": "https://api.github.com/repos/berlinonline/Dat0r/zipball/5b73eee36245310bb65d0c190f19ca0481c35b28",
+                "reference": "5b73eee36245310bb65d0c190f19ca0481c35b28",
                 "shasum": ""
             },
             "require": {
+                "egulias/email-validator": "1.1.*",
                 "fzaninotto/faker": "1.*",
                 "php": ">=5.3.0",
+                "rhumsaa/uuid": "2.7.*",
                 "symfony/console": "2.5.*",
                 "symfony/filesystem": "2.5.*",
                 "twig/twig": "1.*"
             },
             "require-dev": {
+                "mayflower/php-codebrowser": "1.1.*",
                 "mockery/mockery": "0.9.*",
+                "phpmd/phpmd": "2.0.*",
                 "phpunit/phpunit": "4.1.*",
                 "sami/sami": "1.3",
                 "satooshi/php-coveralls": "0.6.*",
-                "squizlabs/php_codesniffer": "1.*"
+                "sebastian/phpcpd": "2.0.*",
+                "squizlabs/php_codesniffer": "1.5.*"
             },
             "bin": [
                 "bin/dat0r.make",
@@ -116,13 +121,13 @@
                     "name": "Thorsten Schmitt-Rink"
                 }
             ],
-            "description": "Library for generating data-objects.",
+            "description": "Library for generating domain/data objects.",
             "homepage": "https://github.com/berlinonline/Dat0r",
             "keywords": [
-                "data mapper",
+                "entity",
                 "scaffolding"
             ],
-            "time": "2014-06-06 19:29:05"
+            "time": "2014-06-27 00:43:34"
         },
         {
             "name": "berlinonline/honeybee",
@@ -130,17 +135,17 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "e86464e0b8d5e7cbebb589213f3e80820a2675df"
+                "reference": "c65337a8f8d7b3559db58ae96897379d6afd8494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/e86464e0b8d5e7cbebb589213f3e80820a2675df",
-                "reference": "e86464e0b8d5e7cbebb589213f3e80820a2675df",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/c65337a8f8d7b3559db58ae96897379d6afd8494",
+                "reference": "c65337a8f8d7b3559db58ae96897379d6afd8494",
                 "shasum": ""
             },
             "require": {
                 "agavi/agavi": "dev-master#5cd8f3c5d4116e94fe20d0bea50396b4e255a17b as 1.0.7",
-                "berlinonline/dat0r": "dev-collection-refactoring@dev",
+                "berlinonline/dat0r": "dev-field_path@dev",
                 "cboden/ratchet": "v0.3.2",
                 "elasticsearch/elasticsearch": "v1.1.0",
                 "fzaninotto/faker": "v1.4.0",
@@ -156,10 +161,12 @@
                 "php": ">=5.3.10",
                 "psr/log": "1.0.0",
                 "ql/uri-template": "1.0.1",
+                "rdlowrey/auryn": "v0.13.0",
                 "react/zmq": "0.3.*",
                 "sami/sami": "1.3",
                 "swiftmailer/swiftmailer": "v5.2.1",
                 "symfony/expression-language": "2.5.*",
+                "symfony/filesystem": "2.5.*",
                 "symfony/process": "2.5.*",
                 "symfony/validator": "2.5.*",
                 "twig/twig": "~1.15.1",
@@ -209,7 +216,7 @@
                 "source": "https://github.com/berlinonline/honeybee/tree/v001-dev",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2014-06-23 10:34:01"
+            "time": "2014-06-27 16:19:18"
         },
         {
             "name": "cboden/ratchet",
@@ -259,6 +266,105 @@
                 "sockets"
             ],
             "time": "2014-06-08 15:19:45"
+        },
+        {
+            "name": "doctrine/lexer",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/lexer.git",
+                "reference": "2f708a85bb3aab5d99dab8be435abd73e0b18acb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/2f708a85bb3aab5d99dab8be435abd73e0b18acb",
+                "reference": "2f708a85bb3aab5d99dab8be435abd73e0b18acb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\Lexer\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com",
+                    "homepage": "http://www.instaclick.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "http://jmsyst.com",
+                    "role": "Developer of wrapped JMSSerializerBundle"
+                }
+            ],
+            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "lexer",
+                "parser"
+            ],
+            "time": "2013-01-12 18:59:04"
+        },
+        {
+            "name": "egulias/email-validator",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "f064a586114c9864da45508b1b09911643635e94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/f064a586114c9864da45508b1b09911643635e94",
+                "reference": "f064a586114c9864da45508b1b09911643635e94",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/lexer": "~1.0",
+                "php": ">= 5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Egulias\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis"
+                }
+            ],
+            "description": "A library for validating emails",
+            "homepage": "https://github.com/egulias/EmailValidator",
+            "keywords": [
+                "email",
+                "validation",
+                "validator"
+            ],
+            "time": "2014-01-12 23:12:24"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -1045,6 +1151,61 @@
             "time": "2013-08-28 18:35:46"
         },
         {
+            "name": "rdlowrey/auryn",
+            "version": "v0.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rdlowrey/Auryn.git",
+                "reference": "c83b741ccddf3b8e91f02dbdc5b0eeecbf20f09f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rdlowrey/Auryn/zipball/c83b741ccddf3b8e91f02dbdc5b0eeecbf20f09f",
+                "reference": "c83b741ccddf3b8e91f02dbdc5b0eeecbf20f09f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Levi Morrison",
+                    "email": "levim@php.net",
+                    "homepage": "http://morrisonlevi.github.com/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Daniel Lowrey",
+                    "email": "rdlowrey@gmail.com",
+                    "role": "Creator / Main Developer"
+                },
+                {
+                    "name": "Dan Ackroyd",
+                    "email": "Danack@basereality.com",
+                    "homepage": "http://www.basereality.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Auryn is a dependency injector for bootstrapping object-oriented PHP applications.",
+            "homepage": "https://github.com/rdlowrey/Auryn",
+            "keywords": [
+                "dependency injection",
+                "dic",
+                "ioc"
+            ],
+            "time": "2014-04-01 12:48:07"
+        },
+        {
             "name": "react/event-loop",
             "version": "v0.4.1",
             "source": {
@@ -1216,6 +1377,72 @@
                 "zmq"
             ],
             "time": "2014-05-25 17:54:51"
+        },
+        {
+            "name": "rhumsaa/uuid",
+            "version": "2.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/uuid.git",
+                "reference": "8569983a11ed96087cdf94c7aa65866138681beb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/8569983a11ed96087cdf94c7aa65866138681beb",
+                "reference": "8569983a11ed96087cdf94c7aa65866138681beb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "doctrine/dbal": ">=2.3",
+                "moontoast/math": "~1.1",
+                "phpunit/phpunit": "~3.7",
+                "symfony/console": "~2.3"
+            },
+            "suggest": {
+                "doctrine/dbal": "Allow the use of a UUID as doctrine field type.",
+                "moontoast/math": "Support for converting UUID to 128-bit integer (in string form).",
+                "symfony/console": "Support for use of the bin/uuid command line tool."
+            },
+            "bin": [
+                "bin/uuid"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Rhumsaa\\Uuid": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Huizendveld",
+                    "email": "marijn.huizendveld@gmail.com"
+                },
+                {
+                    "name": "Ben Ramsey",
+                    "homepage": "http://benramsey.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP 5.3+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
+            "homepage": "https://github.com/ramsey/uuid",
+            "keywords": [
+                "guid",
+                "identifier",
+                "uuid"
+            ],
+            "time": "2014-02-22 00:08:43"
         },
         {
             "name": "sami/sami",
@@ -2179,24 +2406,24 @@
         },
         {
             "name": "phploc/phploc",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phploc.git",
-                "reference": "d177c22e2a08e448f7bdfa762045f7bd086834d7"
+                "reference": "322ad07c112d5c6832abed4269d648cacff5959b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phploc/zipball/d177c22e2a08e448f7bdfa762045f7bd086834d7",
-                "reference": "d177c22e2a08e448f7bdfa762045f7bd086834d7",
+                "url": "https://api.github.com/repos/sebastianbergmann/phploc/zipball/322ad07c112d5c6832abed4269d648cacff5959b",
+                "reference": "322ad07c112d5c6832abed4269d648cacff5959b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "sebastian/finder-facade": ">=1.1.0",
-                "sebastian/git": ">=1.0.0",
-                "sebastian/version": ">=1.0.3",
-                "symfony/console": ">=2.2.0"
+                "sebastian/finder-facade": "~1.1",
+                "sebastian/git": "~1.0",
+                "sebastian/version": "~1.0",
+                "symfony/console": "~2.2"
             },
             "bin": [
                 "phploc"
@@ -2225,7 +2452,7 @@
             ],
             "description": "A tool for quickly measuring the size of a PHP project.",
             "homepage": "https://github.com/sebastianbergmann/phploc",
-            "time": "2014-04-27 06:47:27"
+            "time": "2014-06-25 08:11:02"
         },
         {
             "name": "phpmd/phpmd",
@@ -2271,16 +2498,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.0.8",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "58401826c8cfc8fd689b60026e91c337df374bca"
+                "reference": "ed8ac99ce38c3fd134128c898f7ca74665abef7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/58401826c8cfc8fd689b60026e91c337df374bca",
-                "reference": "58401826c8cfc8fd689b60026e91c337df374bca",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ed8ac99ce38c3fd134128c898f7ca74665abef7f",
+                "reference": "ed8ac99ce38c3fd134128c898f7ca74665abef7f",
                 "shasum": ""
             },
             "require": {
@@ -2332,7 +2559,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-05-26 14:55:24"
+            "time": "2014-06-29 08:14:40"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2593,16 +2820,16 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "1a894a16b6c15fcdc5ef2b110f0e6233952c9b0f"
+                "reference": "7878b9c41edb3afab92b85edf5f0981014a2713a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/1a894a16b6c15fcdc5ef2b110f0e6233952c9b0f",
-                "reference": "1a894a16b6c15fcdc5ef2b110f0e6233952c9b0f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/7878b9c41edb3afab92b85edf5f0981014a2713a",
+                "reference": "7878b9c41edb3afab92b85edf5f0981014a2713a",
                 "shasum": ""
             },
             "require": {
@@ -2646,7 +2873,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2014-06-07 16:22:57"
+            "time": "2014-06-12 07:22:15"
         },
         {
             "name": "satooshi/php-coveralls",
@@ -2990,16 +3217,16 @@
         },
         {
             "name": "sebastian/git",
-            "version": "2.0.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/git.git",
-                "reference": "572c35353fefcc8607d6fef0e362a9f3a5e84d96"
+                "reference": "a99fbc102e982c1404041ef3e4d431562b29bcba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/git/zipball/572c35353fefcc8607d6fef0e362a9f3a5e84d96",
-                "reference": "572c35353fefcc8607d6fef0e362a9f3a5e84d96",
+                "url": "https://api.github.com/repos/sebastianbergmann/git/zipball/a99fbc102e982c1404041ef3e4d431562b29bcba",
+                "reference": "a99fbc102e982c1404041ef3e4d431562b29bcba",
                 "shasum": ""
             },
             "require": {
@@ -3008,7 +3235,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -3032,7 +3259,7 @@
             "keywords": [
                 "git"
             ],
-            "time": "2014-06-14 07:12:53"
+            "time": "2013-08-04 09:35:29"
         },
         {
             "name": "sebastian/phpcpd",
