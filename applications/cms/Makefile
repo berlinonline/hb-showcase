@@ -203,6 +203,7 @@ link-project:
 	@make copy-honeybee-core-modules
 	@make copy-honeybee-core-themes
 	@make copy-honeybee-core-schemas
+	@make copy-honeybee-core-routing
 
 	@make config
 
@@ -242,6 +243,12 @@ copy-honeybee-core-schemas:
 
 	@echo "[INFO] Copying honeybee config schema files (XSDs) into this application."
 	@cp -R ./vendor/berlinonline/honeybee/app/config/xsd/* app/config/xsd/
+
+
+copy-honeybee-core-routing:
+
+	@echo "[INFO] Copying honeybee default module routing file into this application."
+	@cp -R ./vendor/berlinonline/honeybee/app/config/routing_module_defaults.xml app/config/
 
 
 folders:
