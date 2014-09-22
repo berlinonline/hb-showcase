@@ -41,6 +41,9 @@ class php::fpm {
     'php5-memcache':
       ensure  => installed,
       require => Package['php5-fpm'];
+    'php5-mcrypt':
+			ensure  => installed,
+			require => Package['php5-fpm'];
   }
 
   file {
