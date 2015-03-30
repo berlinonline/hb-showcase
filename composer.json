@@ -1,0 +1,79 @@
+{
+    "name": "berlinonline/honeybee-standard-edition",
+    "license": "MIT",
+    "type": "project",
+    "description": "The \"Honeybee Standard Edition\" distribution.",
+    "keywords": ["cms", "cmf" , "content management"],
+    "homepage": "https://github.com/berlinonline/honeybee",
+    "authors": [
+        {
+            "name": "Thorsten Schmitt-Rink"
+        },
+        {
+            "name": "Leon Weidauer"
+        },
+        {
+            "name": "Steffen Gransow"
+        },
+        {
+            "name": "Tom Anheyer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "lib-curl": "*",
+        "lib-libxml": "*",
+        "lib-xsl": "*",
+        "lib-iconv": "*",
+        "lib-icu": "*",
+        "lib-openssl": "*",
+        "lib-pcre": "*",
+        "ext-imagick": "*",
+        "berlinonline/honeybee": "dev-v001-dev@dev",
+        "berlinonline/dat0r": "dev-field_path@dev",
+        "agavi/agavi": "dev-master#5cd8f3c5d4116e94fe20d0bea50396b4e255a17b as 1.0.7",
+        "graste/PhpDebugToolbar": "dev-master#63b1b518e559b7e2995cda91a8edb707048c79a6 as 1.6.1"
+    },
+     "require-dev": {
+        "mayflower/php-codebrowser": "1.1.*",
+        "phploc/phploc": "2.0.*",
+        "phpmd/phpmd": "2.0.*",
+        "phpunit/phpunit": "4.1.*",
+        "sami/sami": "2.*",
+        "satooshi/php-coveralls": "0.6.*",
+        "sebastian/phpcpd": "2.0.*",
+        "squizlabs/php_codesniffer": "1.5.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Project" : "app/lib",
+            "Testing" : "tests"
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "config": {
+        "process-timeout": 900
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git://github.com/berlinonline/honeybee.git"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "graste/PhpDebugToolbar",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/graste/PhpDebugToolbar.git",
+                    "type": "git",
+                    "reference": "63b1b518e559b7e2995cda91a8edb707048c79a6"
+                },
+                "autoload": {
+                    "classmap": ["lib/agavi/", "PhpDebugToolbar.class.php"]
+                }
+            }
+        }
+    ]
+}

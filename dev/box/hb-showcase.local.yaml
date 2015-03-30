@@ -1,0 +1,13 @@
+---
+agency_dev::project_name: "whitelabel"
+agency_dev::setup: "complete"
+agency_dev::project_prefix: "whitelabel"
+agency_dev::app_name: "whitelabel.local"
+agency_dev::app_dir: "web"
+agency_dev::app_env: "development"
+
+roles:
+  - "agency_dev::roles::server"
+  - "agency_dev::roles::elasticsearch"
+  - "agency_dev::roles::couchdb"
+  - "agency_dev::roles::app"
