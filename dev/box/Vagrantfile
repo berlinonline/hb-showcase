@@ -1,7 +1,6 @@
 Vagrant.configure(2) do |config|
   config.ssh.forward_agent    = true
-  config.ssh.username         = 'deploy'
-  config.vm.hostname          = 'whitelabel.local'
+  config.vm.hostname          = 'hb-showcase.local'
   #config.vm.post_up_message  = 'BerlinOnline DevBox'
   config.vm.box_url           = 'https://projekte.berlinonline.de/box/berlinonline_opensuse-13.2-x86_64_puppet_bo.box'
   config.vm.box               = 'berlinonline_opensuse-13.2-x86_64_puppet_bo'
