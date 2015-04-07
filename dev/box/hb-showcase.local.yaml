@@ -9,6 +9,5 @@ agency_dev::app_env: "development"
 roles:
   - "agency_dev::roles::server"
   - "agency_dev::roles::elasticsearch"
-  - "agency_dev::roles::couchdb"
   - "agency_dev::roles::app"
   - "elasticsearch::plugins::head"
