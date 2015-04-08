@@ -4,6 +4,10 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "honeybee": "git+ssh://git@github.com:berlinonline/honeybee.git#v001-dev"
+        "honeybee": "git+ssh://git@github.com:berlinonline/honeybee.git#v001-dev",
+		"jshint": "~2.6.3",
+        "requirejs": "~2.1.16",
+        "bower": "~1.4.0",
+        "autoprefixer": "~5.1.0"
     }
 }

@@ -30,9 +30,9 @@
         "lib-pcre": "*",
         "ext-imagick": "*",
         "berlinonline/honeybee": "dev-v001-dev@dev",
-        "berlinonline/dat0r": "dev-field_path@dev",
-        "agavi/agavi": "dev-master#5cd8f3c5d4116e94fe20d0bea50396b4e255a17b as 1.0.7",
-        "graste/PhpDebugToolbar": "dev-master#63b1b518e559b7e2995cda91a8edb707048c79a6 as 1.6.1"
+	"agavi/agavi": "dev-master#5cd8f3c5d4116e94fe20d0bea50396b4e255a17b as 1.0.7",
+	"berlinonline/dat0r": "dev-field_path@dev",
+	"shrink0r/workflux": "dev-master"
     },
      "require-dev": {
         "mayflower/php-codebrowser": "1.1.*",
@@ -42,7 +42,8 @@
         "sami/sami": "2.*",
         "satooshi/php-coveralls": "0.6.*",
         "sebastian/phpcpd": "2.0.*",
-        "squizlabs/php_codesniffer": "1.5.*"
+        "squizlabs/php_codesniffer": "1.5.*",
+	"graste/PhpDebugToolbar": "dev-master#63b1b518e559b7e2995cda91a8edb707048c79a6 as 1.6.1"
     },
     "autoload": {
         "psr-0": {
