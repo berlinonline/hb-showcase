@@ -121,7 +121,7 @@ environment:
 	@echo "[INFO] Configuring environment of this application."
 	@if [ ! -d etc/local/ ]; then mkdir -p etc/local; fi
 
-	@vendor/bin/environaut check
+	@vendor/bin/environaut.phar check
 
 	@echo "[INFO] Environaut was successfully executed."
 

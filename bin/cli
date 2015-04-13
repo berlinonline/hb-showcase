@@ -2,6 +2,10 @@
 
 readonly CURRENT_DIR=$(readlink -m $(dirname $0))
 
+if [ -z "$LOCAL_CONFIG_SH" ] ; then
+    LOCAL_CONFIG_SH=$(readlink -m "$(dirname $0)/../etc/local/config.sh")
+fi
+
 if [ -z "$APPLICATION_DIR" ] ; then
     APPLICATION_DIR=$(readlink -m "${CURRENT_DIR}/../")
 fi
