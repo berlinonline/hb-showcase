@@ -53,14 +53,13 @@
             </setting>
         </settings>
         -->
-
         <settings prefix="requirejs.">
-            <setting name="cmd_rjs">%core.app_dir%/../vendor/node_modules/.bin/r.js</setting>
+            <setting name="cmd_rjs">%core.app_dir%/../vendor/node_modules/honeybee/node_modules/.bin/r.js</setting>
         </settings>
         <settings prefix="autoprefixer.">
-            <setting name="cmd">%core.app_dir%/../vendor/node_modules/.bin/autoprefixer</setting>
+            <setting name="cmd">%core.app_dir%/../vendor/node_modules/honeybee/node_modules/.bin/autoprefixer</setting>
         </settings>
-		<settings prefix="sass.">
+        <settings prefix="sass.">
             <setting name="cmd">/usr/bin/sass</setting>
         </settings>
 

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "76a7a581002053289415b1b7268c89a1",
+    "hash": "67f615a135441f715e97aa16e46e01d9",
     "packages": [
         {
             "name": "agavi/agavi",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agavi/agavi.git",
-                "reference": "5cd8f3c5d4116e94fe20d0bea50396b4e255a17b"
+                "reference": "a8f513c8fbd34371c6c9ee3629a09e66de60f534"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/agavi/agavi/zipball/708326c5c72ce92d4225ebab4b045cdee42a88ec",
-                "reference": "5cd8f3c5d4116e94fe20d0bea50396b4e255a17b",
+                "reference": "a8f513c8fbd34371c6c9ee3629a09e66de60f534",
                 "shasum": ""
             },
             "require": {
@@ -67,7 +67,7 @@
                 "framework",
                 "mvc"
             ],
-            "time": "2011-12-22 12:24:30"
+            "time": "2015-03-05 17:34:37"
         },
         {
             "name": "beberlei/assert",
@@ -186,16 +186,16 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "fbd49d23209a009829e176b3025d0e9ff5011435"
+                "reference": "09ea40527cb966c612ba0c4381f874e5ff99f04f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/fbd49d23209a009829e176b3025d0e9ff5011435",
-                "reference": "fbd49d23209a009829e176b3025d0e9ff5011435",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/09ea40527cb966c612ba0c4381f874e5ff99f04f",
+                "reference": "09ea40527cb966c612ba0c4381f874e5ff99f04f",
                 "shasum": ""
             },
             "require": {
-                "agavi/agavi": "dev-master#5cd8f3c5d4116e94fe20d0bea50396b4e255a17b as 1.0.7",
+                "agavi/agavi": "dev-master#a8f513c8fbd34371c6c9ee3629a09e66de60f534 as 1.0.8",
                 "berlinonline/dat0r": "dev-field_path@dev",
                 "cboden/ratchet": "0.3.*",
                 "elasticsearch/elasticsearch": "1.3.*",
@@ -277,7 +277,7 @@
                 "source": "https://github.com/berlinonline/honeybee/tree/v001-dev",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2015-04-13 11:00:40"
+            "time": "2015-04-13 21:17:08"
         },
         {
             "name": "cboden/ratchet",
@@ -4068,8 +4068,8 @@
     ],
     "aliases": [
         {
-            "alias": "1.0.7",
-            "alias_normalized": "1.0.7.0",
+            "alias": "1.0.8",
+            "alias_normalized": "1.0.8.0",
             "version": "9999999-dev",
             "package": "agavi/agavi"
         },
