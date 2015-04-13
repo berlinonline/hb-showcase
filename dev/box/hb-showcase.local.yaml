@@ -2,9 +2,9 @@
 agency_dev::project_name: "hb-showcase"
 agency_dev::setup: "complete"
 agency_dev::project_prefix: "hb-showcase"
-agency_dev::app_name: "hb-showcase.local"
-agency_dev::app_dir: "web"
-agency_dev::app_env: "development"
+agency_dev::cms_name: "hb-showcase.local"
+agency_dev::cms_dir: "pub"
+agency_dev::cms_env: "development"
 
 roles:
   - "agency_dev::roles::server"
@@ -13,3 +13,4 @@ roles:
   - "agency_dev::roles::devbox"
   - "agency_dev::roles::cms"
   - "elasticsearch::plugins::head"
+  - "elasticsearch::plugins::icu"
