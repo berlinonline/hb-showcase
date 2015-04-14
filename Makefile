@@ -142,7 +142,7 @@ install:
 	-@bin/revert-patches
 
 	@echo "[INFO] Installing vendor libraries with optimized autoloader via composer."
-	@${PHP_COMMAND} -d allow_url_fopen=1 bin/composer.phar update --optimize-autoloader
+	@${PHP_COMMAND} -d allow_url_fopen=1 bin/composer.phar install --optimize-autoloader
 
 	@echo "[INFO] Applying known local patches to vendor libraries."
 	-@bin/apply-patches
