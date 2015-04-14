@@ -1,4 +1,0 @@
-# the environaut cache file shouldn't be committed/pushed
-/.environaut.cache
-# overriding default routes should be done in the global or modules' routing.xml files
-/app/config/routing_module_defaults.xml
