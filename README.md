@@ -12,7 +12,7 @@ Prerequisites:
 Create a virtual machine for development:
 
 1. ```git clone git@github.com:berlinonline/hb-showcase.git```
-1. ```cd hb-showcase-cms```
+1. ```cd hb-showcase```
 1. ```git submodule update --init --recursive``` (to get puppet recipes)
 1. ```cd dev/box```
 1. ```vagrant up```
