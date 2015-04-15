@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/berlinonline/Dat0r.git",
-                "reference": "5534cff12a3bd53bc25ce21dea0bacd23bcbf92c"
+                "reference": "af614a60989b95d2f89b2640f7c1ee03912a677a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/Dat0r/zipball/5534cff12a3bd53bc25ce21dea0bacd23bcbf92c",
-                "reference": "5534cff12a3bd53bc25ce21dea0bacd23bcbf92c",
+                "url": "https://api.github.com/repos/berlinonline/Dat0r/zipball/af614a60989b95d2f89b2640f7c1ee03912a677a",
+                "reference": "af614a60989b95d2f89b2640f7c1ee03912a677a",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +178,7 @@
                 "entity",
                 "scaffolding"
             ],
-            "time": "2015-04-02 10:08:17"
+            "time": "2015-04-15 13:47:58"
         },
         {
             "name": "berlinonline/honeybee",
@@ -186,12 +186,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:berlinonline/honeybee.git",
-                "reference": "86c9c068a42df98dba7c3416021cbd8f28af585e"
+                "reference": "42968e20a806f7cd44056129cffda89481eb89da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/86c9c068a42df98dba7c3416021cbd8f28af585e",
-                "reference": "86c9c068a42df98dba7c3416021cbd8f28af585e",
+                "url": "https://api.github.com/repos/berlinonline/honeybee/zipball/42968e20a806f7cd44056129cffda89481eb89da",
+                "reference": "42968e20a806f7cd44056129cffda89481eb89da",
                 "shasum": ""
             },
             "require": {
@@ -277,7 +277,7 @@
                 "source": "https://github.com/berlinonline/honeybee/tree/v001-dev",
                 "issues": "https://github.com/berlinonline/honeybee/issues"
             },
-            "time": "2015-04-15 13:07:23"
+            "time": "2015-04-15 14:35:55"
         },
         {
             "name": "cboden/ratchet",
