@@ -48,7 +48,7 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "src/composerInit.php"
+                    "src/agavi.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
