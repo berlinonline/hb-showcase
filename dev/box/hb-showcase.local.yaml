@@ -5,6 +5,7 @@ agency_dev::project_prefix: "hb-showcase"
 agency_dev::cms_name: "hb-showcase.local"
 agency_dev::cms_dir: "pub"
 agency_dev::cms_env: "development"
+elasticsearch::version: "1.5.1"
 
 roles:
   - "agency_dev::roles::server"
