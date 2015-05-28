@@ -9,6 +9,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "puppets/hiera/", "/vagrant/hiera"
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "1024"
+    vb.name = "showcase-cms"
   end
 
   config.vm.provision :puppet do |puppet|
