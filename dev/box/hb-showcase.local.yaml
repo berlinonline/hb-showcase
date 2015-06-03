@@ -6,6 +6,7 @@ agency_dev::cms_name: "hb-showcase.local"
 agency_dev::cms_dir: "pub"
 agency_dev::cms_env: "development"
 elasticsearch::version: "1.5.1"
+converjon::url_whitelist: [ "https://hb-showcase.local/*", "http://lorempixel.com/*" ]
 
 roles:
   - "agency_dev::roles::server"
@@ -15,3 +16,4 @@ roles:
   - "agency_dev::roles::cms"
   - "elasticsearch::plugins::head"
   - "elasticsearch::plugins::icu"
+  - "agency_dev::roles::converjon"
