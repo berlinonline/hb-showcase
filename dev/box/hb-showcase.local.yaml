@@ -5,8 +5,22 @@ agency_dev::project_prefix: "hb-showcase"
 agency_dev::cms_name: "hb-showcase.local"
 agency_dev::cms_dir: "pub"
 agency_dev::cms_env: "development"
+
 elasticsearch::version: "1.5.1"
-converjon::url_whitelist: [ "https://hb-showcase.local/*", "http://lorempixel.com/*" ]
+
+couchdb::bind_address: "0.0.0.0"
+
+converjon::version: "2.4.2"
+converjon::url_whitelist: [ "https://hb-showcase.local/*" ]
+converjon::base_url_path: "/converjon/"
+converjon::nginx_deployment: "path"
+converjon::aliases: [
+  {
+    name: "dev",
+    base_file_path: "/srv/www/hb-showcase.local/data/assets",
+    headers: [ "Cache-Control: 'public, max-age=3600'" ]
+  }
+]
 
 roles:
   - "agency_dev::roles::server"
