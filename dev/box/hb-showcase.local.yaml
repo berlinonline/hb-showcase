@@ -10,7 +10,7 @@ elasticsearch::version: "1.5.1"
 
 couchdb::bind_address: "0.0.0.0"
 
-converjon::version: "2.4.2"
+converjon::version: "2.5.0"
 converjon::url_whitelist: [ "https://hb-showcase.local/*" ]
 converjon::base_url_path: "/converjon/"
 converjon::nginx_deployment: "path"
@@ -18,6 +18,8 @@ converjon::aliases:
   -
     name: "dev"
     base_file_path: "/srv/www/hb-showcase.local/data/assets"
+    fallback_base_file_paths:
+        - "/srv/www/hb-showcase.local/data/temp_assets"
     headers:
       - 'Cache-Control: "public, max-age=3600"'
 
