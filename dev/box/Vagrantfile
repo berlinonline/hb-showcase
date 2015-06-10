@@ -8,6 +8,7 @@ Vagrant.configure(2) do |config|
   config.vm.box                         = 'berlinonline_opensuse-13.2-x86_64_puppet_bo'
   config.vm.box_url                     = 'https://projekte.berlinonline.de/box/berlinonline_opensuse-13.2-x86_64_puppet_bo.box'
   config.vm.box_download_checksum       = '0fa6ebd4ffe1d11f057f8a7aa10d3891ff45fe66e187655b4eddadc334f8ccaa'
+  config.vm.box_download_checksum_type  = 'sha256'
 
   config.vm.network :private_network, type: :dhcp
   config.vm.synced_folder "puppets/hiera/", "/vagrant/hiera"
