@@ -3,7 +3,6 @@ Vagrant.configure(2) do |config|
   config.ssh.forward_agent              = true
 
   config.vm.hostname                    = 'hb-showcase.local'
-  #config.vm.post_up_message            = 'BerlinOnline DevBox'
 
   config.vm.box                         = 'berlinonline/opensuse-13_2'
   config.vm.boot_timeout                = 300
