@@ -4,7 +4,7 @@
     xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0"
     xmlns="http://berlinonline.de/schemas/honeybee/config/navigation/1.0"
     xmlns:env="http://berlinonline.de/schemas/honeybee/config/envelope/definition/1.0"
-    >
+>
 
     <xi:include href="%core.honeybee_config_dir%/navigation.xml"
         xpointer="xmlns(ae=http://agavi.org/agavi/config/global/envelope/1.0) xpointer(/ae:configurations/*)">

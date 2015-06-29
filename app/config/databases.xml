@@ -5,14 +5,8 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
 >
 
-    <xi:include href="%core.honeybee_config_dir%/databases.xml"
-        xpointer="xmlns(ae=http://agavi.org/agavi/config/global/envelope/1.0) xpointer(/ae:configurations/*)">
-        <xi:fallback />
-    </xi:include>
-
     <xi:include href="./includes/databases.xml"
         xpointer="xmlns(ae=http://agavi.org/agavi/config/global/envelope/1.0) xpointer(/ae:configurations/*)">
         <xi:fallback />
     </xi:include>
-
 </ae:configurations>
